@@ -1,6 +1,7 @@
 import 'package:festiveapp_studio/common/common_primary_button.dart';
-import 'package:festiveapp_studio/screen/onboarding/onboarding_controller.dart';
-import 'package:festiveapp_studio/screen/onboarding/onboarding_widget.dart';
+import 'package:festiveapp_studio/screen/intro/onboarding/onboarding_controller.dart';
+import 'package:festiveapp_studio/screen/intro/onboarding/onboarding_widget.dart';
+
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

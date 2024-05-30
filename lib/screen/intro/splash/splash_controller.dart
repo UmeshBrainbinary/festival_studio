@@ -1,5 +1,4 @@
 import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
-import 'package:festiveapp_studio/screen/onboarding/onboarding_screen.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
