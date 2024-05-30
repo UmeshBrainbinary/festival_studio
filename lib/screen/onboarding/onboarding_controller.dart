@@ -3,6 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OnBordingController extends GetxController {
+  List<Map> data = [
+    {
+      'text': 'nidhi',
+      'text1': 'cjdn',
+    },
+    {
+      'text': 'nb',
+      'text1': 'jvfnjdn',
+    }
+  ];
   var pageIndex = 0.obs;
   int index = 0;
   int index1 = 1;
