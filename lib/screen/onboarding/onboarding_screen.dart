@@ -16,25 +16,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     Get.put(OnBordingController());
     return Scaffold(
-        backgroundColor: AppColors.blue,
-        body: GetBuilder<OnBordingController>(
-          builder: (controller) {
-            return Column(
-              children: [
-                const SizedBox(
-                  height: 50,
-                ),
-
-
-                navigateContainer(),
-                pageViewOnboard(),
-
-                const SizedBox(
-                  height: 50,
-                ),
-              ],
-            );
-          },
-        ));
+      backgroundColor: AppColors.blue,
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 50,
+          ),
+          navigateContainer(),
+          pageViewOnboard(),
+          button(),
+          const SizedBox(
+            height: 50,
+          ),
+        ],
+      ),
+    );
   }
 }
