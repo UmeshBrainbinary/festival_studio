@@ -28,23 +28,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
                 navigateContainer(),
                 pageViewOnboard(),
-                InkWell(
-                  onTap: () {
-                    controller.homeToLogin();
-                  },
-                  child: Container(
-                    height: 60,
-                    width: 60,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: AppColors.white),
-                    child: const Center(
-                        child: Icon(
-                      Icons.arrow_forward_rounded,
-                      size: 25,
-                    )),
-                  ),
-                ),
+
                 const SizedBox(
                   height: 50,
                 ),
