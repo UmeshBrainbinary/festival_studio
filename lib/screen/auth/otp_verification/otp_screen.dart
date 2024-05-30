@@ -3,6 +3,7 @@ import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/common/underline_text/common_underline_text.dart';
+import 'package:festiveapp_studio/screen/add_details/add_details_screen.dart';
 import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
 import 'package:festiveapp_studio/screen/auth/otp_verification/otp_controller.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
@@ -48,6 +49,12 @@ class OtpScreen extends StatelessWidget {
                 androidSmsAutofillMethod:
                     AndroidSmsAutofillMethod.smsRetrieverApi,
                 controller: controller.otpController,
+                onCompleted: (value) {
+                  Get.to(AddDetailsScreen());
+                },
+                onSubmitted: (value){
+
+                },
                 defaultPinTheme: PinTheme(
                   height: width*0.17,
                   width: width*0.17,

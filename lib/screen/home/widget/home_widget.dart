@@ -41,8 +41,11 @@ Widget festivalListview() {
               StringRes.festival,
               style: boldFontStyle(color: AppColors.white, size: 18),
             ),
-            const Text(StringRes.more),
-            const Icon(Icons.arrow_forward_ios_sharp)
+             const Spacer(),
+             Text(StringRes.more,
+              style: boldFontStyle(color: AppColors.white, size: 18)),
+             SizedBox(width: 8,),
+             Icon(Icons.arrow_forward_ios_sharp,color: AppColors.white,size: 20,)
           ],
         ),
         Expanded(

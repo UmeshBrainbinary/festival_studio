@@ -41,9 +41,9 @@ class BtnScreen extends StatelessWidget {
                 icon: Image.asset(
                   'assets/images/box.png',
                   height: Get.height * 0.048,
-                  color: controller.currentIndex.value == 0
-                      ? Colors.green
-                      : Colors.purple,
+                  // color: controller.currentIndex.value == 0
+                  //     ? Colors.green
+                  //     : Colors.purple,
                 ),
               ),
               BottomNavigationBarItem(
@@ -51,9 +51,9 @@ class BtnScreen extends StatelessWidget {
                 icon: Image.asset(
                   'assets/images/box.png',
                   height: Get.height * 0.048,
-                  color: controller.currentIndex.value == 1
-                      ? Colors.green
-                      : Colors.purple,
+                  // color: controller.currentIndex.value == 1
+                  //     ? Colors.green
+                  //     : Colors.purple,
                 ),
               ),
               BottomNavigationBarItem(
@@ -61,9 +61,9 @@ class BtnScreen extends StatelessWidget {
                 icon: Image.asset(
                   'assets/images/box.png',
                   height: Get.height * 0.048,
-                  color: controller.currentIndex.value == 2
-                      ? Colors.green
-                      : Colors.purple,
+                  // color: controller.currentIndex.value == 2
+                  //     ? Colors.green
+                  //     : Colors.purple,
                 ),
               ),
               BottomNavigationBarItem(
@@ -71,9 +71,9 @@ class BtnScreen extends StatelessWidget {
                 icon: Image.asset(
                   'assets/images/box.png',
                   height: Get.height * 0.048,
-                  color: controller.currentIndex.value == 3
-                      ? Colors.green
-                      : Colors.purple,
+                  // color: controller.currentIndex.value == 3
+                  //     ? Colors.green
+                  //     : Colors.purple,
                 ),
               ),
             ],
