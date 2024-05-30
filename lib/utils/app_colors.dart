@@ -8,4 +8,11 @@ class AppColors{
   static const Color darkWhite = Color(0xFFc0c1c2);
   static const Color white = Colors.white;
   static const Color errorColor = Colors.red;
+
+
+
+
+
+
+  // ------------   SMIT  ----------------
 }

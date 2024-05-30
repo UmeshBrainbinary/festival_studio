@@ -13,4 +13,18 @@ class StringRes {
   static const String poster= '''easy to share your poster with clients.
   make your business promotion
   creative and digitally''';
+
+
+
+  /// -------------  LOGIN ----------------------------
+  static const String loginToYourAcc ="Login to Your Account";
+  static const String takeYourBrandToTheNextLevel = "Take Your Brand To The Next Level.";
+  static const String mobile = "Mobile";
+  static const String haveAReferralCode = "Have a referral code?";
+  static const String sentOtp = "Sent OTP";
+  static const String termsAndConditions = "Terms and Conditions";
+  static const String otpVerification = "OTP Verification";
+  static const String weSentOtpCodeToYourMobileNumber = "We sent OTP code to your Mobile Number.";
+  static const String didNotReceiveOtp = "Didn’t receive OTP?";
+
 }
