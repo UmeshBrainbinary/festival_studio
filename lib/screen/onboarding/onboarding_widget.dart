@@ -1,6 +1,7 @@
 import 'package:festiveapp_studio/screen/onboarding/onboarding_controller.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
+import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -57,9 +58,7 @@ Widget pageViewOnboard() {
             Padding(
               padding: EdgeInsets.only(left: 80, right: 80),
               child: Text(
-                '''Add your brand details and save your
-                brand. create your business related post
-              and videos with your business frames.''',
+                controller.data[index]['text1'],
                 textAlign: TextAlign.center,
               ),
             )
@@ -76,7 +75,7 @@ Widget button() {
       controller.homeToLogin();
     },
     child: Container(
-      height: 40,
+      height: 50,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: AppColors.white),
       child: const Center(child: Text('Next')),
