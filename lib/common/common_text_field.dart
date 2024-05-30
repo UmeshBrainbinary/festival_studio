@@ -15,18 +15,13 @@ class CommonTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormator;
 
 
-  const CommonTextField({
-    super.key, required this.controller,this.hint, this.leadingWidget, this.textInputType, /*this.validator,*/ this.inputFormator,
-  });
-
-
   CommonTextField(
       {super.key,
       required this.controller,
       this.hint,
       this.leadingWidget,
       this.height,
-      this.maxLines});
+      this.maxLines, this.textInputType, this.inputFormator});
 
 
   @override
@@ -55,7 +50,7 @@ class CommonTextField extends StatelessWidget {
               // validator: validator,
               inputFormatters: inputFormator,
               // style: mediumFontStyle(color: AppColors.blackColor,size: 16,height: 1.3),
-              decoration: InputDecoration(border: InputBorder.none,hintStyle: mediumFontStyle(color: AppColors.hintColor,size: 16)),
+              // decoration: InputDecoration(border: InputBorder.none,hintStyle: mediumFontStyle(color: AppColors.hintColor,size: 16)),
 
               style: mediumFontStyle(
                   color: AppColors.blackColor, size: 16, height: 1.3),

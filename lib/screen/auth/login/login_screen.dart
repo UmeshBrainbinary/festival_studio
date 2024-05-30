@@ -3,18 +3,16 @@ import 'package:country_picker/country_picker.dart';
 import 'package:festiveapp_studio/common/app_contstant.dart';
 import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/common/common_text_field.dart';
-import 'package:festiveapp_studio/common/custom_input_formattor/custom_input_formattor.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/common/underline_text/common_underline_text.dart';
 import 'package:festiveapp_studio/screen/auth/login/login_controller.dart';
 import 'package:festiveapp_studio/screen/auth/otp_verification/otp_screen.dart';
-import 'package:festiveapp_studio/screen/onboarding/onboarding_widget.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
