@@ -1,12 +1,11 @@
-
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
-
-
-TextStyle hintStyle =
-    const TextStyle(fontSize: 14, color: AppColors.white, /*fontFamily: Fonts.inter, */fontWeight: FontWeight.w400);
-
+TextStyle hintStyle = const TextStyle(
+    fontSize: 14,
+    color: AppColors.white,
+    /*fontFamily: Fonts.inter, */
+    fontWeight: FontWeight.w400);
 
 TextStyle semiBoldFontStyle({double? size, String? family, Color? color}) {
   return TextStyle(
@@ -16,7 +15,8 @@ TextStyle semiBoldFontStyle({double? size, String? family, Color? color}) {
       color: color ?? AppColors.white);
 }
 
-TextStyle mediumFontStyle({double? size, String? family, Color? color, double? height}) {
+TextStyle mediumFontStyle(
+    {double? size, String? family, Color? color, double? height}) {
   return TextStyle(
       fontSize: size ?? 12,
       // fontFamily: family ?? Fonts.inter,
@@ -25,10 +25,10 @@ TextStyle mediumFontStyle({double? size, String? family, Color? color, double? h
       height: height);
 }
 
-
 ///      ---------------    NEW    -------------------
 
-TextStyle regularFontStyle({double? size, String? family, Color? color, double? height}) {
+TextStyle regularFontStyle(
+    {double? size, String? family, Color? color, double? height}) {
   return TextStyle(
       fontSize: size ?? 12,
       // fontFamily: family ?? Fonts.inter,
@@ -37,11 +37,13 @@ TextStyle regularFontStyle({double? size, String? family, Color? color, double? 
       height: height);
 }
 
-TextStyle boldFontStyle({double? size, String? family, Color? color, FontWeight? fontWeight}) {
+TextStyle boldFontStyle(
+    {double? size, String? family, Color? color, FontWeight? fontWeight, double? height}) {
   return TextStyle(
     fontSize: size ?? 12,
     // fontFamily: family ?? Fonts.inter,
     fontWeight: fontWeight ?? FontWeight.w700,
     color: color ?? AppColors.white,
+    height: height,
   );
 }
