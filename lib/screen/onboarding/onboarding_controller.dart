@@ -28,7 +28,7 @@ class OnBordingController extends GetxController {
       pageController.nextPage(
           duration: const Duration(milliseconds: 500), curve: Curves.linear);
     } else if (pageIndex.value == 2) {
-      Get.to(const LoginScreen());
+      Get.to( LoginScreen());
     }
   }
 

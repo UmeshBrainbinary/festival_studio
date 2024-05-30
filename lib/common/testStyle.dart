@@ -7,34 +7,35 @@ TextStyle hintStyle = const TextStyle(
     /*fontFamily: Fonts.inter, */
     fontWeight: FontWeight.w400);
 
-TextStyle semiBoldFontStyle({double? size, String? family, Color? color}) {
+TextStyle semiBoldFontStyle({double? size, String? family, Color? color,double? height}) {
   return TextStyle(
       fontSize: size ?? 12,
       // fontFamily: family ?? Fonts.inter,
       fontWeight: FontWeight.w600,
+      height: height,
       color: color ?? AppColors.white);
 }
 
 TextStyle mediumFontStyle(
-    {double? size, String? family, Color? color, double? height}) {
+    {double? size, String? family, Color? color, double? height,TextDecoration? decoration}) {
   return TextStyle(
       fontSize: size ?? 12,
       // fontFamily: family ?? Fonts.inter,
       fontWeight: FontWeight.w500,
       color: color ?? AppColors.white,
-      height: height);
+      height: height,decoration: decoration,decorationColor: color);
 }
 
 ///      ---------------    NEW    -------------------
 
 TextStyle regularFontStyle(
-    {double? size, String? family, Color? color, double? height}) {
+    {double? size, String? family, Color? color, double? height,TextDecoration? decoration}) {
   return TextStyle(
       fontSize: size ?? 12,
       // fontFamily: family ?? Fonts.inter,
       fontWeight: FontWeight.w400,
       color: color ?? AppColors.white,
-      height: height);
+      height: height,decoration: decoration,decorationColor: color);
 }
 
 TextStyle boldFontStyle(

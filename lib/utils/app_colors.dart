@@ -18,4 +18,5 @@ class AppColors{
   static const Color descGreyColor = Color(0xFFc9c9c8);
   static const Color hintColor = Color(0xFF808a80);
   static const Color blackColor = Color(0xFF000000);
+  static const Color underlineColor = Color(0xFFcbcbca);
 }

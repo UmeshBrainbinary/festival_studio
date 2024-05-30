@@ -11,7 +11,7 @@ class SplashController extends GetxController {
 
   void _navigateToNextScreen() {
     Future.delayed(const Duration(seconds: 2), () {
-      Get.to(() => const LoginScreen());
+      Get.to(() =>  LoginScreen());
       // Get.to(() => const OnboardingScreen());
     });
   }

@@ -38,6 +38,9 @@ dependencies:
   get: ^4.6.6
   http: ^1.2.1
   shared_preferences: ^2.2.3
+  pinput: ^4.0.0
+  country_picker: ^2.0.26
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:

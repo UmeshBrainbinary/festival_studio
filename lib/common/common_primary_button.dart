@@ -27,7 +27,7 @@ class CommonPrimaryButton extends StatelessWidget {
       child: Container(
         width: width ?? Get.width,
         height: 48,
-        padding:  EdgeInsets.symmetric(horizontal: 20, vertical:isLoading == true ?5: 12),
+        padding:  EdgeInsets.symmetric(horizontal: 20, vertical:isLoading == true ?5: 0).copyWith(bottom: isLoading == true ? 5: 2),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
           color: buttonColor ?? AppColors.lightPink,
@@ -50,12 +50,14 @@ class CommonPrimaryButton extends StatelessWidget {
 
               ),
             ))
-            : Text(
-          text,
-          textAlign: TextAlign.center,
-          style: mediumFontStyle(
-              size: 16, color: textColor ?? AppColors.white,height: 0),
-        ),
+            : Center(
+              child: Text(
+                        text,
+                        textAlign: TextAlign.center,
+                        style: semiBoldFontStyle(
+                size: 17, color: textColor ?? AppColors.white,height: 0),
+                      ),
+            ),
       ),
     );
   }
