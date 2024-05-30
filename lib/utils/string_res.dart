@@ -31,8 +31,23 @@ class StringRes {
   /// --------------------------- addBrandDetails ---------------- ///
 
   static const String addDetailsTitle ='Add Brand Details';
+  static const String brandName = 'Brand Name*';
+  static const String tagLine = 'Tag Line*';
+  static const String email = 'Email';
+  static const String submit = 'Submit';
+  static const String phoneNo = 'Phone No.';
+  static const String website = 'Website';
+  static const String address = 'Address';
   static const String information ='''Complete your account setup by providing
-  Brand information.''';
+ Brand information.''';
+
+  /// -------------------- home screen ---------------------- ///
+
+  static const String search = 'Search here...';
+  static const String festival = 'Upcoming Festival & Days';
+  static const String motivational = 'Motivational Quotes';
+  static const String more ='more';
+  static const String morningQuotes ='Good Morning Quotes';
 }
 
 
