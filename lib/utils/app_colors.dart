@@ -15,4 +15,7 @@ class AppColors{
 
 
   // ------------   SMIT  ----------------
+  static const Color descGreyColor = Color(0xFFc9c9c8);
+  static const Color hintColor = Color(0xFF808a80);
+  static const Color blackColor = Color(0xFF000000);
 }
