@@ -17,18 +17,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     Get.put(OnBordingController());
     return Scaffold(
       backgroundColor: AppColors.blue,
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 50,
-          ),
-          navigateContainer(),
-          pageViewOnboard(),
-          button(),
-          const SizedBox(
-            height: 50,
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 50,
+            ),
+            navigateContainer(),
+            pageViewOnboard(),
+            const Spacer(),
+            button(),
+            const SizedBox(height: 20,)
+
+          ],
+        ),
       ),
     );
   }
