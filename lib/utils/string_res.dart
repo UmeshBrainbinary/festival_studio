@@ -27,4 +27,12 @@ class StringRes {
   static const String weSentOtpCodeToYourMobileNumber = "We sent OTP code to your Mobile Number.";
   static const String didNotReceiveOtp = "Didn’t receive OTP?";
 
+
+  /// --------------------------- addBrandDetails ---------------- ///
+
+  static const String addDetailsTitle ='Add Brand Details';
+  static const String information ='''Complete your account setup by providing
+  Brand information.''';
 }
+
+
