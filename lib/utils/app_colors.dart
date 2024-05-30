@@ -5,4 +5,11 @@ class AppColors{
   static const Color lightPink = Color(0xFFC94C9A);
   static const Color white = Colors.white;
   static const Color errorColor = Colors.red;
+
+
+
+
+
+
+  // ------------   SMIT  ----------------
 }

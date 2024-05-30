@@ -1,3 +1,4 @@
+import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/screen/onboarding/onboarding_controller.dart';
 import 'package:festiveapp_studio/screen/onboarding/onboarding_widget.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
