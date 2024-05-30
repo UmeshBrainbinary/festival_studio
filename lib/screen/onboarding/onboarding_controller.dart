@@ -1,17 +1,21 @@
 import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
+import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OnBordingController extends GetxController {
   List<Map> data = [
     {
-      'text': 'nidhi',
-      'text1': 'cjdn',
+      'text': StringRes.discover,
+      'text1': StringRes.businessCategories,
     },
     {
-      'text': 'nb',
-      'text1': 'jvfnjdn',
-    }
+      'text': StringRes.create,
+      'text1': StringRes.digitalDetails,
+    },{
+      'text': StringRes.share,
+      'text1': StringRes.poster,
+    },
   ];
   var pageIndex = 0.obs;
   int index = 0;
