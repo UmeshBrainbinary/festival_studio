@@ -69,7 +69,7 @@ Widget pageViewOnboard() {
                 textAlign: TextAlign.center,
                 style: mediumFontStyle(
                   size: 12,
-                  color: AppColors.darkWhite,
+                  color: AppColors.lightGreyTextColor,
                 ),
               ),
             ),
