@@ -3,6 +3,7 @@ import 'package:festiveapp_studio/common/common_text_field.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/add_details/add_details_controller.dart';
 import 'package:festiveapp_studio/screen/bottom_navigation/bottom_navigation_screen.dart';
+import 'package:festiveapp_studio/screen/dashboard/dashboard_screen.dart';
 import 'package:festiveapp_studio/screen/home/home_screen.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
@@ -123,7 +124,7 @@ Widget addDetailsTextField() {
           CommonPrimaryButton(
               onTap: () {
                 if (controller.validate()) {
-                  Get.to(BtnScreen());
+                  Get.to(DashBoardScreen());
                 }
               },
               text: StringRes.submit)
