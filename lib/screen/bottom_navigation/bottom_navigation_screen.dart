@@ -22,6 +22,8 @@ class BtnScreen extends StatelessWidget {
         () => SizedBox(
           height: Get.height * 0.1,
           child: BottomNavigationBar(
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             currentIndex: controller.currentIndex.value,
             type: BottomNavigationBarType.fixed,
             backgroundColor: AppColors.white,
@@ -42,9 +44,9 @@ class BtnScreen extends StatelessWidget {
                 icon: Image.asset(
                   AppAssets.home,
                   height: Get.height * 0.048,
-                  // color: controller.currentIndex.value == 0
-                  //     ? Colors.green
-                  //     : Colors.purple,
+                  color: controller.currentIndex.value == 0
+                      ? AppColors.lightPink
+                      : AppColors.hintColor,
                 ),
               ),
               BottomNavigationBarItem(
@@ -52,9 +54,9 @@ class BtnScreen extends StatelessWidget {
                 icon: Image.asset(
                   AppAssets.picture,
                   height: Get.height * 0.048,
-                  // color: controller.currentIndex.value == 1
-                  //     ? Colors.green
-                  //     : Colors.purple,
+                  color: controller.currentIndex.value == 1
+                      ? AppColors.lightPink
+                      :  AppColors.hintColor,
                 ),
               ),
               BottomNavigationBarItem(
@@ -62,9 +64,9 @@ class BtnScreen extends StatelessWidget {
                 icon: Image.asset(
                 AppAssets.video,
                   height: Get.height * 0.048,
-                  // color: controller.currentIndex.value == 2
-                  //     ? Colors.green
-                  //     : Colors.purple,
+                  color: controller.currentIndex.value == 2
+                      ? AppColors.lightPink
+                      :  AppColors.hintColor,
                 ),
               ),
               BottomNavigationBarItem(
@@ -72,9 +74,9 @@ class BtnScreen extends StatelessWidget {
                 icon: Image.asset(
                   AppAssets.user,
                   height: Get.height * 0.048,
-                  // color: controller.currentIndex.value == 3
-                  //     ? Colors.green
-                  //     : Colors.purple,
+                  color: controller.currentIndex.value == 3
+                      ? AppColors.lightPink
+                      :  AppColors.hintColor,
                 ),
               ),
             ],

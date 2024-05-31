@@ -10,38 +10,28 @@ import 'package:get/get.dart';
 final OnBordingController controller = Get.find<OnBordingController>();
 
 Widget navigateContainer() {
-  return Obx(() => Column(
-        children: [
-          SizedBox(
-            height: 200,
-            width: 200,
-            child: Image.asset(AppAssets.logo),
-          ),
-          const SizedBox(height: 40,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              3,
-              (index) => AnimatedContainer(
-                duration: const Duration(microseconds: 100),
-                margin: const EdgeInsets.symmetric(horizontal: 2),
-                height: Get.height * 0.02,
-                width: Get.height * 0.02,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    color: index == controller.pageIndex.value
-                        ? AppColors.lightPink
-                        : AppColors.cream),
-              ),
-            ),
-          ),
-        ],
-      ));
+  return Obx(() => Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: List.generate(
+      3,
+      (index) => AnimatedContainer(
+        duration: const Duration(microseconds: 100),
+        margin: const EdgeInsets.symmetric(horizontal: 2),
+        height: Get.height * 0.02,
+        width: Get.height * 0.02,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25),
+            color: index == controller.pageIndex.value
+                ? AppColors.lightPink
+                : AppColors.cream),
+      ),
+    ),
+  ));
 }
 
 Widget pageViewOnboard() {
   return SizedBox(
-    height: 150,
+    height: 450,
     child: PageView.builder(
       controller: controller.pageController,
       itemCount: controller.data.length,
@@ -52,6 +42,14 @@ Widget pageViewOnboard() {
         return  Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 200,
+              width: 200,
+              child: Image.asset(AppAssets.logo),
+            ),
+            const SizedBox(height: 20,),
+            navigateContainer(),
+            const SizedBox(height: 30,),
             Text(
               controller.data[index]['text'],
               style:semiBoldFontStyle(
@@ -60,7 +58,7 @@ Widget pageViewOnboard() {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 40, right: 40),
