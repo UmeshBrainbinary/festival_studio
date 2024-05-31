@@ -1,6 +1,4 @@
-import 'package:festiveapp_studio/screen/add_details/add_details_screen.dart';
 import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
-import 'package:festiveapp_studio/screen/bottom_navigation/bottom_navigation_screen.dart';
 import 'package:festiveapp_studio/screen/dashboard/dashboard_screen.dart';
 import 'package:festiveapp_studio/screen/intro/onboarding/onboarding_screen.dart';
 import 'package:festiveapp_studio/service/pref_services.dart';

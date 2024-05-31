@@ -1,5 +1,6 @@
 import 'package:festiveapp_studio/screen/card_download/card_dowload_screen.dart';
 import 'package:festiveapp_studio/screen/dashboard/dashboard_screen.dart';
+import 'package:festiveapp_studio/screen/generate_logo/generate_logo_screen.dart';
 import 'package:festiveapp_studio/screen/help&support/help&suport_screen.dart';
 import 'package:festiveapp_studio/screen/home/home_controller.dart';
 import 'package:festiveapp_studio/screen/home/home_screen.dart';
@@ -20,7 +21,7 @@ class DashBoardController extends GetxController{
     HomeScreen(),
     HelpScreen(),
     VideoScreen(),
-    CardDownload(),
+    GenerateLogoScreen(),
   ];
 
   @override

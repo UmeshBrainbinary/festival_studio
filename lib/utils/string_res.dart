@@ -57,6 +57,15 @@ class StringRes {
   static const String helpSupport ='Help & Support';
   static const String hello ='''Hello, How can we
   Help you?''';
+
+
+  /// ----------------- generateLogo ----------------- ///
+
+static const String category = 'Category';
+static const String logoType = 'Logo Type';
+static const String primaryColor = 'Primary Color';
+static const String secondaryColor = 'Secondary Color';
+static const String generate = 'Generate';
 }
 
 
