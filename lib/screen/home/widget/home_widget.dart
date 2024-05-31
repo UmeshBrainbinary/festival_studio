@@ -1,4 +1,5 @@
 import 'package:festiveapp_studio/common/testStyle.dart';
+import 'package:festiveapp_studio/screen/card_detail/card_detail_screen.dart';
 import 'package:festiveapp_studio/screen/home/home_controller.dart';
 import 'package:festiveapp_studio/screen/home/morning_quotes.dart';
 import 'package:festiveapp_studio/screen/home/motivational_screen.dart';
@@ -79,24 +80,30 @@ Widget festivalListview({context}) {
             scrollDirection: Axis.horizontal,
             itemCount: 3,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 250,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: ClipRRect(
+              return GestureDetector(
+                onTap: (){
+                  Get.to(()=>CardDetailScreen());
+
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 250,
+                        width: 150,
+                        decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          child: Image.asset(
-                            AppAssets.diwali,
-                            fit: BoxFit.fill,
-                          )),
-                    ),
-                  ],
+                        ),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              AppAssets.diwali,
+                              fit: BoxFit.fill,
+                            )),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
@@ -152,25 +159,30 @@ Widget motivationalListview({context}) {
             scrollDirection: Axis.horizontal,
             itemCount: 3,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 250,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          AppAssets.diwali,
-                          fit: BoxFit.fill,
+              return GestureDetector(
+                onTap: () {
+                  Get.to(()=>CardDetailScreen());
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 250,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset(
+                            AppAssets.diwali,
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },
@@ -225,25 +237,30 @@ Widget morningQuotes({context}) {
             scrollDirection: Axis.horizontal,
             itemCount: 3,
             itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 250,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          AppAssets.diwali,
-                          fit: BoxFit.fill,
+              return GestureDetector(
+                onTap: () {
+                  Get.to(()=>CardDetailScreen());
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 250,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset(
+                            AppAssets.diwali,
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },
