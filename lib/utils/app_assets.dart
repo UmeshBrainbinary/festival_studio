@@ -6,7 +6,7 @@ class AppAssets {
   static const String icons = 'assets/icon';
   
   static const logo = '$images/box.png';
-  static const diwali = '$images/images.jpeg';
+  static const diwali = '$images/diwali.png';
 
 
 

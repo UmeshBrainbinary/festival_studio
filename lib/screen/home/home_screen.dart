@@ -13,11 +13,16 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppColors.blue,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            textField(),
-            festivalListview(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 20,),
+              textField(),
+              festivalListview(context: context),
+              motivationalListview(context : context),
+              morningQuotes(context: context),
+            ],
+          ),
         ),
       ),
     );

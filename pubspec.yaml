@@ -38,6 +38,7 @@ dependencies:
   pinput: ^4.0.0
   country_picker: ^2.0.26
   auto_size_text: ^3.0.0
+  persistent_bottom_nav_bar: ^5.0.2
 
 dev_dependencies:
   flutter_test:
