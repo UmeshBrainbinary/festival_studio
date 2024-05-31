@@ -14,7 +14,9 @@ import 'package:pinput/pinput.dart';
 
 class OtpScreen extends StatelessWidget {
   OtpScreen({super.key});
+
   OtpController controller = Get.put(OtpController());
+
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -32,7 +34,11 @@ class OtpScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: height * 0.055, width: width),
-              CommonBackButton(onTap: () { Get.back(); },),
+              CommonBackButton(
+                onTap: () {
+                  Get.back();
+                },
+              ),
               SizedBox(height: height * 0.05),
               Text(
                 StringRes.otpVerification,
@@ -41,8 +47,8 @@ class OtpScreen extends StatelessWidget {
               SizedBox(height: height * 0.015),
               Text(
                 StringRes.weSentOtpCodeToYourMobileNumber,
-                style: regularFontStyle(
-                    size: 16, color: AppColors.descGreyColor),
+                style:
+                    regularFontStyle(size: 16, color: AppColors.descGreyColor),
               ),
               SizedBox(height: height * 0.065),
               Pinput(
@@ -53,12 +59,14 @@ class OtpScreen extends StatelessWidget {
                   Get.to(AddDetailsScreen());
                 },
                 defaultPinTheme: PinTheme(
-                  height: width*0.17,
-                  width: width*0.17,
-                  textStyle: semiBoldFontStyle(size: 28,color: AppColors.blackColor),
-                  decoration: BoxDecoration(color: AppColors.white,borderRadius: BorderRadius.circular(6)),
-                  margin: EdgeInsets.symmetric(horizontal: width*0.02)
-                ),
+                    height: width * 0.17,
+                    width: width * 0.17,
+                    textStyle: semiBoldFontStyle(
+                        size: 28, color: AppColors.blackColor),
+                    decoration: BoxDecoration(
+                        color: AppColors.white,
+                        borderRadius: BorderRadius.circular(6)),
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.02)),
               ),
               SizedBox(height: height * 0.055),
               Center(
@@ -79,7 +87,7 @@ class OtpScreen extends StatelessWidget {
                       decoration: TextDecoration.underline),
                 ),
               ),
-              SizedBox(height: height*0.07),
+              SizedBox(height: height * 0.07),
             ],
           ),
         ),
@@ -87,4 +95,3 @@ class OtpScreen extends StatelessWidget {
     );
   }
 }
-

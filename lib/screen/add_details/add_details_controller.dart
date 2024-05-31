@@ -12,10 +12,10 @@ class AddDetailsController extends GetxController {
 
   bool validate() {
     if (brandName.text.trim().isEmpty) {
-      errorToast(msg: "Please enter country code");
+      errorToast(msg: "Please enter brand name");
       return false;
     } else if (tagLine.text.trim().isEmpty) {
-      errorToast(msg: "Please enter mobile number");
+      errorToast(msg: "Please enter tag line");
       return false;
     } else if ((phoneNumber.text.trim().length < 8) ||
         (phoneNumber.text.trim().length > 11)) {

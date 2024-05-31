@@ -21,7 +21,7 @@ class CommonBackButton extends StatelessWidget {
             color: AppColors.white, shape: BoxShape.circle),
         child: const Icon(
           Icons.arrow_back_ios_new_outlined,
-          color: AppColors.blackColor,
+          color: AppColors.lightPink,
           size: 16,
         ),
       ),

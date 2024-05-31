@@ -34,7 +34,7 @@ class CommonTextField extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: Get.width * 0.22,
+            width: Get.width * 0.255,
             child: leadingWidget ??
                 Text(
                   hint ?? "",
