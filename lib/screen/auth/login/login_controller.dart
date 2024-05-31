@@ -8,7 +8,7 @@ class LoginController extends GetxController{
   TextEditingController countryCodeController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
 
-  RxString countryCode = "+44".obs;
+  RxString countryCode = "+91".obs;
   RxString countryName = "India".obs;
   RxString countryNameCode = "IN".obs;
 

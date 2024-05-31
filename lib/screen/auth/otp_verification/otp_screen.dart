@@ -52,9 +52,6 @@ class OtpScreen extends StatelessWidget {
                 onCompleted: (value) {
                   Get.to(AddDetailsScreen());
                 },
-                onSubmitted: (value){
-
-                },
                 defaultPinTheme: PinTheme(
                   height: width*0.17,
                   width: width*0.17,

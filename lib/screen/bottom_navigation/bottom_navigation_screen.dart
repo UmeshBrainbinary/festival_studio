@@ -1,5 +1,6 @@
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/bottom_navigation/bottom_navigation_controller.dart';
+import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,7 +40,7 @@ class BtnScreen extends StatelessWidget {
               BottomNavigationBarItem(
                 label: 'home',
                 icon: Image.asset(
-                  'assets/images/box.png',
+                  AppAssets.home,
                   height: Get.height * 0.048,
                   // color: controller.currentIndex.value == 0
                   //     ? Colors.green
@@ -49,7 +50,7 @@ class BtnScreen extends StatelessWidget {
               BottomNavigationBarItem(
                 label: "explore",
                 icon: Image.asset(
-                  'assets/images/box.png',
+                  AppAssets.picture,
                   height: Get.height * 0.048,
                   // color: controller.currentIndex.value == 1
                   //     ? Colors.green
@@ -59,7 +60,7 @@ class BtnScreen extends StatelessWidget {
               BottomNavigationBarItem(
                 label: 'feed',
                 icon: Image.asset(
-                  'assets/images/box.png',
+                AppAssets.video,
                   height: Get.height * 0.048,
                   // color: controller.currentIndex.value == 2
                   //     ? Colors.green
@@ -69,7 +70,7 @@ class BtnScreen extends StatelessWidget {
               BottomNavigationBarItem(
                 label: 'profile',
                 icon: Image.asset(
-                  'assets/images/box.png',
+                  AppAssets.user,
                   height: Get.height * 0.048,
                   // color: controller.currentIndex.value == 3
                   //     ? Colors.green
