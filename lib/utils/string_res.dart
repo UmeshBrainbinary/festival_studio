@@ -1,7 +1,7 @@
 class StringRes {
   /// ------------------------ onboarding ----------------------------- ///
 
-  static const String share ='Share and Promote Business';
+  static const String business ='Share and Promote Business';
   static const String discover ='Discover Designs Everyday';
   static const String create ='Create Your Digital Brand';
   static const String businessCategories ='''Our library offers free and premium
@@ -47,7 +47,16 @@ class StringRes {
   static const String festival = 'Upcoming Festival & Days';
   static const String motivational = 'Motivational Quotes';
   static const String more ='more';
+  static const String download ='Download';
+  static const String share ='Share';
+  static const String removeWaterMark ='Remove Watermark';
   static const String morningQuotes ='Good Morning Quotes';
+
+
+  static const String tutorial ='Tutorials';
+  static const String helpSupport ='Help & Support';
+  static const String hello ='''Hello, How can we
+  Help you?''';
 }
 
 

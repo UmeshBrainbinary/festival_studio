@@ -1,4 +1,5 @@
 
+import 'package:festiveapp_studio/screen/card_download/card_dowload_screen.dart';
 import 'package:festiveapp_studio/screen/home/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,6 @@ class BtnController extends GetxController {
     HomeScreen(),
     SizedBox(),
     SizedBox(),
-    SizedBox(),
+    CardDownload(),
   ];
 }

@@ -27,14 +27,16 @@ Widget textField() {
           border: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(8),
-          )),
+          ),
+        contentPadding: const EdgeInsets.symmetric(vertical: 20),
+      ),
     ),
   );
 }
 
 Widget festivalListview({context}) {
   return SizedBox(
-    height: 310,
+    height: 305,
     child: Column(
       children: [
         const SizedBox(
@@ -44,7 +46,7 @@ Widget festivalListview({context}) {
           children: [
             Text(
               StringRes.festival,
-              style: boldFontStyle(color: AppColors.white, size: 18),
+              style: boldFontStyle(color: AppColors.white, size: 16),
             ),
             const Spacer(),
             InkWell(
@@ -57,7 +59,7 @@ Widget festivalListview({context}) {
                 children: [
                   Text(
                     StringRes.more,
-                    style: boldFontStyle(color: AppColors.white, size: 18),
+                    style: boldFontStyle(color: AppColors.white, size: 16),
                   ),
                   const SizedBox(
                     width: 5,
@@ -70,6 +72,8 @@ Widget festivalListview({context}) {
 
           ],
         ),
+        const SizedBox(height: 5,),
+
         Expanded(
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -105,7 +109,7 @@ Widget festivalListview({context}) {
 
 Widget motivationalListview({context}) {
   return SizedBox(
-    height: 310,
+    height: 305,
     child: Column(
       children: [
         const SizedBox(
@@ -115,7 +119,7 @@ Widget motivationalListview({context}) {
           children: [
             Text(
               StringRes.motivational,
-              style: boldFontStyle(color: AppColors.white, size: 18),
+              style: boldFontStyle(color: AppColors.white, size: 16),
             ),
             const Spacer(),
             InkWell(
@@ -128,7 +132,7 @@ Widget motivationalListview({context}) {
                 children: [
                   Text(
                     StringRes.more,
-                    style: boldFontStyle(color: AppColors.white, size: 18),
+                    style: boldFontStyle(color: AppColors.white, size: 16),
                   ),
                   const SizedBox(
                     width: 5,
@@ -141,6 +145,8 @@ Widget motivationalListview({context}) {
 
           ],
         ),
+        const SizedBox(height: 5,),
+
         Expanded(
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
@@ -177,7 +183,7 @@ Widget motivationalListview({context}) {
 
 Widget morningQuotes({context}) {
   return SizedBox(
-    height: 310,
+    height: 305,
     child: Column(
       children: [
         const SizedBox(
@@ -187,7 +193,7 @@ Widget morningQuotes({context}) {
           children: [
             Text(
               StringRes.morningQuotes,
-              style: boldFontStyle(color: AppColors.white, size: 18),
+              style: boldFontStyle(color: AppColors.white, size: 16),
             ),
             const Spacer(),
             InkWell(
@@ -200,7 +206,7 @@ Widget morningQuotes({context}) {
                 children: [
                   Text(
                     StringRes.more,
-                    style: boldFontStyle(color: AppColors.white, size: 18),
+                    style: boldFontStyle(color: AppColors.white, size: 16),
                   ),
                   const SizedBox(
                     width: 5,
@@ -213,6 +219,7 @@ Widget morningQuotes({context}) {
 
           ],
         ),
+        const SizedBox(height: 5,),
         Expanded(
           child: ListView.builder(
             scrollDirection: Axis.horizontal,

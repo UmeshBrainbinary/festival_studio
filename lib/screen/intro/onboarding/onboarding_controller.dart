@@ -15,7 +15,7 @@ class OnBordingController extends GetxController {
       'text': StringRes.create,
       'text1': StringRes.digitalDetails,
     },{
-      'text': StringRes.share,
+      'text': StringRes.business,
       'text1': StringRes.poster,
     },
   ];

@@ -10,33 +10,39 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 class DashBoardScreen extends StatelessWidget {
   DashBoardScreen({super.key});
 
-  final DashBoardController dashBoardController = Get.put(DashBoardController());
+  final DashBoardController dashBoardController =
+      Get.put(DashBoardController());
 
   @override
   Widget build(BuildContext context) {
-    return  WillPopScope(
-      onWillPop: ()async{
+    return WillPopScope(
+      onWillPop: () async {
         showDialog(
             context: context,
             builder: (BuildContext context) {
               return Theme(
                 data: ThemeData(dialogBackgroundColor: Colors.white),
                 child: AlertDialog(
-                  title: Text(
+                  title: const Text(
                     'exit',
-                   // StringRes.exit.tr,
-                    style: const TextStyle(fontSize: 24,fontWeight: FontWeight.bold, color: AppColors.lightPink),
+                    // StringRes.exit.tr,
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.lightPink),
                   ),
-                  content: Text(
+                  content: const Text(
                     'exitdes',
                     // StringRes.exitDes.tr,
-                    style: const TextStyle(fontSize: 18, color: AppColors.lightPink),
+                    style: TextStyle(
+                        fontSize: 18, color: AppColors.lightPink),
                   ),
                   actions: <Widget>[
                     ElevatedButton(
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.resolveWith<OutlinedBorder>(
-                              (Set<MaterialState> states) {
+                        shape:
+                            MaterialStateProperty.resolveWith<OutlinedBorder>(
+                          (Set<MaterialState> states) {
                             return RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                 100,
@@ -44,16 +50,19 @@ class DashBoardScreen extends StatelessWidget {
                             );
                           },
                         ),
-                        side: MaterialStateProperty.all( const BorderSide(color: AppColors.lightPink)),
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                        side: MaterialStateProperty.all(
+                            const BorderSide(color: AppColors.lightPink)),
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(Colors.white),
                       ),
                       onPressed: () {
                         return Navigator.of(context).pop(false);
                       },
-                      child: Text(
+                      child: const Text(
                         'cancel',
                         //StringRes.cancel.tr,
-                        style: const TextStyle(fontSize: 18, color: AppColors.lightPink),
+                        style: TextStyle(
+                            fontSize: 18, color: AppColors.lightPink),
                       ),
                     ),
                     ElevatedButton(
@@ -61,8 +70,9 @@ class DashBoardScreen extends StatelessWidget {
                         exit(0);
                       },
                       style: ButtonStyle(
-                        shape: MaterialStateProperty.resolveWith<OutlinedBorder>(
-                              (Set<MaterialState> states) {
+                        shape:
+                            MaterialStateProperty.resolveWith<OutlinedBorder>(
+                          (Set<MaterialState> states) {
                             return RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                 100,
@@ -70,12 +80,14 @@ class DashBoardScreen extends StatelessWidget {
                             );
                           },
                         ),
-                        backgroundColor: MaterialStateProperty.all<Color>(AppColors.lightPink),
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            AppColors.lightPink),
                       ),
-                      child: Text(
+                      child: const Text(
                         'exit',
                         // StringRes.exit.tr,
-                        style: const TextStyle(fontSize: 18, color: AppColors.lightPink),
+                        style:
+                            TextStyle(fontSize: 18, color: AppColors.white),
                       ),
                     ),
                     const SizedBox(width: 2),
@@ -89,25 +101,25 @@ class DashBoardScreen extends StatelessWidget {
         body: GetBuilder<DashBoardController>(
           id: "bottom",
           builder: (controller) => PersistentTabView(
-            selectedTabScreenContext: (context){},
+            selectedTabScreenContext: (context) {},
             backgroundColor: AppColors.white,
             context,
             navBarHeight: 60,
             decoration: const NavBarDecoration(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
               ),
-              gradient: LinearGradient(
-                colors: [
-                  Color(0xff352062),
-                  Color(0xff2E036E),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0.0, 0.8],
-                tileMode: TileMode.clamp,
-              ),
+              // gradient: LinearGradient(
+              //   colors: [
+              //     Color(0xff352062),
+              //     Color(0xff2E036E),
+              //   ],
+              //   begin: Alignment.topCenter,
+              //   end: Alignment.bottomCenter,
+              //   stops: [0.0, 0.8],
+              //   tileMode: TileMode.clamp,
+              // ),
             ),
             controller: dashBoardController.persistentTabController,
             onItemSelected: (value) async {
@@ -117,16 +129,72 @@ class DashBoardScreen extends StatelessWidget {
             screens: dashBoardController.screens,
             items: [
               PersistentBottomNavBarItem(
-                icon: dashBoardController.currentIndex == 0 ? Image.asset(AppAssets.home,scale: 2.5) :  Image.asset(AppAssets.picture,scale: 2.5),
+                icon: dashBoardController.currentIndex == 0
+                    ? Image.asset(
+                        AppAssets.home,
+                        scale: 2.5,
+                        height: 20,
+                        width: 20,
+                  color: AppColors.lightPink,
+                      )
+                    : Image.asset(
+                        AppAssets.home,
+                        scale: 2.5,
+                        height: 20,
+                        width: 20,
+                  color: AppColors.hintColor,
+                      ),
               ),
               PersistentBottomNavBarItem(
-                icon: dashBoardController.currentIndex == 1 ? Image.asset(AppAssets.picture,scale: 5) :  Image.asset(AppAssets.picture,scale:5),
+                icon: dashBoardController.currentIndex == 1
+                    ? Image.asset(
+                        AppAssets.picture,
+                        scale: 5,
+                        height: 20,
+                        width: 20,
+                  color: AppColors.lightPink,
+                      )
+                    : Image.asset(
+                        AppAssets.picture,
+                        scale: 5,
+                        height: 20,
+                        width: 20,
+                  color: AppColors.hintColor,
+                      ),
               ),
               PersistentBottomNavBarItem(
-                icon: dashBoardController.currentIndex == 2 ? Image.asset(AppAssets.video,scale: 2.5) :  Image.asset(AppAssets.video,scale: 2.5),
+                icon: dashBoardController.currentIndex == 2
+                    ? Image.asset(
+                        AppAssets.video,
+                        scale: 2.5,
+                        height: 25,
+                        width: 25,
+                  color: AppColors.lightPink,
+                      )
+                    : Image.asset(
+                        AppAssets.video,
+                        scale: 2.5,
+                        height: 25,
+                        width: 25,
+                  color: AppColors.hintColor,
+                      ),
               ),
               PersistentBottomNavBarItem(
-                icon: dashBoardController.currentIndex == 2 ? Image.asset(AppAssets.user,scale: 2.5) :  Image.asset(AppAssets.user,scale: 2.5),
+                icon: dashBoardController.currentIndex == 3
+                    ? Image.asset(
+                        AppAssets.user,
+                        scale: 2.5,
+                        height: 20,
+                        width: 20,
+                  color: AppColors.lightPink,
+                      )
+                    : Image.asset(
+                        AppAssets.user,
+                        scale: 2.5,
+                        height: 20,
+                        width: 20,
+                  color: AppColors.hintColor,
+                      ),
               ),
             ],
             confineInSafeArea: true,
@@ -134,7 +202,8 @@ class DashBoardScreen extends StatelessWidget {
             resizeToAvoidBottomInset: true,
             stateManagement: true,
             hideNavigationBarWhenKeyboardShows: true,
-            popAllScreensOnTapOfSelectedTab: true,//
+            popAllScreensOnTapOfSelectedTab: true,
+            //
             popAllScreensOnTapAnyTabs: true,
             itemAnimationProperties: const ItemAnimationProperties(
               duration: Duration(milliseconds: 200),
@@ -146,7 +215,8 @@ class DashBoardScreen extends StatelessWidget {
               duration: Duration(milliseconds: 200),
             ),
 
-            navBarStyle: NavBarStyle.style2,  // 2
+            navBarStyle: NavBarStyle.style2,
+            // 2
             padding: const NavBarPadding.all(5),
           ),
         ),

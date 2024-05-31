@@ -11,6 +11,13 @@ class AddDetailsController extends GetxController {
   TextEditingController address = TextEditingController();
 
   bool validate() {
+    String emailPattern = r'^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
+    RegExp emailRegex = RegExp(emailPattern);
+
+    String urlPattern =
+        r'^(https?:\/\/)?([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,4})([\/\w.-]*)*\/?$';
+    RegExp urlRegex = RegExp(urlPattern);
+
     if (brandName.text.trim().isEmpty) {
       errorToast(msg: "Please enter brand name");
       return false;
@@ -24,8 +31,14 @@ class AddDetailsController extends GetxController {
     } else if (email.text.trim().isEmpty) {
       errorToast(msg: "Please enter email");
       return false;
+    } else if (!emailRegex.hasMatch(email.text.trim())) {
+      errorToast(msg: "Please enter a valid email");
+      return false;
     } else if (website.text.trim().isEmpty) {
       errorToast(msg: "Please enter website");
+      return false;
+    } else if (!urlRegex.hasMatch(website.text.trim())) {
+      errorToast(msg: "Please enter a valid website URL");
       return false;
     } else if (address.text.trim().isEmpty) {
       errorToast(msg: "Please enter address");

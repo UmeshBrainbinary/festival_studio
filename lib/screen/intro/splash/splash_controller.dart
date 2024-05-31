@@ -1,6 +1,7 @@
 import 'package:festiveapp_studio/screen/add_details/add_details_screen.dart';
 import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
 import 'package:festiveapp_studio/screen/bottom_navigation/bottom_navigation_screen.dart';
+import 'package:festiveapp_studio/screen/dashboard/dashboard_screen.dart';
 import 'package:festiveapp_studio/screen/intro/onboarding/onboarding_screen.dart';
 import 'package:festiveapp_studio/service/pref_services.dart';
 import 'package:festiveapp_studio/utils/pref_keys.dart';
@@ -16,7 +17,7 @@ class SplashController extends GetxController {
   void _navigateToNextScreen() {
     Future.delayed(const Duration(seconds: 3), () {
       PrefService.getBool(PrefKeys.isLogin)
-          ? Get.offAll(() => DashboardScreen())
+          ? Get.offAll(() => DashBoardScreen())
           : PrefService.getBool(PrefKeys.isIntroDone)
               ? Get.offAll(() => LoginScreen())
               : Get.offAll(() => const OnboardingScreen());

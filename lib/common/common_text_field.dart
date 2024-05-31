@@ -40,7 +40,9 @@ class CommonTextField extends StatelessWidget {
             width: Get.width * 0.255,
             child: leadingWidget ??
                 AutoSizeText(
+
                   hint ?? "",
+                  maxLines: 1,
                   minFontSize: 12,
                   style: mediumFontStyle(color: AppColors.hintColor, size: 16),
                 ),

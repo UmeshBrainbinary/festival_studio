@@ -1,6 +1,9 @@
+import 'package:festiveapp_studio/screen/card_download/card_dowload_screen.dart';
 import 'package:festiveapp_studio/screen/dashboard/dashboard_screen.dart';
+import 'package:festiveapp_studio/screen/help&support/help&suport_screen.dart';
 import 'package:festiveapp_studio/screen/home/home_controller.dart';
 import 'package:festiveapp_studio/screen/home/home_screen.dart';
+import 'package:festiveapp_studio/screen/tutorials/tutorials_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,9 +18,9 @@ class DashBoardController extends GetxController{
 
   List<Widget> screens = [
     HomeScreen(),
-    SizedBox(),
-    SizedBox(),
-    SizedBox(),
+    HelpScreen(),
+    VideoScreen(),
+    CardDownload(),
   ];
 
   @override

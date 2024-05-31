@@ -14,7 +14,7 @@ class MorningQuotes extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.blue,
       body:  Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
             const SizedBox(
@@ -24,7 +24,7 @@ class MorningQuotes extends StatelessWidget {
               children: [
                 CommonBackButton(
                   onTap: () {
-                    Get.back();
+                    Navigator.pop(context);
                   },
                 ),
                 const Spacer(),
