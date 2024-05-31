@@ -42,35 +42,31 @@ Widget addDetailsTextField() {
             height: 40,
           ),
           CommonTextField(
-            leadingWidget: SizedBox(
-              width: 0.22,
-              child: Text(
-                StringRes.brandName,
-                style: mediumFontStyle(color: AppColors.hintColor),
-              ),
-            ),
+            // leadingWidget: SizedBox(
+            //   width: 0.22,
+            //   child: Text(
+            //     StringRes.brandName,
+            //     style: mediumFontStyle(color: AppColors.hintColor),
+            //   ),
+            // ),
+            hint: StringRes.brandName,
             controller: controller.brandName,
           ),
           const SizedBox(
             height: 20,
           ),
           CommonTextField(
-              leadingWidget: SizedBox(
-                width: 0.22,
-                child: Text(
-                  StringRes.tagLine,
-                  style: mediumFontStyle(color: AppColors.hintColor),
-                ),
-              ),
+              hint: StringRes.tagLine,
               controller: controller.tagLine),
           const SizedBox(
             height: 20,
           ),
           CommonTextField(
-              hint: StringRes.phoneNo, controller: controller.phoneNumber),
+              hint: StringRes.phoneNo, controller: controller.phoneNumber,textInputType: TextInputType.phone),
           const SizedBox(
             height: 20,
           ),
+
           CommonTextField(hint: StringRes.email, controller: controller.email),
           const SizedBox(
             height: 20,
@@ -123,7 +119,7 @@ Widget addDetailsTextField() {
           CommonPrimaryButton(
               onTap: () {
                 if (controller.validate()) {
-                  Get.to(BtnScreen());
+                  Get.to(DashboardScreen());
                 }
               },
               text: StringRes.submit)

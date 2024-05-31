@@ -5,8 +5,8 @@ import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class BtnScreen extends StatelessWidget {
-  BtnScreen({Key? key}) : super(key: key);
+class DashboardScreen extends StatelessWidget {
+  DashboardScreen({Key? key}) : super(key: key);
 
   final BtnController controller = Get.put(BtnController());
 

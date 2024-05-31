@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -30,22 +31,25 @@ class CommonTextField extends StatelessWidget {
       height: height ?? 48,
       padding: EdgeInsets.symmetric(horizontal: Get.width * 0.035),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8), color: AppColors.white),
+          borderRadius: BorderRadius.circular(8),
+          color: AppColors.white
+      ),
       child: Row(
         children: [
           SizedBox(
             width: Get.width * 0.255,
             child: leadingWidget ??
-                Text(
+                AutoSizeText(
                   hint ?? "",
+                  minFontSize: 12,
                   style: mediumFontStyle(color: AppColors.hintColor, size: 16),
                 ),
           ),
+
           Expanded(
             child: TextFormField(
               maxLines: maxLines,
               controller: controller,
-
               keyboardType: textInputType,
               // validator: validator,
               inputFormatters: inputFormator,

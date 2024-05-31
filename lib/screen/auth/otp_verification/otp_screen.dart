@@ -56,7 +56,7 @@ class OtpScreen extends StatelessWidget {
                     AndroidSmsAutofillMethod.smsRetrieverApi,
                 controller: controller.otpController,
                 onCompleted: (value) {
-                  Get.to(AddDetailsScreen());
+                  Get.to(()=>AddDetailsScreen());
                 },
                 defaultPinTheme: PinTheme(
                     height: width * 0.17,
