@@ -66,6 +66,12 @@ static const String logoType = 'Logo Type';
 static const String primaryColor = 'Primary Color';
 static const String secondaryColor = 'Secondary Color';
 static const String generate = 'Generate';
+static const String generateLogo = 'Generate Logo';
+static const String brandDetails = '''Add your brand details and logo type for
+  the generate creative logos.''';
+
+static const String selectLogo = 'Select Logo';
+static const String select = 'Select';
 }
 
 

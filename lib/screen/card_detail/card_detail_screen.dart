@@ -20,111 +20,110 @@ class CardDetailScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Spacer(),
-            // SizedBox(height: height * 0.01),
-            // Row(
-            //   children: [
-            //     SizedBox(width: width * 0.04),
-            //     CommonBackButton(
-            //       onTap: () {
-            //         Get.back();
-            //       },
-            //     ),
-            //     SizedBox(width: width * 0.03),
-            //     Text("Diwali art 1",
-            //         style: mediumFontStyle(
-            //             size: 16, color: AppColors.color0f1c10)),
-            //     const Spacer(),
-            //     IconButton(
-            //       onPressed: () {},
-            //       icon: Image.asset(AppAssets.logo, width: width * 0.055),
-            //     ),
-            //       SizedBox(width: width * 0.04),
-            //   ],
-            // ),
-            // Expanded(
-            //   child: SingleChildScrollView(
-            //     child: Padding(
-            //       padding: EdgeInsets.symmetric(horizontal: width * 0.04),
-            //       child: Column(
-            //         children: [
-            //           SizedBox(height: height * 0.015),
-            //           Container(
-            //             width: width * 0.73,
-            //             height: height * 0.65,
-            //             padding: EdgeInsets.all(width * 0.025),
-            //             decoration: BoxDecoration(
-            //               color: AppColors.white,
-            //               borderRadius: BorderRadius.circular(8),
-            //               boxShadow: [
-            //                 BoxShadow(
-            //                   color: Colors.black.withOpacity(0.4),
-            //                   spreadRadius: 3,
-            //                   blurRadius: 7,
-            //                   offset: const Offset(0, 2),
-            //                 ),
-            //               ],
-            //             ),
-            //             child: Container(
-            //               decoration: BoxDecoration(
-            //                   borderRadius: BorderRadius.circular(8),
-            //                   border: Border.all(
-            //                       color: AppColors.lightPink, width: 1.5)),
-            //               child: ClipRRect(
-            //                 borderRadius: BorderRadius.circular(8),
-            //                 child: Image.network(
-            //                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWkGbIGX9ZEftT94katwzBRNErOET6ZLmKag&s",
-            //                     fit: BoxFit.fill),
-            //               ),
-            //             ),
-            //           ),
-            //           SizedBox(height: height * 0.025),
-            //           Obx(
-            //             ()=>controller.selectedIndex.value  == 1 ?
-            //             Container(
-            //               height: height * 0.35,
-            //               child: ListView.separated(
-            //                 scrollDirection: Axis.horizontal,
-            //                 itemCount: 5,
-            //                 separatorBuilder: (context, index) {
-            //                   return SizedBox(width: width * 0.02);
-            //                 },
-            //                 itemBuilder: (context, index) {
-            //                   return GestureDetector(
-            //                     onTap: () {
-            //                       Get.to(() => CardDetailScreen());
-            //                     },
-            //                     child: Padding(
-            //                       padding: const EdgeInsets.all(8.0),
-            //                       child: Column(
-            //                         children: [
-            //                           Container(
-            //                             height: 200,
-            //                             width: 150,
-            //                             decoration: BoxDecoration(
-            //                               borderRadius: BorderRadius.circular(10),
-            //                             ),
-            //                             child: ClipRRect(
-            //                                 borderRadius:
-            //                                     BorderRadius.circular(10),
-            //                                 child: Image.asset(
-            //                                   AppAssets.diwali,
-            //                                   fit: BoxFit.fill,
-            //                                 )),
-            //                           ),
-            //                         ],
-            //                       ),
-            //                     ),
-            //                   );
-            //                 },
-            //               ),
-            //             ) : SizedBox(),
-            //           )
-            //         ],
-            //       ),
-            //     ),
-            //   ),
-            // ),
+            SizedBox(height: height * 0.01),
+            Row(
+              children: [
+                SizedBox(width: width * 0.04),
+                CommonBackButton(
+                  onTap: () {
+                    Get.back();
+                  },
+                ),
+                SizedBox(width: width * 0.03),
+                Text("Diwali art 1",
+                    style: mediumFontStyle(
+                        size: 16, color: AppColors.color0f1c10)),
+                const Spacer(),
+                IconButton(
+                  onPressed: () {},
+                  icon: Image.asset(AppAssets.logo, width: width * 0.055),
+                ),
+                  SizedBox(width: width * 0.04),
+              ],
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.04),
+                  child: Column(
+                    children: [
+                      SizedBox(height: height * 0.015),
+                      Container(
+                        width: width * 0.73,
+                        height: height * 0.65,
+                        padding: EdgeInsets.all(width * 0.025),
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.4),
+                              spreadRadius: 3,
+                              blurRadius: 7,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                  color: AppColors.lightPink, width: 1.5)),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.network(
+                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWkGbIGX9ZEftT94katwzBRNErOET6ZLmKag&s",
+                                fit: BoxFit.fill),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: height * 0.025),
+                      Obx(
+                        ()=>controller.selectedIndex.value  == 1 ?
+                        SizedBox(
+                          height: height * 0.38,
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 5,
+                            separatorBuilder: (context, index) {
+                              return SizedBox(width: width * 0.02);
+                            },
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Get.to(() => CardDetailScreen());
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        height: 200,
+                                        width: 150,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                        child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            child: Image.asset(
+                                              AppAssets.diwali,
+                                              fit: BoxFit.fill,
+                                            )),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ) : SizedBox(),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -162,7 +161,7 @@ class CardDetailScreen extends StatelessWidget {
                           icon: Icons.download_outlined,
                           isSelected: controller.selectedIndex.value == 2,
                           onTap: () {
-                            Get.to(()=>const CardDownload());
+                            Get.to(()=> CardDownload());
                             controller.selectedIndex.value = 2;
                           }),
                     ),
@@ -171,6 +170,7 @@ class CardDetailScreen extends StatelessWidget {
                           icon: Icons.share_outlined,
                           isSelected: controller.selectedIndex.value == 3,
                           onTap: () {
+                            controller.share();
                             controller.selectedIndex.value = 3;
                           }),
                     ),

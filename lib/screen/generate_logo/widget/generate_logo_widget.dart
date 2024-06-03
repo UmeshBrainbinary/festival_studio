@@ -1,3 +1,4 @@
+import 'package:festiveapp_studio/common/app_contstant.dart';
 import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/common/common_text_field.dart';
@@ -11,8 +12,7 @@ import 'package:get/get.dart';
 
 GenerateLogoController controller = Get.find<GenerateLogoController>();
 
-
-Widget addDetailsTextField() {
+Widget addDetailsTextField(BuildContext context) {
   return SingleChildScrollView(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -22,38 +22,33 @@ Widget addDetailsTextField() {
         ),
         Row(
           children: [
-            CommonBackButton(onTap: () {
-              Get.back();
-            },),
-            Spacer(),
+            CommonBackButton(
+              onTap: () {
+                Get.back();
+              },
+            ),
+            const Spacer(),
             Text(
-              StringRes.addDetailsTitle,
+              StringRes.generateLogo,
               style: boldFontStyle(
                 color: AppColors.blackColor,
                 size: 18,
               ),
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ),
         const SizedBox(
           height: 10,
         ),
         Text(
-          StringRes.information,
+          StringRes.brandDetails,
           style: regularFontStyle(color: AppColors.detailsTitle, size: 16),
         ),
         const SizedBox(
           height: 40,
         ),
         CommonTextField(
-          // leadingWidget: SizedBox(
-          //   width: 0.22,
-          //   child: Text(
-          //     StringRes.brandName,
-          //     style: mediumFontStyle(color: AppColors.hintColor),
-          //   ),
-          // ),
           hint: StringRes.brandName,
           controller: controller.brandName,
         ),
@@ -61,18 +56,19 @@ Widget addDetailsTextField() {
           height: 20,
         ),
         CommonTextField(
-            hint: StringRes.tagLine,
-            controller: controller.tagLine),
+            hint: StringRes.tagLine, controller: controller.tagLine),
         const SizedBox(
           height: 20,
         ),
         CommonTextField(
-            hint: StringRes.category, controller: controller.category,textInputType: TextInputType.phone),
+          hint: StringRes.category,
+          controller: controller.category,
+        ),
         const SizedBox(
           height: 20,
         ),
-
-        CommonTextField(hint: StringRes.logoType, controller: controller.logoType),
+        CommonTextField(
+            hint: StringRes.logoType, controller: controller.logoType),
         const SizedBox(
           height: 20,
         ),
@@ -82,15 +78,18 @@ Widget addDetailsTextField() {
           height: 20,
         ),
         CommonTextField(
-            hint: StringRes.secondaryColor, controller: controller.secondaryColor),
+            hint: StringRes.secondaryColor,
+            controller: controller.secondaryColor),
         const SizedBox(
           height: 30,
         ),
         CommonPrimaryButton(
             onTap: () {
+              hideKeyboard(context);
               if (controller.validate()) {
-                Get.to(SelectLogoScreen());
-
+                Get.to(
+                  LogoSelectionPage(),
+                );
               }
             },
             text: StringRes.generate)

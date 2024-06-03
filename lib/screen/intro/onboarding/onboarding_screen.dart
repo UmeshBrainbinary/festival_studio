@@ -26,8 +26,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             pageViewOnboard(),
             const Spacer(),
             button(),
-            const SizedBox(height: 20,)
-
+            const SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

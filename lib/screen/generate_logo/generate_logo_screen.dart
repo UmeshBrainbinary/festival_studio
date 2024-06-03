@@ -14,7 +14,7 @@ class GenerateLogoScreen extends StatelessWidget {
       backgroundColor: AppColors.backgroundCard,
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: addDetailsTextField(),
+        child: addDetailsTextField(context),
       ),
     );
   }

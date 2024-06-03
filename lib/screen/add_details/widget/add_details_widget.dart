@@ -1,3 +1,4 @@
+import 'package:festiveapp_studio/common/app_contstant.dart';
 import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/common/common_text_field.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
@@ -10,7 +11,7 @@ import 'package:get/get.dart';
 
 AddDetailsController controller = Get.find<AddDetailsController>();
 
-Widget addDetailsTextField() {
+Widget addDetailsTextField(BuildContext context) {
   return SingleChildScrollView(
     child: Padding(
       padding: const EdgeInsets.all(20.0),
@@ -116,6 +117,7 @@ Widget addDetailsTextField() {
           ),
           CommonPrimaryButton(
               onTap: () {
+                hideKeyboard(context);
                 if (controller.validate()) {
                   Get.to(DashBoardScreen());
 

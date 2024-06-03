@@ -1,6 +1,7 @@
 import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
+import 'package:festiveapp_studio/screen/card_download/card_download_controller.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
@@ -8,7 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CardDownload extends StatelessWidget {
-  const CardDownload({super.key});
+  CardDownload({super.key});
+
+  CardDownloadController controller = Get.put(CardDownloadController());
 
   @override
   Widget build(BuildContext context) {
@@ -51,15 +54,14 @@ class CardDownload extends StatelessWidget {
               height: 300,
               width: 200,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                boxShadow:  const [
-                  BoxShadow(
-                    blurRadius: 5,
-                    color: Colors.black38,
-                    offset: Offset(2, 2)
-                  )
-                ]
-              ),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: const [
+                    BoxShadow(
+                      blurRadius: 5,
+                      color: Colors.black38,
+                      offset: Offset(2, 2),
+                    )
+                  ]),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
@@ -75,9 +77,20 @@ class CardDownload extends StatelessWidget {
             ),
             Row(
               children: [
-                commonButtonCard(width: 150,text: StringRes.download,image: AppAssets.download ),
+                commonButtonCard(
+                    width: 150,
+                    text: StringRes.download,
+                    image: AppAssets.download),
                 const Spacer(),
-                commonButtonCard(width: 150,text: StringRes.share,image: AppAssets.share ),
+                InkWell(
+                  onTap: () async {
+                    controller.share();
+                  },
+                  child: commonButtonCard(
+                      width: 150,
+                      text: StringRes.share,
+                      image: AppAssets.share),
+                ),
               ],
             )
           ],

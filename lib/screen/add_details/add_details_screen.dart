@@ -13,7 +13,7 @@ class AddDetailsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.gray,
-        body: addDetailsTextField(),
+        body: addDetailsTextField(context),
       ),
     );
   }

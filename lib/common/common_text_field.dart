@@ -12,9 +12,9 @@ class CommonTextField extends StatelessWidget {
   final String? hint;
   final Widget? leadingWidget;
   final TextInputType? textInputType;
+
   // final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormator;
-
 
   CommonTextField(
       {super.key,
@@ -22,8 +22,9 @@ class CommonTextField extends StatelessWidget {
       this.hint,
       this.leadingWidget,
       this.height,
-      this.maxLines, this.textInputType, this.inputFormator});
-
+      this.maxLines,
+      this.textInputType,
+      this.inputFormator});
 
   @override
   Widget build(BuildContext context) {
@@ -31,23 +32,19 @@ class CommonTextField extends StatelessWidget {
       height: height ?? 48,
       padding: EdgeInsets.symmetric(horizontal: Get.width * 0.035),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: AppColors.white
-      ),
+          borderRadius: BorderRadius.circular(8), color: AppColors.white),
       child: Row(
         children: [
           SizedBox(
-            width: Get.width * 0.255,
+            width: Get.width * 0.260,
             child: leadingWidget ??
                 AutoSizeText(
-
                   hint ?? "",
                   maxLines: 1,
                   minFontSize: 12,
                   style: mediumFontStyle(color: AppColors.hintColor, size: 16),
                 ),
           ),
-
           Expanded(
             child: TextFormField(
               maxLines: maxLines,
@@ -65,7 +62,6 @@ class CommonTextField extends StatelessWidget {
                 hintStyle:
                     mediumFontStyle(color: AppColors.hintColor, size: 16),
               ),
-
             ),
           ),
         ],
