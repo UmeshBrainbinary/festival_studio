@@ -13,7 +13,7 @@ class SplashController extends GetxController {
   }
 
   void _navigateToNextScreen() {
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 5), () {
       PrefService.getBool(PrefKeys.isLogin)
           ? Get.offAll(() => DashBoardScreen())
           : PrefService.getBool(PrefKeys.isIntroDone)

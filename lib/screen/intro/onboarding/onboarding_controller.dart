@@ -1,5 +1,6 @@
 import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
 import 'package:festiveapp_studio/service/pref_services.dart';
+import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +9,16 @@ import 'package:get/get.dart';
 class OnBordingController extends GetxController {
   List<Map> data = [
     {
+      'image' : AppAssets.image2,
       'text': StringRes.discover,
       'text1': StringRes.businessCategories,
     },
     {
+      'image' :AppAssets.image1,
       'text': StringRes.create,
       'text1': StringRes.digitalDetails,
     },{
+      'image' :AppAssets.image3,
       'text': StringRes.business,
       'text1': StringRes.poster,
     },

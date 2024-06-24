@@ -5,6 +5,7 @@ import 'package:festiveapp_studio/screen/intro/onboarding/onboarding_controller.
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 final OnBordingController controller = Get.find<OnBordingController>();
@@ -45,7 +46,7 @@ Widget pageViewOnboard() {
             SizedBox(
               height: 200,
               width: 200,
-              child: Image.asset(AppAssets.logo),
+              child: SvgPicture.asset(controller.data[index]['image'],),
             ),
             const SizedBox(height: 20,),
             navigateContainer(),

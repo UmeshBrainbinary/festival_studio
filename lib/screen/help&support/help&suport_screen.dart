@@ -6,6 +6,7 @@ import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class HelpScreen extends StatelessWidget {
@@ -58,25 +59,27 @@ class HelpScreen extends StatelessWidget {
                      buildContainer(
                        image: AppAssets.chat,
                        text: 'Contact Live Chat',
-                       icon: Icons.arrow_forward_ios_sharp,
+                       assetName: AppAssets.rightArrow,
                      ),
                      const SizedBox(height: 20,),
                      buildContainer(
                        image: AppAssets.call,
                        text: 'Call Now',
-                       icon: Icons.arrow_forward_ios_sharp,
+                       assetName: AppAssets.rightArrow,
                      ),
                      const SizedBox(height: 20,),
                      buildContainer(
                        image: AppAssets.email,
                        text: 'Send us an E-mail',
-                       icon: Icons.arrow_forward_ios_sharp,
+                       assetName: AppAssets.rightArrow,
                      ),
                      const SizedBox(height: 20,),
                      buildContainer(
-                       image: AppAssets.help,
+                       image: AppAssets.support,
                        text: 'FAQs',
-                       icon: Icons.keyboard_arrow_down_outlined,
+                      assetName: AppAssets.downArrow,
+                       height: 10,
+                       width: 10
                      ),
                      const SizedBox(height: 20,),
 
@@ -92,7 +95,7 @@ class HelpScreen extends StatelessWidget {
   }
 
   Container buildContainer(
-      {required String image, required String text, IconData? icon}) {
+      {required String image, required String text,  required String assetName,double? height,double? width}) {
     return Container(
       height: 48,
       decoration: BoxDecoration(
@@ -115,17 +118,22 @@ class HelpScreen extends StatelessWidget {
               style: mediumFontStyle(color: AppColors.hintColor,size: 14),
             ),
             const Spacer(),
-            Icon(icon, color: AppColors.hintColor)
+            SvgPicture.asset(assetName,height:height ,width: width,),
+
           ],
         ),
       ),
     );
   }
 
-  CircleAvatar buildCircleAvatar() {
-    return const CircleAvatar(
-      radius: 90,
-      backgroundImage: AssetImage(AppAssets.logo),
+  Widget buildCircleAvatar() {
+    return  Container(
+      height: 200,
+      width: 200,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100)
+      ),
+      child: SvgPicture.asset(AppAssets.help),
     );
   }
 }

@@ -11,6 +11,7 @@ import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 
@@ -34,10 +35,10 @@ class LoginScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: height * 0.08, width: width),
-                Image.asset(AppAssets.logo,
+                SizedBox(height: height * 0.10, width: width),
+                SvgPicture.asset(AppAssets.logoFestival,
                     height: height * 0.15, width: height * 0.15),
-                SizedBox(height: height * 0.015),
+                SizedBox(height: height * 0.018),
                 Text(
                   StringRes.loginToYourAcc,
                   style: boldFontStyle(size: 28),

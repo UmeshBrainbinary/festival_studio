@@ -1,6 +1,7 @@
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'splash_controller.dart';
 
@@ -12,7 +13,11 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.blue,
       body: Center(
-        child: Image.asset(AppAssets.logo),
+        child: SvgPicture.asset(
+          AppAssets.logoFestival,
+          height: 60,
+          width: 60,
+        ),
       ),
     );
   }

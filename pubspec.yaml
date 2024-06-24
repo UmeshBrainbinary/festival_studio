@@ -41,7 +41,7 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   video_player: ^2.1.15
   flutter_share: ^2.0.0
-
+  flutter_svg:
 
 dev_dependencies:
   flutter_test:

@@ -3,6 +3,7 @@ import 'package:festiveapp_studio/screen/dashboard/dashboard_controller.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -130,16 +131,16 @@ class DashBoardScreen extends StatelessWidget {
             items: [
               PersistentBottomNavBarItem(
                 icon: dashBoardController.currentIndex == 0
-                    ? Image.asset(
+                    ? SvgPicture.asset(
                         AppAssets.home,
-                        scale: 2.5,
+                        // scale: 2.5,
                         height: 20,
                         width: 20,
                   color: AppColors.lightPink,
                       )
-                    : Image.asset(
+                    : SvgPicture.asset(
                         AppAssets.home,
-                        scale: 2.5,
+                        // scale: 2.5,
                         height: 20,
                         width: 20,
                   color: AppColors.hintColor,
@@ -147,16 +148,16 @@ class DashBoardScreen extends StatelessWidget {
               ),
               PersistentBottomNavBarItem(
                 icon: dashBoardController.currentIndex == 1
-                    ? Image.asset(
+                    ? SvgPicture.asset(
                         AppAssets.picture,
-                        scale: 5,
+                        // scale: 5,
                         height: 20,
                         width: 20,
                   color: AppColors.lightPink,
                       )
-                    : Image.asset(
+                    : SvgPicture.asset(
                         AppAssets.picture,
-                        scale: 5,
+                       // scale: 5,
                         height: 20,
                         width: 20,
                   color: AppColors.hintColor,
@@ -164,33 +165,33 @@ class DashBoardScreen extends StatelessWidget {
               ),
               PersistentBottomNavBarItem(
                 icon: dashBoardController.currentIndex == 2
-                    ? Image.asset(
+                    ? SvgPicture.asset(
                         AppAssets.video,
-                        scale: 2.5,
-                        height: 25,
-                        width: 25,
+                       // scale: 2.5,
+                        height: 20,
+                        width: 20,
                   color: AppColors.lightPink,
                       )
-                    : Image.asset(
+                    : SvgPicture.asset(
                         AppAssets.video,
-                        scale: 2.5,
-                        height: 25,
-                        width: 25,
+                       // scale: 2.5,
+                        height: 20,
+                        width: 20,
                   color: AppColors.hintColor,
                       ),
               ),
               PersistentBottomNavBarItem(
                 icon: dashBoardController.currentIndex == 3
-                    ? Image.asset(
+                    ? SvgPicture.asset(
                         AppAssets.user,
-                        scale: 2.5,
+                       // scale: 2.5,
                         height: 20,
                         width: 20,
                   color: AppColors.lightPink,
                       )
-                    : Image.asset(
+                    : SvgPicture.asset(
                         AppAssets.user,
-                        scale: 2.5,
+                       // scale: 2.5,
                         height: 20,
                         width: 20,
                   color: AppColors.hintColor,

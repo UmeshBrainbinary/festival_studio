@@ -9,19 +9,36 @@ class AppAssets {
 
   /// --------------- icons -------------- ///
 
-  static const home = '$images/home (2).png';
-  static const picture = '$images/picture.png';
-  static const video = '$images/video-camera-alt.png';
-  static const user = '$images/user (1).png';
-  static const edit = '$images/edit.png';
-  static const download = '$images/download.png';
-  static const share = '$images/share.png';
+  //static const home = '$images/home (2).png';
+  static const picture = '$images/gallary.svg';
+  static const video = '$images/Video 1.svg';
+  static const user = '$images/Profile 1.svg';
+
+  static const edit = '$images/edit (2).svg';
+
+  static const download = '$images/Download 1.svg';
+  static const search ='assets/images/Search 1.png';
+  static const share = '$images/share (2).svg';
   static const chat = '$images/chat (2).png';
   static const call = '$images/phone-call.png';
   static const email = '$images/envelope.png';
-  static const help = '$images/help.png';
+  static const help = '$images/help.svg';
+  static const support = 'assets/images/interrogation.png';
+  static const logoFestival = '$images/logo.svg';
+  static const image1 = '$images/image1.svg';
+  static const image2 = '$images/image2.svg';
+  static const image3 = '$images/image3.svg';
+  static const logo1 = '$images/logo1.svg';
+  static const logo2 = '$images/logo2.svg';
+  static const backbutton = '$images/backbutton.svg';
+  static const card = 'assets/images/card.png';
+  static const card1 = 'assets/images/card1.png';
+  static const home = '$images/Home 1.svg';
+  static const play = '$images/Play 1.svg';
+  static const downArrow = '$images/Down Arrow 1.svg';
+  static const rightArrow = '$images/Right Arrow 1.svg';
+  static const them = '$images/them.svg';
+  static const voice = '$images/Voice.svg';
 
-  static const search = Icon(Icons.search);
-  static const mic = Icon(Icons.mic);
-  static const arrow = Icon(Icons.arrow_forward_ios_sharp);
+
 }

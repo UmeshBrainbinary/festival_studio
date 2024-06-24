@@ -6,6 +6,7 @@ import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CardDownload extends StatelessWidget {
@@ -39,11 +40,11 @@ class CardDownload extends StatelessWidget {
                   style: boldFontStyle(color: AppColors.blackColor, size: 18),
                 ),
                 const Spacer(),
-                Image.asset(
+                SvgPicture.asset(
                   AppAssets.edit,
                   height: 20,
                   width: 20,
-                  color: AppColors.hintColor,
+
                 )
               ],
             ),
@@ -58,16 +59,13 @@ class CardDownload extends StatelessWidget {
                   boxShadow: const [
                     BoxShadow(
                       blurRadius: 5,
-                      color: Colors.black38,
+                      color: Colors.black12,
                       offset: Offset(2, 2),
                     )
                   ]),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  AppAssets.diwali,
-                  fit: BoxFit.fill,
-                ),
+                child: Image.asset(AppAssets.card,fit: BoxFit.fill,)
               ),
             ),
             const Spacer(),

@@ -2,21 +2,23 @@ import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/select_logo/select_logo_controller.dart';
+import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class LogoSelectionPage extends StatelessWidget {
   final LogoController controller = Get.put(LogoController());
 
   final List<String> logos = [
-    'assets/images/box.png',
-    'assets/images/diwali.png',
-    'assets/images/diwali.png',
-    'assets/images/box.png',
-    'assets/images/box.png',
-    'assets/images/diwali.png',
+    AppAssets.logoFestival,
+    AppAssets.logo1,
+    AppAssets.logo2,
+    AppAssets.logoFestival,
+    AppAssets.logo1,
+    AppAssets.logo2,
   ];
 
   @override
@@ -62,18 +64,21 @@ class LogoSelectionPage extends StatelessWidget {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          // border: Border.all(
-                          //   color: isSelected ? Colors.pink : Colors.transparent,
-                          //   width: 3,
-                          // ),
                           borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                            image: AssetImage(logos[index]),
-                            fit: BoxFit.cover,
-                          ),
+                          color: AppColors.white,
                         ),
-                        child: isSelected
-                            ? Align(
+                        child: Stack(
+                          children: [
+                            Positioned.fill(
+                              child: Padding(
+                                padding: const EdgeInsets.all(50.0),
+                                child: SvgPicture.asset(
+                                  logos[index],
+                                ),
+                              ),
+                            ),
+                            if (isSelected)
+                              Align(
                                 alignment: Alignment.topRight,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -93,9 +98,11 @@ class LogoSelectionPage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                              )
-                            : Container(),
+                              ),
+                          ],
+                        ),
                       ),
+
                     );
                   });
                 },

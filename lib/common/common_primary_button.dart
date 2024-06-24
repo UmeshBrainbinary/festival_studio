@@ -1,5 +1,6 @@
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'testStyle.dart';
 
@@ -89,11 +90,10 @@ Widget commonButtonCard(
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(
+        SvgPicture.asset(
           image,
           height: 20,
           width: 20,
-          color: AppColors.white,
         ),
         const SizedBox(
           width: 10,

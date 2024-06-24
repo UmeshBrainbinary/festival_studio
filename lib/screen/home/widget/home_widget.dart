@@ -8,6 +8,7 @@ import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 HomeController controller = Get.find<HomeController>();
@@ -22,9 +23,15 @@ Widget textField() {
     child: TextField(
       controller: controller.search,
       decoration: InputDecoration(
-          prefixIcon: AppAssets.search,
+          prefixIcon: Padding(
+            padding: const EdgeInsets.only(left: 5.0,top: 13,bottom: 13),
+            child: Image.asset(AppAssets.search),
+          ),
           hintText: StringRes.search,
-          suffixIcon: AppAssets.mic,
+          suffixIcon: Padding(
+            padding: const EdgeInsets.only(top: 13.0,bottom: 13),
+            child: SvgPicture.asset(AppAssets.voice),
+          ),
           border: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(8),
@@ -88,19 +95,18 @@ Widget festivalListview({context}) {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
+
                     children: [
                       Container(
                         height: 250,
                         width: 150,
                         decoration: BoxDecoration(
+
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(
-                              AppAssets.diwali,
-                              fit: BoxFit.fill,
-                            )),
+                            child: Image.asset(AppAssets.card,),),
                       ),
                     ],
                   ),
@@ -175,10 +181,7 @@ Widget motivationalListview({context}) {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: Image.asset(
-                            AppAssets.diwali,
-                            fit: BoxFit.fill,
-                          ),
+                          child: Image.asset(AppAssets.card,)
                         ),
                       ),
                     ],
@@ -253,10 +256,7 @@ Widget morningQuotes({context}) {
                         ),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: Image.asset(
-                            AppAssets.diwali,
-                            fit: BoxFit.fill,
-                          ),
+                          child: Image.asset(AppAssets.card,)
                         ),
                       ),
                     ],

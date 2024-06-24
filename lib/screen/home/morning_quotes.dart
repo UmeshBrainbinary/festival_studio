@@ -53,10 +53,7 @@ class MorningQuotes extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        AppAssets.diwali,
-                        fit: BoxFit.fill,
-                      ),
+                      child: Image.asset(AppAssets.card,)
                     ),
                   );
                 },

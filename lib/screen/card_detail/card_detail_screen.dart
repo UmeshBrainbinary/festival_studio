@@ -6,6 +6,7 @@ import 'package:festiveapp_studio/screen/card_download/card_dowload_screen.dart'
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CardDetailScreen extends StatelessWidget {
@@ -36,7 +37,7 @@ class CardDetailScreen extends StatelessWidget {
                 const Spacer(),
                 IconButton(
                   onPressed: () {},
-                  icon: Image.asset(AppAssets.logo, width: width * 0.055),
+                  icon: SvgPicture.asset(AppAssets.edit, width: width * 0.055),
                 ),
                   SizedBox(width: width * 0.04),
               ],
@@ -49,9 +50,9 @@ class CardDetailScreen extends StatelessWidget {
                     children: [
                       SizedBox(height: height * 0.015),
                       Container(
-                        width: width * 0.73,
+                       // width: width * 0.73,
                         height: height * 0.65,
-                        padding: EdgeInsets.all(width * 0.025),
+                        //padding: EdgeInsets.all(width * 0.025),
                         decoration: BoxDecoration(
                           color: AppColors.white,
                           borderRadius: BorderRadius.circular(8),
@@ -64,18 +65,12 @@ class CardDetailScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                  color: AppColors.lightPink, width: 1.5)),
+
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child: Image.network(
-                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWkGbIGX9ZEftT94katwzBRNErOET6ZLmKag&s",
-                                fit: BoxFit.fill),
+                            child:Image.asset(AppAssets.card,)
                           ),
-                        ),
+
                       ),
                       SizedBox(height: height * 0.025),
                       Obx(
@@ -93,26 +88,20 @@ class CardDetailScreen extends StatelessWidget {
                                 onTap: () {
                                   Get.to(() => CardDetailScreen());
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 200,
-                                        width: 150,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
-                                        ),
-                                        child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            child: Image.asset(
-                                              AppAssets.diwali,
-                                              fit: BoxFit.fill,
-                                            )),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 200,
+                                      width: 150,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
                                       ),
-                                    ],
-                                  ),
+                                      child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          child: Image.asset(AppAssets.card1,)),
+                                    ),
+                                  ],
                                 ),
                               );
                             },
@@ -142,7 +131,7 @@ class CardDetailScreen extends StatelessWidget {
                   children: [
                     Obx(
                     ()=> customIconWidget(
-                          icon: Icons.home_outlined,
+                         assetName: AppAssets.home,
                           isSelected: controller.selectedIndex.value == 0,
                           onTap: () {
                             controller.selectedIndex.value = 0;
@@ -150,7 +139,7 @@ class CardDetailScreen extends StatelessWidget {
                     ),
                     Obx(
                             ()=> customIconWidget(
-                          icon: Icons.color_lens_outlined,
+                                assetName: AppAssets.them,
                           isSelected: controller.selectedIndex.value == 1,
                           onTap: () {
                             controller.selectedIndex.value = 1;
@@ -158,7 +147,7 @@ class CardDetailScreen extends StatelessWidget {
                     ),
                     Obx(
                             ()=> customIconWidget(
-                          icon: Icons.download_outlined,
+                         assetName: AppAssets.download,
                           isSelected: controller.selectedIndex.value == 2,
                           onTap: () {
                             Get.to(()=> CardDownload());
@@ -167,7 +156,7 @@ class CardDetailScreen extends StatelessWidget {
                     ),
                     Obx(
                             ()=> customIconWidget(
-                          icon: Icons.share_outlined,
+                          assetName: AppAssets.share,
                           isSelected: controller.selectedIndex.value == 3,
                           onTap: () {
                             controller.share();
@@ -185,18 +174,23 @@ class CardDetailScreen extends StatelessWidget {
   }
 
   Widget customIconWidget(
-      {required IconData icon,
+      {required String assetName,
       required bool isSelected,
       required VoidCallback onTap}) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.all(Get.width * 0.015),
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: isSelected ? AppColors.white : Colors.transparent),
-        child: Icon(icon,
-            color: isSelected ? AppColors.lightPink : AppColors.white),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: isSelected ? AppColors.white : Colors.transparent),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SvgPicture.asset(assetName,
+                color: isSelected ? AppColors.lightPink : AppColors.white),
+          ),
+        ),
       ),
     );
   }
