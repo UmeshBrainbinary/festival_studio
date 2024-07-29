@@ -98,6 +98,12 @@ static const String categoryError = 'Please enter category';
 static const String logoTypeError = 'Please enter logoType';
 static const String primaryColorError = 'Please enter primaryColor';
 static const String secondaryColorError = 'Please enter secondaryColor';
+
+/// ------------------------ terms and condition -------------------------
+static const terms = "Terms & Conditions";
+
+  /// ------------------------ Faq -------------------------
+  static const faq = "FAQs";
 }
 
 

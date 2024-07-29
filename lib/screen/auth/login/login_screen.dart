@@ -9,6 +9,7 @@ import 'package:festiveapp_studio/common/underline_text/common_underline_text.da
 import 'package:festiveapp_studio/screen/auth/login/login_controller.dart';
 import 'package:festiveapp_studio/screen/auth/otp_verification/otp_screen.dart';
 import 'package:festiveapp_studio/screen/auth/signup/signup_screen.dart';
+import 'package:festiveapp_studio/screen/termsCondition/terms_condition_screen.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
@@ -237,13 +238,19 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: height * 0.2),
-                    CustomunderLineText(
-                      text: StringRes.termsAndConditions,
-                      style: mediumFontStyle(
-                          size: 16,
-                          color: AppColors.white,
-                          decoration: TextDecoration.underline),
+                    InkWell(
+                      onTap: (){
+                        Get.to(()=> TermsConditionScreen());
+                      },
+                      child: CustomunderLineText(
+                        text: StringRes.termsAndConditions,
+                        style: mediumFontStyle(
+                            size: 16,
+                            color: AppColors.white,
+                            decoration: TextDecoration.underline),
+                      ),
                     ),
+                    SizedBox(height: height * 0.022),
 
                   ],
                 ),

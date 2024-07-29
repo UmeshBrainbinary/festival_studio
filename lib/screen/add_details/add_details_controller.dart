@@ -1,7 +1,12 @@
+import 'dart:ffi';
+
 import 'package:festiveapp_studio/common/popup_message/popup_message.dart';
+import 'package:festiveapp_studio/screen/add_details/api/add_details_api.dart';
+import 'package:festiveapp_studio/screen/add_details/api/add_details_model.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 
 class AddDetailsController extends GetxController {
   TextEditingController brandName = TextEditingController();
@@ -10,14 +15,14 @@ class AddDetailsController extends GetxController {
   TextEditingController email = TextEditingController();
   TextEditingController website = TextEditingController();
   TextEditingController address = TextEditingController();
-
+RxBool loader = false.obs;
   RxString brandNameError =''.obs;
   RxString tagLineError =''.obs;
   RxString mobileError =''.obs;
   RxString emailError =''.obs;
   RxString websiteError =''.obs;
   RxString addressError =''.obs;
-
+BrandModel brandModel = BrandModel();
   brandNameValidation(){
     if (brandName.text.trim().isEmpty) {
 
@@ -132,6 +137,12 @@ class AddDetailsController extends GetxController {
     }
   }
 
+onTapSubmit()async{
+    loader.value =true;
+    brandModel = await AddDetailsApi.addDetailApi(brandName: brandName.text,
+        tag: tagLine.text, email: email.text, website: website.text, address: address.text, phone: phoneNumber.text);
 
+    loader.value =false;
+}
 
 }

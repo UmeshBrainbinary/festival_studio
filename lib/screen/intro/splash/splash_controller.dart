@@ -1,3 +1,4 @@
+import 'package:festiveapp_studio/screen/add_details/add_details_screen.dart';
 import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
 import 'package:festiveapp_studio/screen/auth/signup/signup_screen.dart';
 import 'package:festiveapp_studio/screen/dashboard/dashboard_screen.dart';
@@ -16,7 +17,7 @@ class SplashController extends GetxController {
   void _navigateToNextScreen() {
     Future.delayed(const Duration(seconds: 5), () {
       PrefService.getBool(PrefKeys.isLogin)
-          ? Get.offAll(() => DashBoardScreen())
+          ? Get.offAll(() =>   PrefService.getBool(PrefKeys.isBrand)? DashBoardScreen():AddDetailsScreen())
           : PrefService.getBool(PrefKeys.isIntroDone)
               ? Get.offAll(() =>  SignUpScreen())
               : Get.offAll(() => const OnboardingScreen());

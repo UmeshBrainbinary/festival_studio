@@ -1,5 +1,6 @@
 import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
+import 'package:festiveapp_studio/screen/faq/faq_screen.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
@@ -74,12 +75,17 @@ class HelpScreen extends StatelessWidget {
                        assetName: AppAssets.rightArrow,
                      ),
                      const SizedBox(height: 20,),
-                     buildContainer(
-                       image: AppAssets.support,
-                       text: 'FAQs',
-                      assetName: AppAssets.downArrow,
-                       height: 10,
-                       width: 10
+                     InkWell(
+                      onTap: (){
+                        Get.to(()=> FaqScreen());
+                      },
+                       child: buildContainer(
+                         image: AppAssets.support,
+                         text: 'FAQs',
+                        assetName: AppAssets.downArrow,
+                         height: 10,
+                         width: 10
+                       ),
                      ),
                      const SizedBox(height: 20,),
 

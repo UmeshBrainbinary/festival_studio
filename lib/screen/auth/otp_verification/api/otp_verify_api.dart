@@ -17,7 +17,7 @@ class OtpVerifyApi {
     try {
       var headers = {
         'Content-Type': 'application/json',
-        'Cookie': 'refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YTc1YTFlNjE5MGNkZGM0NzZlZjg0YSIsImlhdCI6MTcyMjI0NTAyMCwiZXhwIjoxNzIyNTA0MjIwfQ.WE-mxcondE-X07A3BYhtwltJgP5msMuZiDO8UxXyOzc'
+        'Cookie': Endpoints.refreshToken
       };
       var request = http.Request('POST', Uri.parse('https://festive-back.onrender.com/api/user/verify-otp'));
       request.body = json.encode({
