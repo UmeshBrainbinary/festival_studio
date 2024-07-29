@@ -49,37 +49,153 @@ Widget addDetailsTextField(BuildContext context) {
           height: 40,
         ),
         CommonTextField(
+          textInputAction: TextInputAction.done,
           hint: StringRes.brandName,
           controller: controller.brandName,
         ),
+        Obx(
+                () {
+              return Align(
+                alignment: Alignment.centerLeft,
+                child: controller.brandNameError.value !=''?Padding(
+                  padding: const EdgeInsets.only(top: 10.0,left: 4),
+                  child: Text(
+                    controller.brandNameError.value,
+                    style: regularFontStyle(
+                        color: AppColors.errorColor, size: 14
+                    ),
+
+                  ),
+                ):const SizedBox(),
+
+              );
+            }
+        ),
+
+
         const SizedBox(
           height: 20,
         ),
         CommonTextField(
+            textInputAction: TextInputAction.done,
             hint: StringRes.tagLine, controller: controller.tagLine),
+        Obx(
+                () {
+              return Align(
+                alignment: Alignment.centerLeft,
+                child: controller.tagLineError.value !=''?Padding(
+                  padding: const EdgeInsets.only(top: 10.0,left: 4),
+                  child: Text(
+                    controller.tagLineError.value,
+                    style: regularFontStyle(
+                        color: AppColors.errorColor, size: 14
+                    ),
+
+                  ),
+                ):const SizedBox(),
+
+              );
+            }
+        ),
         const SizedBox(
           height: 20,
         ),
         CommonTextField(
+          textInputAction: TextInputAction.done,
           hint: StringRes.category,
           controller: controller.category,
         ),
+        Obx(
+                () {
+              return Align(
+                alignment: Alignment.centerLeft,
+                child: controller.categoryError.value !=''?Padding(
+                  padding: const EdgeInsets.only(top: 10.0,left: 4),
+                  child: Text(
+                    controller.categoryError.value,
+                    style: regularFontStyle(
+                        color: AppColors.errorColor, size: 14
+                    ),
+
+                  ),
+                ):const SizedBox(),
+
+              );
+            }
+        ),
         const SizedBox(
           height: 20,
         ),
         CommonTextField(
+            textInputAction: TextInputAction.done,
             hint: StringRes.logoType, controller: controller.logoType),
+        Obx(
+                () {
+              return Align(
+                alignment: Alignment.centerLeft,
+                child: controller.logoTypeError.value !=''?Padding(
+                  padding: const EdgeInsets.only(top: 10.0,left: 4),
+                  child: Text(
+                    controller.logoTypeError.value,
+                    style: regularFontStyle(
+                        color: AppColors.errorColor, size: 14
+                    ),
+
+                  ),
+                ):const SizedBox(),
+
+              );
+            }
+        ),
         const SizedBox(
           height: 20,
         ),
         CommonTextField(
+            textInputAction: TextInputAction.done,
             hint: StringRes.primaryColor, controller: controller.primaryColor),
+        Obx(
+                () {
+              return Align(
+                alignment: Alignment.centerLeft,
+                child: controller.primaryColorError.value !=''?Padding(
+                  padding: const EdgeInsets.only(top: 10.0,left: 4),
+                  child: Text(
+                    controller.primaryColorError.value,
+                    style: regularFontStyle(
+                        color: AppColors.errorColor, size: 14
+                    ),
+
+                  ),
+                ):const SizedBox(),
+
+              );
+            }
+        ),
         const SizedBox(
           height: 20,
         ),
         CommonTextField(
+          textInputAction: TextInputAction.done,
             hint: StringRes.secondaryColor,
             controller: controller.secondaryColor),
+        Obx(
+                () {
+              return Align(
+                alignment: Alignment.centerLeft,
+                child: controller.secondaryColorError.value !=''?Padding(
+                  padding: const EdgeInsets.only(top: 10.0,left: 4),
+                  child: Text(
+                    controller.secondaryColorError.value,
+                    style: regularFontStyle(
+                        color: AppColors.errorColor, size: 14
+                    ),
+
+                  ),
+                ):const SizedBox(),
+
+              );
+            }
+        ),
         const SizedBox(
           height: 30,
         ),

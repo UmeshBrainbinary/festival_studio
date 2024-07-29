@@ -4,7 +4,9 @@ import 'package:festiveapp_studio/common/common_text_field.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/add_details/add_details_controller.dart';
 import 'package:festiveapp_studio/screen/dashboard/dashboard_screen.dart';
+import 'package:festiveapp_studio/service/pref_services.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
+import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,28 +52,131 @@ Widget addDetailsTextField(BuildContext context) {
             // ),
             hint: StringRes.brandName,
             controller: controller.brandName,
+textInputAction: TextInputAction.done,
           ),
+          Obx(
+                  () {
+                return Align(
+                  alignment: Alignment.centerLeft,
+                  child: controller.brandNameError.value !=''?Padding(
+                    padding: const EdgeInsets.only(top: 10.0,left: 4),
+                    child: Text(
+                      controller.brandNameError.value,
+                      style: regularFontStyle(
+                          color: AppColors.errorColor, size: 14
+                      ),
+
+                    ),
+                  ):const SizedBox(),
+
+                );
+              }
+          ),
+
           const SizedBox(
             height: 20,
           ),
           CommonTextField(
               hint: StringRes.tagLine,
+              textInputAction: TextInputAction.done,
               controller: controller.tagLine),
+
+          Obx(
+                  () {
+                return Align(
+                  alignment: Alignment.centerLeft,
+                  child: controller.tagLineError.value !=''?Padding(
+                    padding: const EdgeInsets.only(top: 10.0,left: 4),
+                    child: Text(
+                      controller.tagLineError.value,
+                      style: regularFontStyle(
+                          color: AppColors.errorColor, size: 14
+                      ),
+
+                    ),
+                  ):const SizedBox(),
+
+                );
+              }
+          ),
           const SizedBox(
             height: 20,
           ),
           CommonTextField(
-              hint: StringRes.phoneNo, controller: controller.phoneNumber,textInputType: TextInputType.phone),
+              hint: StringRes.phoneNo,
+              textInputAction: TextInputAction.done,
+              controller: controller.phoneNumber,textInputType: TextInputType.phone),
+
+          Obx(
+                  () {
+                return Align(
+                  alignment: Alignment.centerLeft,
+                  child: controller.mobileError.value !=''?Padding(
+                    padding: const EdgeInsets.only(top: 10.0,left: 4),
+                    child: Text(
+                      controller.mobileError.value,
+                      style: regularFontStyle(
+                          color: AppColors.errorColor, size: 14
+                      ),
+
+                    ),
+                  ):const SizedBox(),
+
+                );
+              }
+          ),
           const SizedBox(
             height: 20,
           ),
 
-          CommonTextField(hint: StringRes.email, controller: controller.email),
+          CommonTextField(hint: StringRes.email,
+              textInputAction: TextInputAction.done,
+              textInputType: TextInputType.emailAddress,
+              controller: controller.email),
+
+          Obx(
+                  () {
+                return Align(
+                  alignment: Alignment.centerLeft,
+                  child: controller.emailError.value !=''?Padding(
+                    padding: const EdgeInsets.only(top: 10.0,left: 4),
+                    child: Text(
+                      controller.emailError.value,
+                      style: regularFontStyle(
+                          color: AppColors.errorColor, size: 14
+                      ),
+
+                    ),
+                  ):const SizedBox(),
+
+                );
+              }
+          ),
           const SizedBox(
             height: 20,
           ),
           CommonTextField(
-              hint: StringRes.website, controller: controller.website),
+              hint: StringRes.website,
+              textInputAction: TextInputAction.done,
+              controller: controller.website),
+          Obx(
+                  () {
+                return Align(
+                  alignment: Alignment.centerLeft,
+                  child: controller.websiteError.value !=''?Padding(
+                    padding: const EdgeInsets.only(top: 10.0,left: 4),
+                    child: Text(
+                      controller.websiteError.value,
+                      style: regularFontStyle(
+                          color: AppColors.errorColor, size: 14
+                      ),
+
+                    ),
+                  ):const SizedBox(),
+
+                );
+              }
+          ),
           const SizedBox(
             height: 20,
           ),
@@ -112,6 +217,24 @@ Widget addDetailsTextField(BuildContext context) {
               ],
             ),
           ),
+          Obx(
+                  () {
+                return Align(
+                  alignment: Alignment.centerLeft,
+                  child: controller.addressError.value !=''?Padding(
+                    padding: const EdgeInsets.only(top: 10.0,left: 4),
+                    child: Text(
+                      controller.addressError.value,
+                      style: regularFontStyle(
+                          color: AppColors.errorColor, size: 14
+                      ),
+
+                    ),
+                  ):const SizedBox(),
+
+                );
+              }
+          ),
           const SizedBox(
             height: 30,
           ),
@@ -119,6 +242,7 @@ Widget addDetailsTextField(BuildContext context) {
               onTap: () {
                 hideKeyboard(context);
                 if (controller.validate()) {
+                  PrefService.setValue(PrefKeys.isLogin, true);
                   Get.to(DashBoardScreen());
 
                 }

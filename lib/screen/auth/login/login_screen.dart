@@ -124,6 +124,24 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                Obx(
+                        () {
+                      return Align(
+                        alignment: Alignment.centerLeft,
+                        child: controller.country.value !=''?Padding(
+                          padding: const EdgeInsets.only(top: 10.0,left: 4),
+                          child: Text(
+                            controller.country.value,
+                            style: regularFontStyle(
+                                color: AppColors.errorColor, size: 14
+                            ),
+
+                          ),
+                        ):const SizedBox(),
+
+                      );
+                    }
+                ),
                 // CommonTextField(
                 //   controller: controller.countryCodeController,
                 //   hint: "India",
@@ -136,8 +154,27 @@ class LoginScreen extends StatelessWidget {
                   hint: "Mobile",
                   textInputType: TextInputType.number,
                 ),
+                Obx(
+                   () {
+                    return Align(
+                      alignment: Alignment.centerLeft,
+                      child: controller.mobileError.value !=''?Padding(
+                        padding: const EdgeInsets.only(top: 10.0,left: 4),
+                        child: Text(
+                          controller.mobileError.value,
+                          style: regularFontStyle(
+                              color: AppColors.errorColor, size: 14
+                          ),
+
+                        ),
+                      ):const SizedBox(),
+
+                    );
+                  }
+                ),
+
                 SizedBox(height: height * 0.027),
-                CustomunderLineText(text: StringRes.haveAReferralCode),
+                const CustomunderLineText(text: StringRes.haveAReferralCode),
                 SizedBox(height: height * 0.025),
                 Obx(() => CommonPrimaryButton(
                     onTap: () {

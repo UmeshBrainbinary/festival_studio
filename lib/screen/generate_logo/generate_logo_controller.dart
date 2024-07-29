@@ -1,4 +1,5 @@
 import 'package:festiveapp_studio/common/popup_message/popup_message.dart';
+import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -11,29 +12,116 @@ class GenerateLogoController extends GetxController{
   TextEditingController secondaryColor = TextEditingController();
 
 
-  bool validate() {
 
+  RxString brandNameError =''.obs;
+  RxString tagLineError =''.obs;
+  RxString categoryError =''.obs;
+  RxString logoTypeError =''.obs;
+  RxString primaryColorError =''.obs;
+  RxString secondaryColorError =''.obs;
+
+  brandNameValidation(){
     if (brandName.text.trim().isEmpty) {
-      errorToast(msg: "Please enter brand name");
+
+      brandNameError.value = StringRes.brandError;
       return false;
-    } else if (tagLine.text.trim().isEmpty) {
-      errorToast(msg: "Please enter tag line");
-      return false;
-    } else if ((category.text.trim().isEmpty))  {
-      errorToast(msg: "Please enter category");
-      return false;
-    } else if (logoType.text.trim().isEmpty) {
-      errorToast(msg: "Please enter logoType");
-      return false;
-    }  else if (primaryColor.text.trim().isEmpty) {
-      errorToast(msg: "Please enter primaryColor");
-      return false;
-    }  else if (secondaryColor.text.trim().isEmpty) {
-      errorToast(msg: "Please enter secondaryColor");
-      return false;
-    } else {
+    }
+    else
+    {
+      brandNameError.value ='';
+
       return true;
     }
   }
+  tagLineValidation(){
+    if (tagLine.text.trim().isEmpty) {
+
+      tagLineError.value = StringRes.tagError;
+      return false;
+    }
+    else
+    {
+      tagLineError.value ='';
+      return true;
+    }
+  }
+
+  categoryValidation(){
+    if (category.text.trim().isEmpty) {
+
+      categoryError.value = StringRes.categoryError;
+      return false;
+    }
+    else
+    {
+      categoryError.value ='';
+
+      return true;
+    }
+  }
+  logoTypeValidation(){
+    if (logoType.text.trim().isEmpty) {
+
+      logoTypeError.value = StringRes.logoTypeError;
+      return false;
+    }
+    else
+    {
+      logoTypeError.value ='';
+      return true;
+    }
+  }
+
+  primaryColorValidation(){
+    if (primaryColor.text.trim().isEmpty) {
+
+      primaryColorError.value = StringRes.primaryColorError;
+      return false;
+    }
+    else
+    {
+      primaryColorError.value ='';
+
+      return true;
+    }
+  }
+  secondaryColorValidation(){
+    if (secondaryColor.text.trim().isEmpty) {
+
+      secondaryColorError.value = StringRes.secondaryColorError;
+      return false;
+    }
+    else
+    {
+      secondaryColorError.value ='';
+      return true;
+    }
+  }
+
+  bool validate() {
+
+    brandNameValidation();
+    tagLineValidation();
+    categoryValidation();
+    logoTypeValidation();
+    primaryColorValidation();
+    secondaryColorValidation();
+    if (brandNameError.value =='' &&
+        tagLineError.value =='' &&
+        categoryError.value =='' &&
+        logoTypeError.value =='' &&
+        primaryColorError.value =='' &&
+        secondaryColorError.value =='' ) {
+
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+
+
+
 
 }

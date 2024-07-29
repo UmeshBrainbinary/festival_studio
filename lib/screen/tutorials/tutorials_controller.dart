@@ -2,8 +2,10 @@ import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoController extends GetxController {
-  VideoPlayerController? videoPlayerController;
-  var isPlaying = false.obs;
+  //VideoPlayerController? videoPlayerController;
+
+  List<VideoPlayerController>? videoPlayerController;
+  List<RxBool> isPlaying = [];
 
   @override
   void onInit() {
@@ -11,11 +13,14 @@ class VideoController extends GetxController {
     initializeVideoPlayer();
   }
   Future<void> initializeVideoPlayer() async {
-    videoPlayerController = VideoPlayerController.networkUrl(
-        Uri.parse('https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4'));
-
+    videoPlayerController = List.generate(4, (index)=> VideoPlayerController.networkUrl(
+        Uri.parse('https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4')));
+isPlaying = List.generate(4, (index)=>false.obs);
     try {
-      await videoPlayerController!.initialize();
+      videoPlayerController!.forEach((e) async {
+      await e.initialize();
+
+      });
       update();
     } catch (e) {
       print('Error initializing video player: $e');
@@ -24,17 +29,20 @@ class VideoController extends GetxController {
 
   @override
   void onClose() {
-    videoPlayerController!.dispose();
+    videoPlayerController!.forEach((e) async {
+      await e.dispose();
+
+    });
     super.onClose();
   }
 
-  void playPause() {
-    if (videoPlayerController!.value.isPlaying) {
-      videoPlayerController!.pause();
-      isPlaying(false);
+  void playPause(index) {
+    if (videoPlayerController![index].value.isPlaying) {
+      videoPlayerController![index].pause();
+      isPlaying[index].value= (false);
     } else {
-      videoPlayerController!.play();
-      isPlaying(true);
+      videoPlayerController![index].play();
+      isPlaying[index].value= (true);
     }
   }
 }

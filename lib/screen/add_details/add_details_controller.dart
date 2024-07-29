@@ -1,4 +1,5 @@
 import 'package:festiveapp_studio/common/popup_message/popup_message.dart';
+import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -10,41 +11,127 @@ class AddDetailsController extends GetxController {
   TextEditingController website = TextEditingController();
   TextEditingController address = TextEditingController();
 
-  bool validate() {
-    String emailPattern = r'^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
-    RegExp emailRegex = RegExp(emailPattern);
+  RxString brandNameError =''.obs;
+  RxString tagLineError =''.obs;
+  RxString mobileError =''.obs;
+  RxString emailError =''.obs;
+  RxString websiteError =''.obs;
+  RxString addressError =''.obs;
 
-    String urlPattern =
-        r'^(https?:\/\/)?([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,4})([\/\w.-]*)*\/?$';
-    RegExp urlRegex = RegExp(urlPattern);
-
+  brandNameValidation(){
     if (brandName.text.trim().isEmpty) {
-      errorToast(msg: "Please enter brand name");
+
+      brandNameError.value = StringRes.brandError;
       return false;
-    } else if (tagLine.text.trim().isEmpty) {
-      errorToast(msg: "Please enter tag line");
-      return false;
-    } else if ((phoneNumber.text.trim().length < 8) ||
-        (phoneNumber.text.trim().length > 11)) {
-      errorToast(msg: "Please enter valid mobile number");
-      return false;
-    } else if (email.text.trim().isEmpty) {
-      errorToast(msg: "Please enter email");
-      return false;
-    } else if (!emailRegex.hasMatch(email.text.trim())) {
-      errorToast(msg: "Please enter a valid email");
-      return false;
-    } else if (website.text.trim().isEmpty) {
-      errorToast(msg: "Please enter website");
-      return false;
-    } else if (!urlRegex.hasMatch(website.text.trim())) {
-      errorToast(msg: "Please enter a valid website URL");
-      return false;
-    } else if (address.text.trim().isEmpty) {
-      errorToast(msg: "Please enter address");
-      return false;
-    } else {
+    }
+    else
+    {
+      brandNameError.value ='';
+
       return true;
     }
   }
+  tagLineValidation(){
+    if (tagLine.text.trim().isEmpty) {
+
+      tagLineError.value = StringRes.tagError;
+      return false;
+    }
+    else
+    {
+      tagLineError.value ='';
+      return true;
+    }
+  }
+  mobileNumberValidation(){
+    if(phoneNumber.text.trim().isEmpty)
+    {
+      mobileError.value = StringRes.enterMobileNumber;
+      return false;
+    }
+    else if((phoneNumber.text.trim().length < 8) || (phoneNumber.text.trim().length > 11)){
+      mobileError.value = StringRes.enterValidMobileNumber;
+
+      return false;
+    }
+    else{
+      mobileError.value = '';
+      return true;
+    }
+  }
+  emailValidation(){
+    String emailPattern = r'^[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$';
+    RegExp emailRegex = RegExp(emailPattern);
+    if(email.text.trim().isEmpty)
+    {
+      emailError.value = StringRes.emailError;
+      return false;
+    }
+    else if(!emailRegex.hasMatch(email.text.trim())){
+      emailError.value = StringRes.emailValidError;
+
+      return false;
+    }
+    else{
+      emailError.value = '';
+      return true;
+    }
+  }
+  websiteValidation(){
+    String urlPattern =
+        r'^(https?:\/\/)?([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,4})([\/\w.-]*)*\/?$';
+    RegExp urlRegex = RegExp(urlPattern);
+    if(website.text.trim().isEmpty)
+    {
+      websiteError.value = StringRes.websiteError;
+      return false;
+    }
+    else if(!urlRegex.hasMatch(website.text.trim())){
+      websiteError.value = StringRes.validWebError;
+
+      return false;
+    }
+    else{
+      websiteError.value = '';
+      return true;
+    }
+  }
+  addressValidation(){
+    if (address.text.trim().isEmpty) {
+
+      addressError.value = StringRes.addressError;
+      return false;
+    }
+    else
+    {
+      addressError.value ='';
+
+      return true;
+    }
+  }
+
+
+  bool validate() {
+
+    brandNameValidation();
+    tagLineValidation();
+    mobileNumberValidation();
+    emailValidation();
+    websiteValidation();
+    addressValidation();
+     if (brandNameError.value =='' &&
+     tagLineError.value =='' &&
+     mobileError.value =='' &&
+     emailError.value =='' &&
+     websiteError.value =='' &&
+     addressError.value =='' ) {
+
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
+
 }

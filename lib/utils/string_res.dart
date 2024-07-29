@@ -26,6 +26,9 @@ class StringRes {
   static const String otpVerification = "OTP Verification";
   static const String weSentOtpCodeToYourMobileNumber = "We sent OTP code to your Mobile Number.";
   static const String didNotReceiveOtp = "Didn’t receive OTP?";
+  static const String selectCountryCode = "Please select country code";
+  static const String enterMobileNumber = "Please enter mobile number";
+  static const String enterValidMobileNumber = "Please enter valid mobile number";
 
 
   /// --------------------------- addBrandDetails ---------------- ///
@@ -40,6 +43,14 @@ class StringRes {
   static const String address = 'Address';
   static const String information ='''Complete your account setup by providing
  Brand information.''';
+  static const String brandError = 'Please enter brand name';
+  static const String tagError = 'Please enter tag line';
+  static const String emailError = 'Please enter email';
+  static const String emailValidError = 'Please enter a valid email';
+  static const String websiteError = 'Please enter website';
+  static const String validWebError = 'Please enter a valid website URL';
+  static const String addressError = 'Please enter address';
+
 
   /// -------------------- home screen ---------------------- ///
 
@@ -72,6 +83,10 @@ static const String brandDetails = '''Add your brand details and logo type for
 
 static const String selectLogo = 'Select Logo';
 static const String select = 'Select';
+static const String categoryError = 'Please enter category';
+static const String logoTypeError = 'Please enter logoType';
+static const String primaryColorError = 'Please enter primaryColor';
+static const String secondaryColorError = 'Please enter secondaryColor';
 }
 
 

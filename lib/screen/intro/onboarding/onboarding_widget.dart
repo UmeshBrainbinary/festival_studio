@@ -43,12 +43,22 @@ Widget pageViewOnboard() {
         return  Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 200,
-              width: 200,
-              child: SvgPicture.asset(controller.data[index]['image'],),
-            ),
-            const SizedBox(height: 20,),
+            index ==0 || index ==1 ? Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: SizedBox(
+                  height: 250,
+                  width: 250,
+                  child: SvgPicture.asset(controller.data[index]['image'],),
+                ),
+              ),
+            ): SizedBox(
+        height: 250,
+        width: 250,
+        child: SvgPicture.asset(controller.data[index]['image'],),
+        ),
+            const SizedBox(height: 40,),
             navigateContainer(),
             const SizedBox(height: 30,),
             Text(

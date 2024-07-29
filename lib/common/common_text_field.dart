@@ -12,6 +12,7 @@ class CommonTextField extends StatelessWidget {
   final String? hint;
   final Widget? leadingWidget;
   final TextInputType? textInputType;
+  final TextInputAction? textInputAction;
 
   // final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormator;
@@ -24,6 +25,7 @@ class CommonTextField extends StatelessWidget {
       this.height,
       this.maxLines,
       this.textInputType,
+      this.textInputAction,
       this.inputFormator});
 
   @override
@@ -50,6 +52,7 @@ class CommonTextField extends StatelessWidget {
               maxLines: maxLines,
               controller: controller,
               keyboardType: textInputType,
+              textInputAction: textInputAction,
               // validator: validator,
               inputFormatters: inputFormator,
               // style: mediumFontStyle(color: AppColors.blackColor,size: 16,height: 1.3),

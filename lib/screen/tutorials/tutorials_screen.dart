@@ -39,11 +39,11 @@ class VideoScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  _buildVideoItem('How to create logo?', videoController),
-                  _buildVideoItem('How to choose frame?', videoController),
-                  _buildVideoItem('How to add brand Details?', videoController),
+                  _buildVideoItem('How to create logo?', videoController,0),
+                  _buildVideoItem('How to choose frame?', videoController,1),
+                  _buildVideoItem('How to add brand Details?', videoController,2),
                   _buildVideoItem(
-                      'How to download & share post?', videoController),
+                      'How to download & share post?', videoController,3),
                 ],
               ),
             ),
@@ -53,30 +53,30 @@ class VideoScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildVideoItem(String title, VideoController controller) {
+  Widget _buildVideoItem(String title, VideoController controller,index) {
     return Obx(() => Column(
           children: [
             ListTile(
               title: Text(title),
             ),
-            controller.videoPlayerController!.value.isInitialized
+            controller.videoPlayerController![index].value.isInitialized
                 ? Stack(
                     alignment: Alignment.center,
                     children: [
                       AspectRatio(
                         aspectRatio:
-                            controller.videoPlayerController!.value.aspectRatio,
-                        child: VideoPlayer(controller.videoPlayerController!),
+                            controller.videoPlayerController![index].value.aspectRatio,
+                        child: VideoPlayer(controller.videoPlayerController![index]),
                       ),
                       IconButton(
                               icon: Icon(
-                                  controller.isPlaying.value
+                                  controller.isPlaying[index].value
                                       ? Icons.pause_circle_outline
                                       : Icons.play_circle_outline,
                                   size: 64,
                                   color: AppColors.white),
                               onPressed: () {
-                                controller.playPause();
+                                controller.playPause(index);
                               },
                             ),
                     ],
@@ -90,13 +90,13 @@ class VideoScreen extends StatelessWidget {
                     child: Center(
                       child: IconButton(
                         icon: Icon(
-                            controller.isPlaying.value
+                            controller.isPlaying[index].value
                                 ? Icons.pause_circle_outline
                                 : Icons.play_circle_outline,
                             size: 64,
                             color: Colors.white),
                         onPressed: () {
-                          controller.playPause();
+                          controller.playPause(index);
                         },
                       ),
                     ),

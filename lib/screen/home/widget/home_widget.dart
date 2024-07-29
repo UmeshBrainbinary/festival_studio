@@ -36,7 +36,7 @@ Widget textField() {
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(8),
           ),
-        contentPadding: const EdgeInsets.symmetric(vertical: 20),
+        contentPadding: const EdgeInsets.symmetric(vertical: 10),
       ),
     ),
   );
