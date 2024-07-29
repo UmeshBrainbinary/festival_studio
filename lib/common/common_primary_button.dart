@@ -45,15 +45,7 @@ class CommonPrimaryButton extends StatelessWidget {
             )
           ],
         ),
-        child: isLoading == true
-            ? const SizedBox(
-                height: 24,
-                child: Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.white,
-                  ),
-                ))
-            : Center(
+        child: Center(
                 child: Text(
                   text,
                   textAlign: TextAlign.center,

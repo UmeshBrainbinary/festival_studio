@@ -29,6 +29,17 @@ class StringRes {
   static const String selectCountryCode = "Please select country code";
   static const String enterMobileNumber = "Please enter mobile number";
   static const String enterValidMobileNumber = "Please enter valid mobile number";
+  static const String doeNot = "Doesn't have an account?";
+  static const String signUp = "SignUp";
+
+
+  /// -------------  SIGNUP ----------------------------
+  static const String signUpToYourAcc ="Sign Up to Your Account";
+  static const String firstNameError = "Please enter first name";
+  static const String lastNameError = "Please enter last name";
+  static const String passwordError = "Please enter password";
+  static const String already = "Already have an account?";
+  static const String login = "SignIn";
 
 
   /// --------------------------- addBrandDetails ---------------- ///

@@ -1,4 +1,5 @@
 import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
+import 'package:festiveapp_studio/screen/auth/signup/signup_screen.dart';
 import 'package:festiveapp_studio/screen/dashboard/dashboard_screen.dart';
 import 'package:festiveapp_studio/screen/intro/onboarding/onboarding_screen.dart';
 import 'package:festiveapp_studio/service/pref_services.dart';
@@ -17,7 +18,7 @@ class SplashController extends GetxController {
       PrefService.getBool(PrefKeys.isLogin)
           ? Get.offAll(() => DashBoardScreen())
           : PrefService.getBool(PrefKeys.isIntroDone)
-              ? Get.offAll(() => LoginScreen())
+              ? Get.offAll(() =>  SignUpScreen())
               : Get.offAll(() => const OnboardingScreen());
 
       // Future.delayed(const Duration(seconds: 4), () {

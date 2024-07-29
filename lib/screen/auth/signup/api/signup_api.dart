@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:festiveapp_studio/common/popup_message/popup_message.dart';
-import 'package:festiveapp_studio/screen/auth/login/api/login_model.dart';
 import 'package:festiveapp_studio/screen/auth/signup/api/signup_model.dart';
 import 'package:festiveapp_studio/service/http_services.dart';
 import 'package:festiveapp_studio/utils/endpoints.dart';
@@ -9,36 +8,43 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-class LoginApi {
-  static Future<LoginModel> loginApi({
+class SignUpApi {
+  static Future<SignUpModel> signUpApi({
+    required String firstname,
+    required String lastName,
+    required String email,
     required String password,
     required String mobile,
   }) async {
     try {
-      String url = Endpoints.logIn;
+      String url = Endpoints.signUp;
       Map<String, String> param = {
+        "firstName": firstname,
+        "userName": lastName,
         "mobileNo": mobile,
+        "email": email,
         "password": password
       };
 
       http.Response? response = await HttpService.postApi(
           url: url,
-          body: (param),);
+          body: (param),
+     );
 
       if (response != null && response.statusCode == 200) {
-        return loginModelFromJson(response.body);
+         return signUpModelFromJson(response.body);
 
       }
       else
-      {
-        errorToast(msg: jsonDecode(response!.body)['message']);
-        return LoginModel();
-      }
+        {
+          errorToast(msg: jsonDecode(response!.body)['message']);
+          return SignUpModel();
+        }
     } catch (e) {
       if (kDebugMode) {
         print(e);
       }
-      return LoginModel();
+      return SignUpModel();
 
     }
   }

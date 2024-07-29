@@ -6,21 +6,21 @@ import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/common/common_text_field.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/common/underline_text/common_underline_text.dart';
-import 'package:festiveapp_studio/screen/auth/login/login_controller.dart';
+import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
 import 'package:festiveapp_studio/screen/auth/otp_verification/otp_screen.dart';
-import 'package:festiveapp_studio/screen/auth/signup/signup_screen.dart';
+import 'package:festiveapp_studio/screen/auth/signup/signupcontroller.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+class SignUpScreen extends StatelessWidget {
+   SignUpScreen({Key? key}) : super(key: key);
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
-  LoginController controller = Get.put(LoginController());
 
+   SignUpController controller = Get.put(SignUpController());
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -45,7 +45,7 @@ class LoginScreen extends StatelessWidget {
                         height: height * 0.15, width: height * 0.15),
                     SizedBox(height: height * 0.018),
                     Text(
-                      StringRes.loginToYourAcc,
+                      StringRes.signUpToYourAcc,
                       style: boldFontStyle(size: 28),
                     ),
                     SizedBox(height: height * 0.015),
@@ -56,6 +56,116 @@ class LoginScreen extends StatelessWidget {
                     ),
                     SizedBox(height: height * 0.035),
 
+
+                    CommonTextField(
+                      controller: controller.firstNameController,
+                      hint: "First Name",
+                      textInputType: TextInputType.text,
+                    ),
+                    Obx(
+                            () {
+                          return Align(
+                            alignment: Alignment.centerLeft,
+                            child: controller.firstNameError.value !=''?Padding(
+                              padding: const EdgeInsets.only(top: 10.0,left: 4),
+                              child: Text(
+                                controller.firstNameError.value,
+                                style: regularFontStyle(
+                                    color: AppColors.errorColor, size: 14
+                                ),
+
+                              ),
+                            ):const SizedBox(),
+
+                          );
+                        }
+                    ),
+
+                    SizedBox(height: height * 0.027),
+
+
+                    CommonTextField(
+                      controller: controller.lastNameController,
+                      hint: "Last Name",
+                      textInputType: TextInputType.text,
+                    ),
+                    Obx(
+                            () {
+                          return Align(
+                            alignment: Alignment.centerLeft,
+                            child: controller.lastNameError.value !=''?Padding(
+                              padding: const EdgeInsets.only(top: 10.0,left: 4),
+                              child: Text(
+                                controller.lastNameError.value,
+                                style: regularFontStyle(
+                                    color: AppColors.errorColor, size: 14
+                                ),
+
+                              ),
+                            ):const SizedBox(),
+
+                          );
+                        }
+                    ),
+
+                    SizedBox(height: height * 0.027),
+
+
+                    CommonTextField(
+                      controller: controller.emailController,
+                      hint: "Email",
+                      textInputType: TextInputType.emailAddress,
+                    ),
+                    Obx(
+                            () {
+                          return Align(
+                            alignment: Alignment.centerLeft,
+                            child: controller.emailError.value !=''?Padding(
+                              padding: const EdgeInsets.only(top: 10.0,left: 4),
+                              child: Text(
+                                controller.emailError.value,
+                                style: regularFontStyle(
+                                    color: AppColors.errorColor, size: 14
+                                ),
+
+                              ),
+                            ):const SizedBox(),
+
+                          );
+                        }
+                    ),
+
+                    SizedBox(height: height * 0.027),
+                    CommonTextField(
+                      controller: controller.passwordController,
+                      hint: "Password",
+                    ),
+                    Obx(
+                            () {
+                          return Align(
+                            alignment: Alignment.centerLeft,
+                            child: controller.passwordError.value !=''?Padding(
+                              padding: const EdgeInsets.only(top: 10.0,left: 4),
+                              child: Text(
+                                controller.passwordError.value,
+                                style: regularFontStyle(
+                                    color: AppColors.errorColor, size: 14
+                                ),
+
+                              ),
+                            ):const SizedBox(),
+
+                          );
+                        }
+                    ),
+                    SizedBox(height: height * 0.027),
+
+                    // CommonTextField(
+                    //   controller: controller.countryCodeController,
+                    //   hint: "India",
+                    //   inputFormator: [CountryInputFormatter()],
+                    //   textInputType: TextInputType.phone,
+                    // ),.0
                     GestureDetector(
                       onTap: () {
                         showCountryPicker(
@@ -97,7 +207,7 @@ class LoginScreen extends StatelessWidget {
                       child: Container(
                         height: 48,
                         padding:
-                            EdgeInsets.symmetric(horizontal: Get.width * 0.035),
+                        EdgeInsets.symmetric(horizontal: Get.width * 0.035),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: AppColors.white),
@@ -106,7 +216,7 @@ class LoginScreen extends StatelessWidget {
                             SizedBox(
                               width: Get.width * 0.25,
                               child: Obx(
-                                () => AutoSizeText(
+                                    () => AutoSizeText(
                                   maxLines: 1,
                                   minFontSize: 12,
                                   controller.countryName.value,
@@ -118,7 +228,7 @@ class LoginScreen extends StatelessWidget {
                             SizedBox(width: width*0.005),
                             Expanded(
                               child: Obx(
-                                () => Text(
+                                    () => Text(
                                   controller.countryCode.value,
                                   style: mediumFontStyle(
                                       color: AppColors.blackColor, size: 16),
@@ -147,51 +257,20 @@ class LoginScreen extends StatelessWidget {
                           );
                         }
                     ),
-                    // CommonTextField(
-                    //   controller: controller.countryCodeController,
-                    //   hint: "India",
-                    //   inputFormator: [CountryInputFormatter()],
-                    //   textInputType: TextInputType.phone,
-                    // ),
-                    SizedBox(height: height * 0.022),
+                    SizedBox(height: height * 0.027),
                     CommonTextField(
                       controller: controller.phoneController,
                       hint: "Mobile",
                       textInputType: TextInputType.number,
                     ),
                     Obx(
-                       () {
-                        return Align(
-                          alignment: Alignment.centerLeft,
-                          child: controller.mobileError.value !=''?Padding(
-                            padding: const EdgeInsets.only(top: 10.0,left: 4),
-                            child: Text(
-                              controller.mobileError.value,
-                              style: regularFontStyle(
-                                  color: AppColors.errorColor, size: 14
-                              ),
-
-                            ),
-                          ):const SizedBox(),
-
-                        );
-                      }
-                    ),
-
-                    SizedBox(height: height * 0.022),
-                    CommonTextField(
-                      controller: controller.passwordController,
-                      hint: "Password",
-                      textInputType: TextInputType.text,
-                    ),
-                    Obx(
                             () {
                           return Align(
                             alignment: Alignment.centerLeft,
-                            child: controller.passwordError.value !=''?Padding(
+                            child: controller.mobileError.value !=''?Padding(
                               padding: const EdgeInsets.only(top: 10.0,left: 4),
                               child: Text(
-                                controller.passwordError.value,
+                                controller.mobileError.value,
                                 style: regularFontStyle(
                                     color: AppColors.errorColor, size: 14
                                 ),
@@ -202,34 +281,35 @@ class LoginScreen extends StatelessWidget {
                           );
                         }
                     ),
-                    SizedBox(height: height * 0.027),
+
+                    SizedBox(height: height * 0.022),
                     const CustomunderLineText(text: StringRes.haveAReferralCode),
                     SizedBox(height: height * 0.025),
                     Obx(() => CommonPrimaryButton(
                         onTap: () {
                           hideKeyboard(context);
                           if (controller.validate()) {
-            controller.onTapLogin();
+                       controller.onTapSignUp();
                           }
                         },
-                        text: StringRes.submit,
+                        text: StringRes.sentOtp,
                         isLoading: controller.loader.value)),
                     SizedBox(height: height * 0.022),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          StringRes.doeNot,
+                          StringRes.already,
                           style: regularFontStyle(
                               size: 16, color: AppColors.descGreyColor),
                         ),
                         const SizedBox(width: 4,),
                         InkWell(
                           onTap: (){
-                            Get.to(()=>SignUpScreen());
+                            Get.to(()=>LoginScreen());
                           },
                           child: Text(
-                            StringRes.signUp,
+                            StringRes.login,
                             style: boldFontStyle(
                                 size: 16, color: AppColors.descGreyColor),
                           ),
@@ -244,12 +324,14 @@ class LoginScreen extends StatelessWidget {
                           color: AppColors.white,
                           decoration: TextDecoration.underline),
                     ),
+                    SizedBox(height: height * 0.022),
 
                   ],
                 ),
               ),
             ),
-            Obx(()=> controller.loader.value ?const CommonLoader():const SizedBox()),
+
+            Obx(()=> controller.loader.value ?const CommonLoader() :const SizedBox()),
           ],
         ),
       ),

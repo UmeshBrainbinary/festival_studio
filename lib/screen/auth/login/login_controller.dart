@@ -1,4 +1,9 @@
 import 'package:festiveapp_studio/common/popup_message/popup_message.dart';
+import 'package:festiveapp_studio/screen/add_details/add_details_screen.dart';
+import 'package:festiveapp_studio/screen/auth/login/api/login_api.dart';
+import 'package:festiveapp_studio/screen/auth/login/api/login_model.dart';
+import 'package:festiveapp_studio/service/pref_services.dart';
+import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,14 +14,16 @@ class LoginController extends GetxController{
   RxBool loader = false.obs;
   TextEditingController countryCodeController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   RxString countryCode = "+91".obs;
   RxString countryName = "India".obs;
   RxString countryNameCode = "IN".obs;
 
 RxString mobileError =''.obs;
+RxString passwordError =''.obs;
 RxString country =''.obs;
-
+LoginModel loginModel = LoginModel();
 countryValidation(){
   if(countryName.value.isEmpty || countryCode.value.isEmpty)
   {
@@ -42,17 +49,28 @@ mobileNumberValidation(){
   }
   else{
     mobileError.value = '';
-    country.value = '';
     return true;
   }
 }
 
+ passwordValidation(){
+    if(passwordController.text.trim().isEmpty)
+    {
+      passwordError.value = StringRes.passwordError;
+      return false;
+    }
+    else{
+      passwordError.value = '';
+      return true;
+    }
+  }
 
   bool validate() {
 
   countryValidation();
   mobileNumberValidation();
-  if(mobileError.value =='' && country.value =='')
+  passwordValidation();
+  if(mobileError.value =='' && country.value =='' && passwordError.value == '')
     {
       return true;
     }
@@ -62,6 +80,18 @@ mobileNumberValidation(){
     }
 
 
+  }
+
+  onTapLogin()async{
+  loader.value =true;
+  loginModel = await LoginApi.loginApi(password: passwordController.text, mobile: "${countryCode.value}${phoneController.text}");
+  if(loginModel.success ==true){
+    PrefService.setValue(PrefKeys.userId, loginModel.data?.id ?? '');
+    PrefService.setValue(PrefKeys.isLogin, true);
+    PrefService.setValue(PrefKeys.accessToken, loginModel.data?.token ?? '');
+    Get.offAll(()=> AddDetailsScreen());
+  }
+  loader.value =false;
   }
 
 
