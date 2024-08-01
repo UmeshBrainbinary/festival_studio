@@ -1,3 +1,6 @@
+// ignore_for_file: prefer_is_empty
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/card_detail/card_detail_screen.dart';
 import 'package:festiveapp_studio/screen/home/home_controller.dart';
@@ -42,8 +45,18 @@ Widget textField() {
   );
 }
 
-Widget festivalListview({context}) {
-  return SizedBox(
+Widget festivalListview({context,index}) {
+  bool isBox = false;
+  if( controller.homeModel[index].postsGroupedBySubCategory?.length !=0){
+    controller.homeModel[index].postsGroupedBySubCategory?.forEach((e){
+      if(e.posts?.length != 0)
+        {
+         isBox =true;
+        }
+    });
+  }
+  return (controller.homeModel[index].postsWithoutSubCategory?.length !=0) || (controller.homeModel[index].postsGroupedBySubCategory?.length !=0  && isBox) ?
+  SizedBox(
     height: 305,
     child: Column(
       children: [
@@ -53,14 +66,16 @@ Widget festivalListview({context}) {
         Row(
           children: [
             Text(
-              StringRes.festival,
+              controller.homeModel[index].category ?? '',
               style: boldFontStyle(color: AppColors.white, size: 16),
             ),
             const Spacer(),
             InkWell(
               onTap: () {
                 // Get.to(MorningQuotes());
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> const UpcomingScreen(),
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>  UpcomingScreen(name:   controller.homeModel[index].category ?? '',items: controller.homeModel[index],
+                isSub: controller.homeModel[index].postsGroupedBySubCategory?.length != 0? true:false
+                ),
                 ));
               },
               child: Row(
@@ -82,14 +97,15 @@ Widget festivalListview({context}) {
         ),
         const SizedBox(height: 5,),
 
+        controller.homeModel[index].postsWithoutSubCategory?.length !=0 ?
         Expanded(
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 3,
-            itemBuilder: (context, index) {
+            itemCount:  controller.homeModel[index].postsWithoutSubCategory?.length ?? 0,
+            itemBuilder: (context, i) {
               return GestureDetector(
                 onTap: (){
-                  Get.to(()=>CardDetailScreen());
+                  Get.to(()=>CardDetailScreen(name: controller.homeModel[index].category ?? '',images: controller.homeModel[i].postsWithoutSubCategory?[i].postImg?.url ?? '',));
 
                 },
                 child: Padding(
@@ -106,7 +122,18 @@ Widget festivalListview({context}) {
                         ),
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(AppAssets.card,),),
+                            child: CachedNetworkImage(
+                              imageUrl:  controller.homeModel[index].postsWithoutSubCategory?[i].postImg?.url ?? '',
+                              height: 250,
+                              width: 150,
+                              fit: BoxFit.fill,
+                              placeholder: (context,i){
+                                return Container();
+                              },
+                              errorWidget:  (context,i,r){
+                                return Container();
+                              },
+                            )),
                       ),
                     ],
                   ),
@@ -114,13 +141,66 @@ Widget festivalListview({context}) {
               );
             },
           ),
-        ),
+        ):
+        controller.homeModel[index].postsGroupedBySubCategory?.length !=0?
+        Expanded(
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount:  controller.homeModel[index].postsGroupedBySubCategory?.length ?? 0,
+            itemBuilder: (context, i) {
+
+              return  ListView.builder(
+              itemCount:  controller.homeModel[index].postsGroupedBySubCategory?[i].posts?.length ?? 0,
+                itemBuilder: (context,y) {
+                  return GestureDetector(
+                    onTap: (){
+                      Get.to(()=>CardDetailScreen(name: controller.homeModel[index].postsGroupedBySubCategory?[i].subCategory ?? '',images: controller.homeModel[index].
+                      postsGroupedBySubCategory?[i].posts?[y].postImg?.url ?? '',));
+
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+
+                        children: [
+                          Container(
+                            height: 250,
+                            width: 150,
+                            decoration: BoxDecoration(
+
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: CachedNetworkImage(
+                                  imageUrl:controller.homeModel[index].
+                                  postsGroupedBySubCategory?[i].posts?[y].postImg?.url ?? '',
+                                  height: 250,
+                                  width: 150,
+                                  fit: BoxFit.fill,
+                                  placeholder: (context,i){
+                                    return Container();
+                                  },
+                                  errorWidget:  (context,i,r){
+                                    return Container();
+                                  },
+                                )),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+              );
+            },
+          ),
+        ):const SizedBox(),
       ],
     ),
-  );
+  ):const SizedBox();
 }
 
-Widget motivationalListview({context}) {
+/*Widget motivationalListview({context}) {
   return SizedBox(
     height: 305,
     child: Column(
@@ -167,7 +247,7 @@ Widget motivationalListview({context}) {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  Get.to(()=>CardDetailScreen());
+                  Get.to(()=>CardDetailScreen(name:StringRes.festival,images: '',));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -242,7 +322,7 @@ Widget morningQuotes({context}) {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  Get.to(()=>CardDetailScreen());
+                  Get.to(()=>CardDetailScreen(name:StringRes.festival,images: '',));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -269,4 +349,4 @@ Widget morningQuotes({context}) {
       ],
     ),
   );
-}
+}*/

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/add_details/widget/add_details_widget.dart';
@@ -5,12 +6,15 @@ import 'package:festiveapp_studio/screen/card_detail/cart_detail_controller.dart
 import 'package:festiveapp_studio/screen/card_download/card_dowload_screen.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
+import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CardDetailScreen extends StatelessWidget {
-  CardDetailScreen({super.key});
+  String name;
+  String images;
+  CardDetailScreen({super.key,required this.name,required this.images});
   CardDetailController controller = Get.put(CardDetailController());
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,7 @@ class CardDetailScreen extends StatelessWidget {
                   },
                 ),
                 SizedBox(width: width * 0.03),
-                Text("Diwali art 1",
+                Text(name,
                     style: mediumFontStyle(
                         size: 16, color: AppColors.color0f1c10)),
                 const Spacer(),
@@ -51,7 +55,8 @@ class CardDetailScreen extends StatelessWidget {
                       SizedBox(height: height * 0.015),
                       Container(
                        // width: width * 0.73,
-                        height: height * 0.65,
+                        height: height * 0.55,
+                        width:width *0.5,
                         //padding: EdgeInsets.all(width * 0.025),
                         decoration: BoxDecoration(
                           color: AppColors.white,
@@ -68,7 +73,18 @@ class CardDetailScreen extends StatelessWidget {
 
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8),
-                            child:Image.asset(AppAssets.card,)
+                            child:CachedNetworkImage(
+                              imageUrl: images,
+                              height: 250,
+                              width: 150,
+                              fit: BoxFit.fill,
+                              placeholder: (context,i){
+                                return Container();
+                              },
+                              errorWidget:  (context,i,r){
+                                return Container();
+                              },
+                            )
                           ),
 
                       ),
@@ -86,7 +102,7 @@ class CardDetailScreen extends StatelessWidget {
                             itemBuilder: (context, index) {
                               return GestureDetector(
                                 onTap: () {
-                                  Get.to(() => CardDetailScreen());
+                                  Get.to(() => CardDetailScreen(name:name,images: images,));
                                 },
                                 child: Column(
                                   children: [

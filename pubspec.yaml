@@ -43,6 +43,7 @@ dependencies:
   flutter_share: ^2.0.0
   flutter_svg:
   flutter_widget_from_html:
+  cached_network_image:
 
 dev_dependencies:
   flutter_test:
