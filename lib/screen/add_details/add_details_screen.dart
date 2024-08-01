@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:festiveapp_studio/screen/add_details/add_details_controller.dart';
 import 'package:festiveapp_studio/screen/add_details/widget/add_details_widget.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';

@@ -1,6 +1,4 @@
-import 'dart:ffi';
 
-import 'package:festiveapp_studio/common/popup_message/popup_message.dart';
 import 'package:festiveapp_studio/screen/add_details/api/add_details_api.dart';
 import 'package:festiveapp_studio/screen/add_details/api/add_details_model.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';

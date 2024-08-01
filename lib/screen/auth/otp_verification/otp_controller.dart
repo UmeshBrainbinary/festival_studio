@@ -1,4 +1,4 @@
-import 'package:festiveapp_studio/screen/add_details/add_details_screen.dart';
+
 import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
 import 'package:festiveapp_studio/screen/auth/otp_verification/api/otp_model.dart';
 import 'package:festiveapp_studio/screen/auth/otp_verification/api/otp_verify_api.dart';

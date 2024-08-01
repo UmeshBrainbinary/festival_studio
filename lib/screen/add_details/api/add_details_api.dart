@@ -1,14 +1,11 @@
 import 'dart:convert';
 import 'package:festiveapp_studio/common/popup_message/popup_message.dart';
 import 'package:festiveapp_studio/screen/add_details/api/add_details_model.dart';
-import 'package:festiveapp_studio/screen/auth/signup/api/signup_model.dart';
 import 'package:festiveapp_studio/screen/dashboard/dashboard_screen.dart';
-import 'package:festiveapp_studio/service/http_services.dart';
 import 'package:festiveapp_studio/service/pref_services.dart';
 import 'package:festiveapp_studio/utils/endpoints.dart';
 import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -44,7 +41,7 @@ class AddDetailsApi {
 
       var d =(await response.stream.bytesToString());
 
-      if (response != null && response.statusCode == 200) {
+      if (response.statusCode == 200) {
 
         Get.offAll(()=>DashBoardScreen());
         PrefService.setValue(PrefKeys.isBrand, true);

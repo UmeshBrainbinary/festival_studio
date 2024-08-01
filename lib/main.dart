@@ -1,5 +1,4 @@
 import 'package:festiveapp_studio/screen/intro/splash/splash_screen.dart';
-import 'package:festiveapp_studio/screen/tutorials/tutorials_screen.dart';
 import 'package:festiveapp_studio/service/pref_services.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
