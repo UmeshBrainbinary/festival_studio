@@ -1,4 +1,5 @@
 
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
 import 'package:festiveapp_studio/screen/auth/otp_verification/api/otp_model.dart';
 import 'package:festiveapp_studio/screen/auth/otp_verification/api/otp_verify_api.dart';
@@ -18,8 +19,8 @@ class OtpController extends GetxController{
    if(otpModel.user != null)
 {
   PrefService.setValue(PrefKeys.isLogin, true);
-
-  Get.offAll(()=>LoginScreen());
+lightStatusBar();
+  Get.offAll(()=>LoginScreen())?.whenComplete(()=> lightStatusBar());
 }
     loader.value =false;
   }

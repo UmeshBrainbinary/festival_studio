@@ -4,4 +4,5 @@ class PrefKeys{
   static const String isIntroDone = "isIntroDone";
   static const String userId = "userId";
   static const String accessToken = "accessToken";
+  static const String internet = "internet";
 }

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:festiveapp_studio/common/common_back_button.dart';
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/add_details/widget/add_details_widget.dart';
 import 'package:festiveapp_studio/screen/card_detail/cart_detail_controller.dart';
@@ -20,13 +21,14 @@ class CardDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: AppColors.whiteBg,
       body: SafeArea(
         child: Column(
           children: [
             SizedBox(height: height * 0.01),
-            Row(
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(width: width * 0.04),
                 CommonBackButton(
@@ -56,7 +58,7 @@ class CardDetailScreen extends StatelessWidget {
                       Container(
                        // width: width * 0.73,
                         height: height * 0.55,
-                        width:width *0.5,
+                        width:width *0.6,
                         //padding: EdgeInsets.all(width * 0.025),
                         decoration: BoxDecoration(
                           color: AppColors.white,
@@ -75,8 +77,8 @@ class CardDetailScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                             child:CachedNetworkImage(
                               imageUrl: images,
-                              height: 250,
-                              width: 150,
+                              height: height * 0.55,
+                              width:width *0.5,
                               fit: BoxFit.fill,
                               placeholder: (context,i){
                                 return Container();
@@ -94,6 +96,7 @@ class CardDetailScreen extends StatelessWidget {
                         SizedBox(
                           height: height * 0.38,
                           child: ListView.separated(
+                            padding: EdgeInsets.zero,
                             scrollDirection: Axis.horizontal,
                             itemCount: 5,
                             separatorBuilder: (context, index) {
@@ -102,7 +105,8 @@ class CardDetailScreen extends StatelessWidget {
                             itemBuilder: (context, index) {
                               return GestureDetector(
                                 onTap: () {
-                                  Get.to(() => CardDetailScreen(name:name,images: images,));
+                                  darkStatusBar();
+                                  Get.to(() => CardDetailScreen(name:name,images: images,))?.whenComplete(()=> darkStatusBar());
                                 },
                                 child: Column(
                                   children: [
@@ -166,7 +170,8 @@ class CardDetailScreen extends StatelessWidget {
                          assetName: AppAssets.download,
                           isSelected: controller.selectedIndex.value == 2,
                           onTap: () {
-                            Get.to(()=> CardDownload());
+                            darkStatusBar();
+                            Get.to(()=> CardDownload(name:name,images:images))?.whenComplete(()=> darkStatusBar());
                             controller.selectedIndex.value = 2;
                           }),
                     ),

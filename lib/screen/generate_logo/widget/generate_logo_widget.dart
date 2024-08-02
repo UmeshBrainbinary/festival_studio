@@ -36,6 +36,17 @@ Widget addDetailsTextField(BuildContext context) {
               ),
             ),
             const Spacer(),
+            Visibility(
+              visible: false,
+              maintainSize: true,
+              maintainAnimation: true,
+              maintainState: true,
+              child: CommonBackButton(
+                onTap: () {
+
+                },
+              ),
+            ),
           ],
         ),
         const SizedBox(

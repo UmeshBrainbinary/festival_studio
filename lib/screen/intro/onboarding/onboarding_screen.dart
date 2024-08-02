@@ -1,4 +1,5 @@
 import 'package:festiveapp_studio/common/common_primary_button.dart';
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/screen/intro/onboarding/onboarding_controller.dart';
 import 'package:festiveapp_studio/screen/intro/onboarding/onboarding_widget.dart';
 
@@ -16,6 +17,8 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
+
+
     Get.put(OnBordingController());
     return Scaffold(
       backgroundColor: AppColors.blue,

@@ -1,4 +1,5 @@
 import 'package:festiveapp_studio/common/common_back_button.dart';
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/faq/faq_screen.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
@@ -15,6 +16,7 @@ class HelpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: AppColors.backgroundCard,
       body: Padding(
@@ -37,6 +39,18 @@ class HelpScreen extends StatelessWidget {
                   style: boldFontStyle(color: AppColors.blackColor, size: 18),
                 ),
                 const Spacer(),
+                Visibility(
+                  visible: false,
+                  maintainSize: true,
+                   maintainAnimation: true,
+                  maintainState: true,
+                  child: CommonBackButton(
+                    onTap: () {
+
+                    },
+                  ),
+                ),
+
               ],
             ),
            Expanded(

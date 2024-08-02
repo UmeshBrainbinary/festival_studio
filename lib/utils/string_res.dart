@@ -104,6 +104,10 @@ static const terms = "Terms & Conditions";
 
   /// ------------------------ Faq -------------------------
   static const faq = "FAQs";
+
+  /// ------------------------ No internet -------------------------
+  static const noInternet = "No Internet";
+  static const tryAgain = "Try Again";
 }
 
 

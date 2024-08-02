@@ -1,3 +1,4 @@
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: AppColors.blue,
       body: Center(

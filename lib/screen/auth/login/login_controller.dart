@@ -1,4 +1,5 @@
 
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/screen/add_details/add_details_screen.dart';
 import 'package:festiveapp_studio/screen/auth/login/api/login_api.dart';
 import 'package:festiveapp_studio/screen/auth/login/api/login_model.dart';
@@ -89,7 +90,8 @@ mobileNumberValidation(){
     PrefService.setValue(PrefKeys.userId, loginModel.data?.id ?? '');
     PrefService.setValue(PrefKeys.isLogin, true);
     PrefService.setValue(PrefKeys.accessToken, loginModel.data?.token ?? '');
-    Get.offAll(()=> AddDetailsScreen());
+    darkStatusBar();
+    Get.offAll(()=> AddDetailsScreen())?.whenComplete(()=> lightStatusBar());
   }
   loader.value =false;
   }

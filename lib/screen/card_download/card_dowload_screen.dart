@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
@@ -10,12 +11,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CardDownload extends StatelessWidget {
-  CardDownload({super.key});
+  String name;
+  String images;
+  CardDownload({super.key,required this.name,required this.images});
 
   CardDownloadController controller = Get.put(CardDownloadController());
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.backgroundCard,
       body: Padding(
@@ -36,8 +41,8 @@ class CardDownload extends StatelessWidget {
                   width: 10,
                 ),
                 Text(
-                  'Diwali Art 1',
-                  style: boldFontStyle(color: AppColors.blackColor, size: 18),
+                  name,
+                  style: mediumFontStyle(color: AppColors.color0f1c10, size: 16),
                 ),
                 const Spacer(),
                 SvgPicture.asset(
@@ -52,8 +57,8 @@ class CardDownload extends StatelessWidget {
               height: 20,
             ),
             Container(
-              height: 300,
-              width: 200,
+              height: height * 0.55,
+              width:width *0.7,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: const [
@@ -64,11 +69,24 @@ class CardDownload extends StatelessWidget {
                     )
                   ]),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(AppAssets.card,fit: BoxFit.fill,)
+                  borderRadius: BorderRadius.circular(8),
+                  child:CachedNetworkImage(
+                    imageUrl: images,
+                    height: 300,
+                    width: 200,
+                    fit: BoxFit.fill,
+                    placeholder: (context,i){
+                      return Container();
+                    },
+                    errorWidget:  (context,i,r){
+                      return Container();
+                    },
+                  )
               ),
             ),
-            const Spacer(),
+            const SizedBox(
+              height: 40,
+            ),
             CommonPrimaryButton(onTap: () {}, text: StringRes.removeWaterMark),
             const SizedBox(
               height: 20,

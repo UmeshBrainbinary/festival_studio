@@ -6,6 +6,7 @@ import 'package:festiveapp_studio/common/app_contstant.dart';
 import 'package:festiveapp_studio/common/common_loader.dart';
 import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/common/common_text_field.dart';
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/common/underline_text/common_underline_text.dart';
 import 'package:festiveapp_studio/screen/auth/login/login_controller.dart';
@@ -25,6 +26,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
     return GestureDetector(
@@ -228,7 +230,8 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(width: 4,),
                         InkWell(
                           onTap: (){
-                            Get.to(()=>SignUpScreen());
+                            lightStatusBar();
+                            Get.to(()=>SignUpScreen())?.whenComplete(()=> lightStatusBar());
                           },
                           child: Text(
                             StringRes.signUp,
@@ -241,7 +244,8 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: height * 0.2),
                     InkWell(
                       onTap: (){
-                        Get.to(()=> TermsConditionScreen());
+                        darkStatusBar();
+                        Get.to(()=> TermsConditionScreen())?.whenComplete(()=> lightStatusBar());
                       },
                       child: CustomunderLineText(
                         text: StringRes.termsAndConditions,

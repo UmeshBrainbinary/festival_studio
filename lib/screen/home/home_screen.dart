@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
    HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
+
    HomeController controller = Get.put(HomeController());
     return Scaffold(
       backgroundColor: AppColors.blue,
@@ -24,12 +25,17 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     const SizedBox(height: 20,),
                     textField(),
-                    Expanded(child: ListView.builder(
-                          itemCount: controller.homeModel.length,
+                    Expanded(child: (controller.search.text =='')?ListView.builder(
+                          itemCount: controller.dataShow.length,
                           itemBuilder: (context,i) {
                             return festivalListview(context: context,index :i);
                           }
-                        )),
+                        ):ListView.builder(
+                        itemCount: controller.filterData.length,
+                        itemBuilder: (context,i) {
+                          return festivalListviewFilter(context: context,index :i);
+                        }
+                    )),
 
 
                     // motivationalListview(context : context),

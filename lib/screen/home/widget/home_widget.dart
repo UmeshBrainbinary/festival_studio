@@ -25,6 +25,9 @@ Widget textField() {
     ),
     child: TextField(
       controller: controller.search,
+      onChanged: (val){
+        controller.onFilter(val);
+      },
       decoration: InputDecoration(
           prefixIcon: Padding(
             padding: const EdgeInsets.only(left: 5.0,top: 13,bottom: 13),
@@ -33,7 +36,11 @@ Widget textField() {
           hintText: StringRes.search,
           suffixIcon: Padding(
             padding: const EdgeInsets.only(top: 13.0,bottom: 13),
-            child: SvgPicture.asset(AppAssets.voice),
+            child: InkWell(
+                onTap: (){
+                  controller.startListening();
+                },
+                child: SvgPicture.asset(AppAssets.voice)),
           ),
           border: OutlineInputBorder(
             borderSide: BorderSide.none,
@@ -46,17 +53,8 @@ Widget textField() {
 }
 
 Widget festivalListview({context,index}) {
-  bool isBox = false;
-  if( controller.homeModel[index].postsGroupedBySubCategory?.length !=0){
-    controller.homeModel[index].postsGroupedBySubCategory?.forEach((e){
-      if(e.posts?.length != 0)
-        {
-         isBox =true;
-        }
-    });
-  }
-  return (controller.homeModel[index].postsWithoutSubCategory?.length !=0) || (controller.homeModel[index].postsGroupedBySubCategory?.length !=0  && isBox) ?
-  SizedBox(
+
+  return (controller.dataShow.length !=0 &&  controller.dataShow[index]['posts'].length !=0 )? SizedBox(
     height: 305,
     child: Column(
       children: [
@@ -65,16 +63,23 @@ Widget festivalListview({context,index}) {
         ),
         Row(
           children: [
-            Text(
-              controller.homeModel[index].category ?? '',
-              style: boldFontStyle(color: AppColors.white, size: 16),
+            SizedBox(
+              width: Get.width *0.6,
+              child: Text(
+                controller.dataShow[index]['name'] ?? '',
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+                style: boldFontStyle(color: AppColors.white, size: 16),
+              ),
             ),
             const Spacer(),
             InkWell(
               onTap: () {
                 // Get.to(MorningQuotes());
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>  UpcomingScreen(name:   controller.homeModel[index].category ?? '',items: controller.homeModel[index],
-                isSub: controller.homeModel[index].postsGroupedBySubCategory?.length != 0? true:false
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                    UpcomingScreen(name:   controller.dataShow[index]['name'] ?? '',items: controller.dataShow[index]['posts'],
+                    subData :controller.dataShow[index]['subData'],
+                    isSub:  controller.dataShow[index]['isSub']
                 ),
                 ));
               },
@@ -97,15 +102,17 @@ Widget festivalListview({context,index}) {
         ),
         const SizedBox(height: 5,),
 
-        controller.homeModel[index].postsWithoutSubCategory?.length !=0 ?
+        controller.dataShow[index]['posts'] !=0 ?
         Expanded(
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount:  controller.homeModel[index].postsWithoutSubCategory?.length ?? 0,
+            itemCount:  controller.dataShow[index]['posts'].length <=3?
+            ( controller.dataShow[index]['posts'].length ?? 0):3,
             itemBuilder: (context, i) {
               return GestureDetector(
                 onTap: (){
-                  Get.to(()=>CardDetailScreen(name: controller.homeModel[index].category ?? '',images: controller.homeModel[i].postsWithoutSubCategory?[i].postImg?.url ?? '',));
+                  Get.to(()=>CardDetailScreen(name: controller.dataShow[index]['name'] ?? '',
+                    images:controller.dataShow[index]['posts'][i].postImg?.url ?? '',));
 
                 },
                 child: Padding(
@@ -123,7 +130,7 @@ Widget festivalListview({context,index}) {
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: CachedNetworkImage(
-                              imageUrl:  controller.homeModel[index].postsWithoutSubCategory?[i].postImg?.url ?? '',
+                              imageUrl: controller.dataShow[index]['posts'][i].postImg?.url ?? '',
                               height: 250,
                               width: 150,
                               fit: BoxFit.fill,
@@ -141,56 +148,100 @@ Widget festivalListview({context,index}) {
               );
             },
           ),
-        ):
-        controller.homeModel[index].postsGroupedBySubCategory?.length !=0?
+        ):const SizedBox(),
+      ],
+    ),
+  ):const SizedBox();
+}
+
+Widget festivalListviewFilter({context,index}) {
+
+  return (controller.filterData.length !=0 &&  controller.filterData[index]['posts'].length !=0 )? SizedBox(
+    height: 305,
+    child: Column(
+      children: [
+        const SizedBox(
+          height: 10,
+        ),
+        Row(
+          children: [
+            Text(
+              controller.filterData[index]['name'] ?? '',
+              style: boldFontStyle(color: AppColors.white, size: 16),
+            ),
+            const Spacer(),
+            InkWell(
+              onTap: () {
+                // Get.to(MorningQuotes());
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                    UpcomingScreen(name:   controller.filterData[index]['name'] ?? '',items: controller.filterData[index]['posts'],
+                        subData :controller.filterData[index]['subData'],
+                        isSub:  controller.filterData[index]['isSub']
+                    ),
+                ));
+              },
+              child: Row(
+                children: [
+                  Text(
+                    StringRes.more,
+                    style: boldFontStyle(color: AppColors.white, size: 16),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  const Icon(Icons.arrow_forward_ios_sharp,
+                      color: AppColors.white, size: 20),
+                ],
+              ),
+            )
+
+          ],
+        ),
+        const SizedBox(height: 5,),
+
+        controller.filterData[index]['posts'] !=0 ?
         Expanded(
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount:  controller.homeModel[index].postsGroupedBySubCategory?.length ?? 0,
+            itemCount:  controller.filterData[index]['posts'].length <=3?
+            ( controller.filterData[index]['posts'].length ?? 0):3,
             itemBuilder: (context, i) {
+              return GestureDetector(
+                onTap: (){
+                  Get.to(()=>CardDetailScreen(name: controller.filterData[index]['name'] ?? '',
+                    images:controller.filterData[index]['posts'][i].postImg?.url ?? '',));
 
-              return  ListView.builder(
-              itemCount:  controller.homeModel[index].postsGroupedBySubCategory?[i].posts?.length ?? 0,
-                itemBuilder: (context,y) {
-                  return GestureDetector(
-                    onTap: (){
-                      Get.to(()=>CardDetailScreen(name: controller.homeModel[index].postsGroupedBySubCategory?[i].subCategory ?? '',images: controller.homeModel[index].
-                      postsGroupedBySubCategory?[i].posts?[y].postImg?.url ?? '',));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
 
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
+                    children: [
+                      Container(
+                        height: 250,
+                        width: 150,
+                        decoration: BoxDecoration(
 
-                        children: [
-                          Container(
-                            height: 250,
-                            width: 150,
-                            decoration: BoxDecoration(
-
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: CachedNetworkImage(
-                                  imageUrl:controller.homeModel[index].
-                                  postsGroupedBySubCategory?[i].posts?[y].postImg?.url ?? '',
-                                  height: 250,
-                                  width: 150,
-                                  fit: BoxFit.fill,
-                                  placeholder: (context,i){
-                                    return Container();
-                                  },
-                                  errorWidget:  (context,i,r){
-                                    return Container();
-                                  },
-                                )),
-                          ),
-                        ],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: CachedNetworkImage(
+                              imageUrl: controller.filterData[index]['posts'][i].postImg?.url ?? '',
+                              height: 250,
+                              width: 150,
+                              fit: BoxFit.fill,
+                              placeholder: (context,i){
+                                return Container();
+                              },
+                              errorWidget:  (context,i,r){
+                                return Container();
+                              },
+                            )),
                       ),
-                    ),
-                  );
-                }
+                    ],
+                  ),
+                ),
               );
             },
           ),

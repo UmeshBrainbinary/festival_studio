@@ -1,3 +1,4 @@
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/screen/auth/otp_verification/otp_screen.dart';
 import 'package:festiveapp_studio/screen/auth/signup/api/signup_api.dart';
 import 'package:festiveapp_studio/screen/auth/signup/api/signup_model.dart';
@@ -149,8 +150,8 @@ class SignUpController extends GetxController{
         password: passwordController.text, mobile: "${countryCode.value}${phoneController.text}");
    if(signUpModel.success ==true)
      {
-
-       Get.to(()=>OtpScreen(),arguments: "${countryCode.value}${phoneController.text}");
+       lightStatusBar();
+       Get.to(()=>OtpScreen(),arguments: "${countryCode.value}${phoneController.text}")?.whenComplete(()=> lightStatusBar());
      }
     loader.value =false;
   }

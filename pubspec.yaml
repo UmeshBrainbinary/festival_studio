@@ -44,6 +44,9 @@ dependencies:
   flutter_svg:
   flutter_widget_from_html:
   cached_network_image:
+  speech_to_text:
+  permission_handler: ^11.3.1
+  connectivity_plus:  ^5.0.2
 
 dev_dependencies:
   flutter_test:

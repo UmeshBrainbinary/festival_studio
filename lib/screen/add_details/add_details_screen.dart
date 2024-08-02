@@ -12,11 +12,10 @@ class AddDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.gray,
-        body: addDetailsTextField(context),
-      ),
+
+    return Scaffold(
+      backgroundColor: AppColors.gray,
+      body: addDetailsTextField(context),
     );
   }
 }

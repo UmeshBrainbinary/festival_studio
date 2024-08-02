@@ -1,3 +1,4 @@
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/screen/card_download/card_dowload_screen.dart';
 import 'package:festiveapp_studio/screen/dashboard/dashboard_screen.dart';
 import 'package:festiveapp_studio/screen/generate_logo/generate_logo_screen.dart';
@@ -35,21 +36,22 @@ class DashBoardController extends GetxController{
     currentIndex = value;
     persistentTabController?.index = currentIndex;
     update(["bottom"]);
-    // if(currentIndex == 0){
-    //   HomeController homeController = Get.put(HomeController());
-    //   if(homeController.loader.value == false) {
-    //     homeController.reInit();
-    //   }
-    //   homeController.update(["home"]);
-    // } else if(currentIndex == 1){
-    //  // SpendingDetailController spendingDetailController = Get.put(SpendingDetailController());
-    //  //  if(spendingDetailController.loader.value == false) {
-    //  //    spendingDetailController.onInit();
-    //   }
-    // }else if (currentIndex == 2){
-    //  // SettingController book = Get.put(SettingController());
-    //  // book.onInit();
-    //   // Get.delete<SettingController>(force: true);
-    // }
+
+    if(currentIndex ==0)
+      {
+        lightStatusBar();
+      }
+    else    if(currentIndex ==1)
+    {
+      darkStatusBar();
+    }
+    if(currentIndex ==2)
+    {
+      darkStatusBar();
+    }
+    if(currentIndex ==3)
+    {
+      darkStatusBar();
+    }
   }
 }

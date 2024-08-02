@@ -99,6 +99,7 @@ class DashBoardScreen extends StatelessWidget {
         return false;
       },
       child: Scaffold(
+
         body: GetBuilder<DashBoardController>(
           id: "bottom",
           builder: (controller) => PersistentTabView(

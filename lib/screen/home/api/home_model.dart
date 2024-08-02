@@ -11,7 +11,7 @@ String homeModelToJson(List<HomeModel> data) => json.encode(List<dynamic>.from(d
 class HomeModel {
   String? category;
   List<PostsGroupedBySubCategory>? postsGroupedBySubCategory;
-  List<PostsWithoutSubCategory>? postsWithoutSubCategory;
+  List<Post>? postsWithoutSubCategory;
 
   HomeModel({
     this.category,
@@ -22,7 +22,7 @@ class HomeModel {
   factory HomeModel.fromJson(Map<String, dynamic> json) => HomeModel(
     category: json["category"],
     postsGroupedBySubCategory: json["postsGroupedBySubCategory"] == null ? [] : List<PostsGroupedBySubCategory>.from(json["postsGroupedBySubCategory"]!.map((x) => PostsGroupedBySubCategory.fromJson(x))),
-    postsWithoutSubCategory: json["postsWithoutSubCategory"] == null ? [] : List<PostsWithoutSubCategory>.from(json["postsWithoutSubCategory"]!.map((x) => PostsWithoutSubCategory.fromJson(x))),
+    postsWithoutSubCategory: json["postsWithoutSubCategory"] == null ? [] : List<Post>.from(json["postsWithoutSubCategory"]!.map((x) => Post.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -53,7 +53,7 @@ class PostsGroupedBySubCategory {
 }
 
 class Post {
-  Img? postImg;
+  PostImg? postImg;
   FrameImg? frameImg;
   String? id;
   String? category;
@@ -76,7 +76,7 @@ class Post {
   });
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
-    postImg: json["postImg"] == null ? null : Img.fromJson(json["postImg"]),
+    postImg: json["postImg"] == null ? null : PostImg.fromJson(json["postImg"]),
     frameImg: json["frameImg"] == null ? null : FrameImg.fromJson(json["frameImg"]),
     id: json["_id"],
     category: json["category"],
@@ -116,16 +116,16 @@ class FrameImg {
   };
 }
 
-class Img {
+class PostImg {
   String? publicId;
   String? url;
 
-  Img({
+  PostImg({
     this.publicId,
     this.url,
   });
 
-  factory Img.fromJson(Map<String, dynamic> json) => Img(
+  factory PostImg.fromJson(Map<String, dynamic> json) => PostImg(
     publicId: json["public_id"],
     url: json["url"],
   );
@@ -177,49 +177,5 @@ class User {
     "_id": id,
     "firstName": firstName,
     "email": email,
-  };
-}
-
-class PostsWithoutSubCategory {
-  Img? postImg;
-  Img? frameImg;
-  String? id;
-  String? category;
-  User? user;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  int? v;
-
-  PostsWithoutSubCategory({
-    this.postImg,
-    this.frameImg,
-    this.id,
-    this.category,
-    this.user,
-    this.createdAt,
-    this.updatedAt,
-    this.v,
-  });
-
-  factory PostsWithoutSubCategory.fromJson(Map<String, dynamic> json) => PostsWithoutSubCategory(
-    postImg: json["postImg"] == null ? null : Img.fromJson(json["postImg"]),
-    frameImg: json["frameImg"] == null ? null : Img.fromJson(json["frameImg"]),
-    id: json["_id"],
-    category: json["category"],
-    user: json["user"] == null ? null : User.fromJson(json["user"]),
-    createdAt: json["createdAt"] == null ? null : DateTime.parse(json["createdAt"]),
-    updatedAt: json["updatedAt"] == null ? null : DateTime.parse(json["updatedAt"]),
-    v: json["__v"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "postImg": postImg?.toJson(),
-    "frameImg": frameImg?.toJson(),
-    "_id": id,
-    "category": category,
-    "user": user?.toJson(),
-    "createdAt": createdAt?.toIso8601String(),
-    "updatedAt": updatedAt?.toIso8601String(),
-    "__v": v,
   };
 }

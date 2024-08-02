@@ -1,4 +1,6 @@
+import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/common_loader.dart';
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/termsCondition/termsConditionController.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
@@ -12,6 +14,7 @@ class TermsConditionScreen extends StatelessWidget {
    TermsAndConditionController  termsConditionController = Get.put(TermsAndConditionController());
   @override
   Widget build(BuildContext context) {
+
     return  Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -23,15 +26,37 @@ class TermsConditionScreen extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Center(
-                  child: Text(
-                    StringRes.terms,
-                    style: boldFontStyle(
-                      color: AppColors.blackColor,
-                      size: 20,
+                Row(
+                  children: [
+                    CommonBackButton(
+                      onTap: () {
+                        Get.back();
+                      },
                     ),
-                  ),
+                    const Spacer(),
+                    Text(
+                      StringRes.terms,
+                      style: boldFontStyle(
+                        color: AppColors.blackColor,
+                        size: 20,
+                      ),
+                    ),
+                    const Spacer(),
+                    Visibility(
+                      visible: false,
+                      maintainSize: true,
+                      maintainAnimation: true,
+                      maintainState: true,
+                      child: CommonBackButton(
+                        onTap: () {
+
+                        },
+                      ),
+                    ),
+
+                  ],
                 ),
+
                 const SizedBox(
                   height: 30,
                 ),
