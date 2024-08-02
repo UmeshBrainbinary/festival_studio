@@ -16,6 +16,7 @@ class SignUpController extends GetxController{
   TextEditingController passwordController = TextEditingController();
   TextEditingController countryCodeController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  RxBool isShowPassword = true.obs;
 
   RxString countryCode = "+91".obs;
   RxString countryName = "India".obs;
@@ -29,7 +30,16 @@ class SignUpController extends GetxController{
   RxString country =''.obs;
 
   SignUpModel signUpModel = SignUpModel();
+  onHideTap(){
+    if(isShowPassword.value)
+    {
+      isShowPassword.value = false;
+    }
+    else{
+      isShowPassword.value = true;
 
+    }
+  }
   firstNameValidation(){
     if(firstNameController.text.isEmpty)
     {

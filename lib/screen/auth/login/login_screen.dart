@@ -108,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             SizedBox(
-                              width: Get.width * 0.25,
+                              width:  Get.width * 0.360,
                               child: Obx(
                                 () => AutoSizeText(
                                   maxLines: 1,
@@ -183,10 +183,17 @@ class LoginScreen extends StatelessWidget {
                     ),
 
                     SizedBox(height: height * 0.022),
-                    CommonTextField(
-                      controller: controller.passwordController,
-                      hint: "Password",
-                      textInputType: TextInputType.text,
+                    Obx(
+                       () {
+                        return CommonTextField(
+                          controller: controller.passwordController,
+                          hint: "Password",
+                          maxLines: 1,
+                          textInputType: TextInputType.text,
+                          showPwd: controller.isShowPassword.value,
+                          onHideButtonTap: controller.onHideTap,
+                        );
+                      }
                     ),
                     Obx(
                             () {

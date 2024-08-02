@@ -140,9 +140,16 @@ class SignUpScreen extends StatelessWidget {
                     ),
 
                     SizedBox(height: height * 0.027),
-                    CommonTextField(
-                      controller: controller.passwordController,
-                      hint: "Password",
+                    Obx(
+                       () {
+                        return CommonTextField(
+                          controller: controller.passwordController,
+                          hint: "Password",
+                          maxLines: 1,
+                          showPwd: controller.isShowPassword.value,
+                          onHideButtonTap: controller.onHideTap,
+                        );
+                      }
                     ),
                     Obx(
                             () {
@@ -211,14 +218,14 @@ class SignUpScreen extends StatelessWidget {
                       child: Container(
                         height: 48,
                         padding:
-                        EdgeInsets.symmetric(horizontal: Get.width * 0.035),
+                        EdgeInsets.symmetric(horizontal: Get.width * 0.060),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: AppColors.white),
                         child: Row(
                           children: [
                             SizedBox(
-                              width: Get.width * 0.25,
+                              width: Get.width * 0.360,
                               child: Obx(
                                     () => AutoSizeText(
                                   maxLines: 1,

@@ -10,6 +10,8 @@ class CommonTextField extends StatelessWidget {
   final double? height;
   final int? maxLines;
   final String? hint;
+  final bool? showPwd;
+  final VoidCallback? onHideButtonTap;
   final Widget? leadingWidget;
   final TextInputType? textInputType;
   final TextInputAction? textInputAction;
@@ -24,6 +26,8 @@ class CommonTextField extends StatelessWidget {
       this.leadingWidget,
       this.height,
       this.maxLines,
+      this.showPwd,
+      this.onHideButtonTap,
       this.textInputType,
       this.textInputAction,
       this.inputFormator});
@@ -38,12 +42,11 @@ class CommonTextField extends StatelessWidget {
       child: Row(
         children: [
           SizedBox(
-            width: Get.width * 0.260,
+            width: Get.width * 0.360,
             child: leadingWidget ??
-                AutoSizeText(
+               Text(
                   hint ?? "",
                   maxLines: 1,
-                  minFontSize: 12,
                   style: mediumFontStyle(color: AppColors.hintColor, size: 16),
                 ),
           ),
@@ -57,13 +60,25 @@ class CommonTextField extends StatelessWidget {
               inputFormatters: inputFormator,
               // style: mediumFontStyle(color: AppColors.blackColor,size: 16,height: 1.3),
               // decoration: InputDecoration(border: InputBorder.none,hintStyle: mediumFontStyle(color: AppColors.hintColor,size: 16)),
-
+obscureText:  showPwd != null ? showPwd!:false,
               style: mediumFontStyle(
                   color: AppColors.blackColor, size: 16, height: 1.3),
               decoration: InputDecoration(
+
                 border: InputBorder.none,
                 hintStyle:
                     mediumFontStyle(color: AppColors.hintColor, size: 16),
+                  contentPadding: EdgeInsets.only(top: 12),
+                  suffixIcon: showPwd != null /*&& controller.text != ''*/
+                      ? InkWell(
+                    onTap: onHideButtonTap,
+                    child: Icon(
+                      (showPwd == false)
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off_outlined,
+                      color: AppColors.hintColor,
+                    ),
+                  ):const SizedBox()
               ),
             ),
           ),

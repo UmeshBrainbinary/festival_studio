@@ -61,6 +61,8 @@ Widget addDetailsTextField(BuildContext context) {
           height: 40,
         ),
         CommonTextField(
+          maxLines: 1,
+
           textInputAction: TextInputAction.done,
           hint: StringRes.brandName,
           controller: controller.brandName,
@@ -89,6 +91,8 @@ Widget addDetailsTextField(BuildContext context) {
           height: 20,
         ),
         CommonTextField(
+            maxLines: 1,
+
             textInputAction: TextInputAction.done,
             hint: StringRes.tagLine, controller: controller.tagLine),
         Obx(
@@ -113,6 +117,8 @@ Widget addDetailsTextField(BuildContext context) {
           height: 20,
         ),
         CommonTextField(
+          maxLines: 1,
+
           textInputAction: TextInputAction.done,
           hint: StringRes.category,
           controller: controller.category,
@@ -139,6 +145,8 @@ Widget addDetailsTextField(BuildContext context) {
           height: 20,
         ),
         CommonTextField(
+            maxLines: 1,
+
             textInputAction: TextInputAction.done,
             hint: StringRes.logoType, controller: controller.logoType),
         Obx(
@@ -163,6 +171,8 @@ Widget addDetailsTextField(BuildContext context) {
           height: 20,
         ),
         CommonTextField(
+            maxLines: 1,
+
             textInputAction: TextInputAction.done,
             hint: StringRes.primaryColor, controller: controller.primaryColor),
         Obx(
@@ -187,7 +197,9 @@ Widget addDetailsTextField(BuildContext context) {
           height: 20,
         ),
         CommonTextField(
-          textInputAction: TextInputAction.done,
+            maxLines: 1,
+
+            textInputAction: TextInputAction.done,
             hint: StringRes.secondaryColor,
             controller: controller.secondaryColor),
         Obx(

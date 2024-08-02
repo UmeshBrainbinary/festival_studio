@@ -8,13 +8,14 @@ import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 
 class LoginController extends GetxController{
   RxBool loader = false.obs;
   TextEditingController countryCodeController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+RxBool isShowPassword = true.obs;
   RxString countryCode = "+91".obs;
   RxString countryName = "India".obs;
   RxString countryNameCode = "IN".obs;
@@ -23,6 +24,18 @@ RxString mobileError =''.obs;
 RxString passwordError =''.obs;
 RxString country =''.obs;
 LoginModel loginModel = LoginModel();
+
+onHideTap(){
+  if(isShowPassword.value)
+    {
+      isShowPassword.value = false;
+    }
+  else{
+    isShowPassword.value = true;
+
+  }
+}
+
 countryValidation(){
   if(countryName.value.isEmpty || countryCode.value.isEmpty)
   {

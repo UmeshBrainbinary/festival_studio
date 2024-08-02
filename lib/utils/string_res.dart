@@ -100,9 +100,9 @@ static const String brandDetails = '''Add your brand details and logo type for
 static const String selectLogo = 'Select Logo';
 static const String select = 'Select';
 static const String categoryError = 'Please enter category';
-static const String logoTypeError = 'Please enter logoType';
-static const String primaryColorError = 'Please enter primaryColor';
-static const String secondaryColorError = 'Please enter secondaryColor';
+static const String logoTypeError = 'Please enter logo type';
+static const String primaryColorError = 'Please enter primary color';
+static const String secondaryColorError = 'Please enter secondary color';
 
 /// ------------------------ terms and condition -------------------------
 static const terms = "Terms & Conditions";

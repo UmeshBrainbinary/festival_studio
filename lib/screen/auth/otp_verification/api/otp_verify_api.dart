@@ -3,6 +3,7 @@ import 'package:festiveapp_studio/common/popup_message/popup_message.dart';
 import 'package:festiveapp_studio/screen/auth/otp_verification/api/otp_model.dart';
 import 'package:festiveapp_studio/utils/endpoints.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class OtpVerifyApi {
@@ -17,7 +18,7 @@ class OtpVerifyApi {
       };
       var request = http.Request('POST', Uri.parse('https://festive-back.onrender.com/api/user/verify-otp'));
       request.body = json.encode({
-        "mobileNo": mobile,
+        "mobileNo": mobile.removeAllWhitespace,
         "otp":otp
       });
       request.headers.addAll(headers);

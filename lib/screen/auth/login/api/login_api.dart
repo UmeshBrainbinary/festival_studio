@@ -4,6 +4,7 @@ import 'package:festiveapp_studio/screen/auth/login/api/login_model.dart';
 import 'package:festiveapp_studio/service/http_services.dart';
 import 'package:festiveapp_studio/utils/endpoints.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class LoginApi {
@@ -14,8 +15,8 @@ class LoginApi {
     try {
       String url = Endpoints.logIn;
       Map<String, String> param = {
-        "mobileNo": mobile,
-        "password": password
+        "mobileNo": mobile.removeAllWhitespace,
+        "password": password.removeAllWhitespace
       };
 
       http.Response? response = await HttpService.postApi(

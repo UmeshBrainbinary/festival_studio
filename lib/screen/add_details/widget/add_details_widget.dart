@@ -61,6 +61,8 @@ Widget addDetailsTextField(BuildContext context) {
                   //   ),
                   // ),
                   hint: StringRes.brandName,
+                  maxLines: 1,
+
                   controller: controller.brandName,
             textInputAction: TextInputAction.done,
                 ),
@@ -87,6 +89,8 @@ Widget addDetailsTextField(BuildContext context) {
                   height: 20,
                 ),
                 CommonTextField(
+                    maxLines: 1,
+
                     hint: StringRes.tagLine,
                     textInputAction: TextInputAction.done,
                     controller: controller.tagLine),
@@ -114,6 +118,7 @@ Widget addDetailsTextField(BuildContext context) {
                 ),
                 CommonTextField(
                     hint: StringRes.phoneNo,
+                    maxLines: 1,
                     textInputAction: TextInputAction.done,
                     controller: controller.phoneNumber,textInputType: TextInputType.phone),
 
@@ -142,6 +147,7 @@ Widget addDetailsTextField(BuildContext context) {
                 CommonTextField(hint: StringRes.email,
                     textInputAction: TextInputAction.done,
                     textInputType: TextInputType.emailAddress,
+                    maxLines: 1,
                     controller: controller.email),
 
                 Obx(
@@ -167,6 +173,8 @@ Widget addDetailsTextField(BuildContext context) {
                 ),
                 CommonTextField(
                     hint: StringRes.website,
+                    maxLines: 1,
+
                     textInputAction: TextInputAction.done,
                     controller: controller.website),
                 Obx(
@@ -200,7 +208,7 @@ Widget addDetailsTextField(BuildContext context) {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: Get.width * 0.22,
+                        width: Get.width * 0.360,
                         child: Padding(
                           padding: const EdgeInsets.only(top: 10.0),
                           child: Text(

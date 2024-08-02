@@ -4,6 +4,9 @@ import 'package:festiveapp_studio/screen/auth/signup/api/signup_model.dart';
 import 'package:festiveapp_studio/service/http_services.dart';
 import 'package:festiveapp_studio/utils/endpoints.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
+import 'package:get/get.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class SignUpApi {
@@ -19,9 +22,9 @@ class SignUpApi {
       Map<String, String> param = {
         "firstName": firstname,
         "userName": lastName,
-        "mobileNo": mobile,
-        "email": email,
-        "password": password
+        "mobileNo": mobile.removeAllWhitespace,
+        "email": email.removeAllWhitespace,
+        "password": password.removeAllWhitespace
       };
 
       http.Response? response = await HttpService.postApi(
