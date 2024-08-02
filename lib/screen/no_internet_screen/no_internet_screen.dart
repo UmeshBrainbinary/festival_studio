@@ -1,5 +1,6 @@
 
 import 'package:festiveapp_studio/common/testStyle.dart';
+import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class NoInternet extends StatelessWidget {
           children: [
             const Spacer(),
 
+            Image.asset(AppAssets.wifi,scale: 2,),
             const SizedBox(
               height: 30,
             ),

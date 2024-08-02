@@ -39,6 +39,7 @@ class AppAssets {
   static const rightArrow = '$images/Right Arrow 1.svg';
   static const them = '$images/them.svg';
   static const voice = '$images/Voice.svg';
+  static const wifi = '$images/wifi.gif';
 
 
 }

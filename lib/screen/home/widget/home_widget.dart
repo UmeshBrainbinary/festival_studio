@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_is_empty
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/card_detail/card_detail_screen.dart';
 import 'package:festiveapp_studio/screen/home/home_controller.dart';
@@ -76,12 +77,11 @@ Widget festivalListview({context,index}) {
             InkWell(
               onTap: () {
                 // Get.to(MorningQuotes());
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                    UpcomingScreen(name:   controller.dataShow[index]['name'] ?? '',items: controller.dataShow[index]['posts'],
-                    subData :controller.dataShow[index]['subData'],
-                    isSub:  controller.dataShow[index]['isSub']
-                ),
-                ));
+                lightStatusBar();
+                Get.to(()=>UpcomingScreen(name:   controller.filterData[index]['name'] ?? '',items: controller.filterData[index]['posts'],
+                    subData :controller.filterData[index]['subData'],
+                    isSub:  controller.filterData[index]['isSub']
+                ),)?.whenComplete(()=> lightStatusBar());
               },
               child: Row(
                 children: [
@@ -111,8 +111,9 @@ Widget festivalListview({context,index}) {
             itemBuilder: (context, i) {
               return GestureDetector(
                 onTap: (){
+                  darkStatusBar();
                   Get.to(()=>CardDetailScreen(name: controller.dataShow[index]['name'] ?? '',
-                    images:controller.dataShow[index]['posts'][i].postImg?.url ?? '',));
+                    images:controller.dataShow[index]['posts'][i].postImg?.url ?? '',))?.whenComplete(()=> lightStatusBar());
 
                 },
                 child: Padding(
@@ -173,12 +174,11 @@ Widget festivalListviewFilter({context,index}) {
             InkWell(
               onTap: () {
                 // Get.to(MorningQuotes());
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>
-                    UpcomingScreen(name:   controller.filterData[index]['name'] ?? '',items: controller.filterData[index]['posts'],
-                        subData :controller.filterData[index]['subData'],
-                        isSub:  controller.filterData[index]['isSub']
-                    ),
-                ));
+                lightStatusBar();
+               Get.to(()=>UpcomingScreen(name:   controller.filterData[index]['name'] ?? '',items: controller.filterData[index]['posts'],
+                   subData :controller.filterData[index]['subData'],
+                   isSub:  controller.filterData[index]['isSub']
+               ),)?.whenComplete(()=> lightStatusBar());
               },
               child: Row(
                 children: [
@@ -208,8 +208,9 @@ Widget festivalListviewFilter({context,index}) {
             itemBuilder: (context, i) {
               return GestureDetector(
                 onTap: (){
+                  darkStatusBar();
                   Get.to(()=>CardDetailScreen(name: controller.filterData[index]['name'] ?? '',
-                    images:controller.filterData[index]['posts'][i].postImg?.url ?? '',));
+                    images:controller.filterData[index]['posts'][i].postImg?.url ?? '',))?.whenComplete(()=> lightStatusBar());
 
                 },
                 child: Padding(

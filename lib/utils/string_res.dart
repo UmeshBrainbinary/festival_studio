@@ -62,6 +62,11 @@ class StringRes {
   static const String validWebError = 'Please enter a valid website URL';
   static const String addressError = 'Please enter address';
 
+  /// -------------------- dashboard---------------------- ///
+  static const exit ="Exit";
+  static const yes ="Yes";
+  static const no ="NO";
+  static const exitDes ="Are you sure to want to exit?";
 
   /// -------------------- home screen ---------------------- ///
 
@@ -106,7 +111,7 @@ static const terms = "Terms & Conditions";
   static const faq = "FAQs";
 
   /// ------------------------ No internet -------------------------
-  static const noInternet = "No Internet";
+  static const noInternet = "No Internet Connection";
   static const tryAgain = "Try Again";
 }
 
