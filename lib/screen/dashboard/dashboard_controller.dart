@@ -1,9 +1,6 @@
 import 'package:festiveapp_studio/common/status_bar.dart';
-import 'package:festiveapp_studio/screen/card_download/card_dowload_screen.dart';
-import 'package:festiveapp_studio/screen/dashboard/dashboard_screen.dart';
 import 'package:festiveapp_studio/screen/generate_logo/generate_logo_screen.dart';
 import 'package:festiveapp_studio/screen/help&support/help&suport_screen.dart';
-import 'package:festiveapp_studio/screen/home/home_controller.dart';
 import 'package:festiveapp_studio/screen/home/home_screen.dart';
 import 'package:festiveapp_studio/screen/tutorials/tutorials_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,8 +16,8 @@ class DashBoardController extends GetxController{
   int currentIndex = 0;
 
   List<Widget> screens = [
-    HomeScreen(),
-    HelpScreen(),
+    const HomeScreen(),
+    const HelpScreen(),
     VideoScreen(),
     GenerateLogoScreen(),
   ];

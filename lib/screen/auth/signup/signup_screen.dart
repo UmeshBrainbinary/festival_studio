@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:country_picker/country_picker.dart';
 import 'package:festiveapp_studio/common/app_contstant.dart';
@@ -8,7 +10,6 @@ import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/common/underline_text/common_underline_text.dart';
 import 'package:festiveapp_studio/screen/auth/login/login_screen.dart';
-import 'package:festiveapp_studio/screen/auth/otp_verification/otp_screen.dart';
 import 'package:festiveapp_studio/screen/auth/signup/signupcontroller.dart';
 import 'package:festiveapp_studio/screen/termsCondition/terms_condition_screen.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
@@ -19,7 +20,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class SignUpScreen extends StatelessWidget {
-   SignUpScreen({Key? key}) : super(key: key);
+   SignUpScreen({super.key});
 
 
    SignUpController controller = Get.put(SignUpController());

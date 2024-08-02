@@ -1,13 +1,12 @@
+// ignore_for_file: file_names
+
 import 'package:festiveapp_studio/common/common_back_button.dart';
-import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/faq/faq_screen.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 

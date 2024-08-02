@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, depend_on_referenced_packages
 
 import 'dart:convert';
 import 'package:festiveapp_studio/common/popup_message/popup_message.dart';

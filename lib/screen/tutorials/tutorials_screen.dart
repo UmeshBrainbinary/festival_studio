@@ -1,5 +1,4 @@
 import 'package:festiveapp_studio/common/common_back_button.dart';
-import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/tutorials/tutorials_controller.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
@@ -10,6 +9,8 @@ import 'package:video_player/video_player.dart';
 
 class VideoScreen extends StatelessWidget {
   final VideoController videoController = Get.put(VideoController());
+
+   VideoScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

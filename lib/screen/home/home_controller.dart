@@ -1,6 +1,7 @@
 import 'package:festiveapp_studio/screen/home/api/home_api.dart';
 import 'package:festiveapp_studio/screen/home/api/home_model.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -12,17 +13,16 @@ class HomeController extends GetxController {
   RxBool loader = false.obs;
   List<HomeModel> homeModel = [];
 
-  SpeechToText _speechToText = SpeechToText();
+  final SpeechToText _speechToText = SpeechToText();
 List dataShow =[];
 List filterData =[];
-  bool _speechEnabled = false;
   init()async{
 
     loader.value =true;
   homeModel =   await HomeApi.homeApi();
 
 
-  homeModel.forEach((e){
+  for (var e in homeModel) {
     if(e.postsWithoutSubCategory?.length != 0)
       {
         dataShow.add({
@@ -46,7 +46,7 @@ List filterData =[];
           'isSub':true,
         });
       }
-  });
+  }
 
 
     loader.value =false;
@@ -57,7 +57,15 @@ await speechInit();
 
   speechInit()async{
     if(await Permission.microphone.isGranted) {
-      _speechEnabled = await _speechToText.initialize();
+      try {
+        await _speechToText.initialize();
+      }
+      catch(e){
+
+        if (kDebugMode) {
+          print(e);
+        }
+      }
     }
     else if(await Permission.microphone.isDenied)
       {

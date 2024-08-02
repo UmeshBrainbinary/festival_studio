@@ -2,6 +2,7 @@ import 'package:festiveapp_studio/common/app_contstant.dart';
 import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/common/common_text_field.dart';
+import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/generate_logo/generate_logo_controller.dart';
 import 'package:festiveapp_studio/screen/select_logo/select_logo_screen.dart';
@@ -212,11 +213,13 @@ Widget addDetailsTextField(BuildContext context) {
         ),
         CommonPrimaryButton(
             onTap: () {
+
               hideKeyboard(context);
               if (controller.validate()) {
+                darkStatusBar();
                 Get.to(
-                  LogoSelectionPage(),
-                );
+                    ()=>LogoSelectionPage(),
+                )?.whenComplete(()=> darkStatusBar());
               }
             },
             text: StringRes.generate)

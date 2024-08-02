@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
@@ -23,7 +26,9 @@ isPlaying = List.generate(4, (index)=>false.obs);
       });
       update();
     } catch (e) {
-      print('Error initializing video player: $e');
+      if (kDebugMode) {
+        print('Error initializing video player: $e');
+      }
     }
   }
 

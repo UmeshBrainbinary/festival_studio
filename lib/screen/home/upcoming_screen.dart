@@ -1,10 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/card_detail/card_detail_screen.dart';
-import 'package:festiveapp_studio/screen/home/api/home_model.dart';
-import 'package:festiveapp_studio/utils/app_assets.dart';
+import 'package:festiveapp_studio/screen/home/upcomin_subcategory_screen.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +71,7 @@ class UpcomingScreen extends StatelessWidget {
             (isSub)
                 ? Expanded(
                     child: ListView.builder(
-                      itemCount: subData.length ?? 0,
+                      itemCount: subData.length,
                       itemBuilder: (context, index) {
                         return subData[index].posts.length !=0? Column(
                           children: [
@@ -87,10 +88,10 @@ class UpcomingScreen extends StatelessWidget {
                                 const Spacer(),
                                 InkWell(
                                   onTap: () {
-                                    // Get.to(MorningQuotes());
+
                                     lightStatusBar();
-                                   Get.to(()=>UpcomingScreen(name:   subData[index].subCategory ?? '',items: subData[index].posts,
-                                       subData :[],
+                                   Get.to(()=>UpcomingSubScreen(name:   subData[index].subCategory ?? '',items: subData[index].posts,
+                                       subData :const [],
                                        isSub: false
                                    ))?.whenComplete(()=> lightStatusBar());
                                   },
@@ -114,7 +115,7 @@ class UpcomingScreen extends StatelessWidget {
                               height: 5,
                             ),
                               SizedBox(
-                            height:270,
+                            height:220,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: subData[index].posts.length<=3?subData[index].posts.length:3,
@@ -130,8 +131,8 @@ class UpcomingScreen extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Container(
-                                      height: 250,
-                                      width: 150,
+                                      height: 200,
+                                      width: 200,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                       ),
@@ -140,8 +141,8 @@ class UpcomingScreen extends StatelessWidget {
                                           child: CachedNetworkImage(
                                             imageUrl:
                                             subData[index].posts[i].postImg?.url ?? '',
-                                            height: 250,
-                                            width: 150,
+                                            height: 200,
+                                            width: 200,
                                             fit: BoxFit.fill,
                                             placeholder: (context, i) {
                                               return Container();
@@ -167,7 +168,7 @@ class UpcomingScreen extends StatelessWidget {
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,
-                              childAspectRatio: 0.5,
+                              childAspectRatio: 0.7,
                               mainAxisSpacing: 10,
                               crossAxisSpacing: 10),
                       itemBuilder: (context, index) {
@@ -175,15 +176,15 @@ class UpcomingScreen extends StatelessWidget {
                           onTap: () {
                             darkStatusBar();
                             Get.to(() => CardDetailScreen(
-                                  name: name ?? '',
+                                  name: name,
                                   images: items[index]
                                           .postImg?.url ??
                                       '',
                                 ))?.whenComplete(()=> lightStatusBar());
                           },
                           child: Container(
-                            height: 250,
-                            width: 150,
+                            height: 200,
+                            width: 200,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -195,8 +196,8 @@ class UpcomingScreen extends StatelessWidget {
                                           .postImg
                                           ?.url ??
                                       '',
-                                  height: 250,
-                                  width: 150,
+                                  height: 200,
+                                  width: 200,
                                   fit: BoxFit.fill,
                                   placeholder: (context, i) {
                                     return Container();

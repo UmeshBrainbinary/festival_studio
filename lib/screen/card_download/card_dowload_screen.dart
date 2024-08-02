@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/common_primary_button.dart';
@@ -19,8 +21,6 @@ class CardDownload extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
-    final double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColors.backgroundCard,
       body: Padding(
@@ -57,8 +57,8 @@ class CardDownload extends StatelessWidget {
               height: 20,
             ),
             Container(
-              height: height * 0.55,
-              width:width *0.7,
+              height: 300,
+              width:300,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: const [
@@ -73,7 +73,7 @@ class CardDownload extends StatelessWidget {
                   child:CachedNetworkImage(
                     imageUrl: images,
                     height: 300,
-                    width: 200,
+                    width: 300,
                     fit: BoxFit.fill,
                     placeholder: (context,i){
                       return Container();
@@ -84,9 +84,7 @@ class CardDownload extends StatelessWidget {
                   )
               ),
             ),
-            const SizedBox(
-              height: 40,
-            ),
+            const Spacer(),
             CommonPrimaryButton(onTap: () {}, text: StringRes.removeWaterMark),
             const SizedBox(
               height: 20,
@@ -108,7 +106,11 @@ class CardDownload extends StatelessWidget {
                       image: AppAssets.share),
                 ),
               ],
-            )
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+
           ],
         ),
       ),

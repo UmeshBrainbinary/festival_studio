@@ -13,14 +13,14 @@ class CommonPrimaryButton extends StatelessWidget {
   final bool? isLoading;
 
   const CommonPrimaryButton({
-    Key? key,
+    super.key,
     required this.onTap,
     required this.text,
     this.width,
     this.buttonColor,
     this.textColor,
     this.isLoading,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

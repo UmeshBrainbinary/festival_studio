@@ -1,5 +1,6 @@
-import 'dart:io';
-import 'package:festiveapp_studio/common/testStyle.dart';
+
+// ignore_for_file: deprecated_member_use
+
 import 'package:festiveapp_studio/screen/dashboard/dashboard_controller.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
@@ -41,8 +42,8 @@ class DashBoardScreen extends StatelessWidget {
                     ElevatedButton(
                       style: ButtonStyle(
                         shape:
-                            MaterialStateProperty.resolveWith<OutlinedBorder>(
-                          (Set<MaterialState> states) {
+                            WidgetStateProperty.resolveWith<OutlinedBorder>(
+                          (Set<WidgetState> states) {
                             return RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                 100,
@@ -50,10 +51,10 @@ class DashBoardScreen extends StatelessWidget {
                             );
                           },
                         ),
-                        side: MaterialStateProperty.all(
+                        side: WidgetStateProperty.all(
                             const BorderSide(color: AppColors.lightPink)),
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
+                            WidgetStateProperty.all<Color>(Colors.white),
                       ),
                       onPressed: () {
                         return Navigator.of(context).pop(false);
@@ -67,8 +68,8 @@ class DashBoardScreen extends StatelessWidget {
                     ElevatedButton(
                       style: ButtonStyle(
                         shape:
-                            MaterialStateProperty.resolveWith<OutlinedBorder>(
-                          (Set<MaterialState> states) {
+                            WidgetStateProperty.resolveWith<OutlinedBorder>(
+                          (Set<WidgetState> states) {
                             return RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                 100,
@@ -76,7 +77,7 @@ class DashBoardScreen extends StatelessWidget {
                             );
                           },
                         ),
-                        side: MaterialStateProperty.all(
+                        side: WidgetStateProperty.all(
                             const BorderSide(color: AppColors.lightPink)),
                         backgroundColor:
                             MaterialStateProperty.all<Color>(AppColors.lightPink),

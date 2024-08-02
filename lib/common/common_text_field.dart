@@ -17,7 +17,7 @@ class CommonTextField extends StatelessWidget {
   // final String? Function(String?)? validator;
   final List<TextInputFormatter>? inputFormator;
 
-  CommonTextField(
+  const CommonTextField(
       {super.key,
       required this.controller,
       this.hint,

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:festiveapp_studio/common/common_loader.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/faq/faq_controller.dart';
@@ -7,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FaqScreen extends StatelessWidget {
-   FaqScreen({Key? key}) : super(key: key);
+   FaqScreen({super.key});
 FaqController faqController = Get.put(FaqController());
   @override
   Widget build(BuildContext context) {

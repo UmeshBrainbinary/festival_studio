@@ -1,13 +1,13 @@
+// ignore_for_file: must_be_immutable, deprecated_member_use
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
-import 'package:festiveapp_studio/screen/add_details/widget/add_details_widget.dart';
 import 'package:festiveapp_studio/screen/card_detail/cart_detail_controller.dart';
 import 'package:festiveapp_studio/screen/card_download/card_dowload_screen.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
-import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -57,8 +57,8 @@ class CardDetailScreen extends StatelessWidget {
                       SizedBox(height: height * 0.015),
                       Container(
                        // width: width * 0.73,
-                        height: height * 0.55,
-                        width:width *0.6,
+                        height: 300,
+                        width:300,
                         //padding: EdgeInsets.all(width * 0.025),
                         decoration: BoxDecoration(
                           color: AppColors.white,
@@ -77,8 +77,8 @@ class CardDetailScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                             child:CachedNetworkImage(
                               imageUrl: images,
-                              height: height * 0.55,
-                              width:width *0.5,
+                              height:300,
+                              width:300,
                               fit: BoxFit.fill,
                               placeholder: (context,i){
                                 return Container();
@@ -111,7 +111,7 @@ class CardDetailScreen extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Container(
-                                      height: 200,
+                                      height: 150,
                                       width: 150,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
@@ -119,14 +119,14 @@ class CardDetailScreen extends StatelessWidget {
                                       child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(10),
-                                          child: Image.asset(AppAssets.card1,)),
+                                          child: Image.asset(AppAssets.card1,fit: BoxFit.fill,)),
                                     ),
                                   ],
                                 ),
                               );
                             },
                           ),
-                        ) : SizedBox(),
+                        ) : const SizedBox(),
                       )
                     ],
                   ),

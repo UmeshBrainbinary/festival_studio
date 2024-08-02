@@ -2,8 +2,6 @@ import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/screen/auth/otp_verification/otp_screen.dart';
 import 'package:festiveapp_studio/screen/auth/signup/api/signup_api.dart';
 import 'package:festiveapp_studio/screen/auth/signup/api/signup_model.dart';
-import 'package:festiveapp_studio/service/pref_services.dart';
-import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

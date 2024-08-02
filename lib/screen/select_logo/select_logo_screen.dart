@@ -21,6 +21,8 @@ class LogoSelectionPage extends StatelessWidget {
     AppAssets.logo2,
   ];
 
+   LogoSelectionPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +47,17 @@ class LogoSelectionPage extends StatelessWidget {
                   style: boldFontStyle(size: 18, color: AppColors.blackColor),
                 ),
                 const Spacer(),
+                Visibility(
+                  visible: false,
+                  maintainSize: true,
+                  maintainAnimation: true,
+                  maintainState: true,
+                  child: CommonBackButton(
+                    onTap: () {
+
+                    },
+                  ),
+                ),
               ],
             ),
             Expanded(

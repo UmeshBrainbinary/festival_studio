@@ -5,8 +5,6 @@ import 'package:festiveapp_studio/common/status_bar.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/card_detail/card_detail_screen.dart';
 import 'package:festiveapp_studio/screen/home/home_controller.dart';
-import 'package:festiveapp_studio/screen/home/morning_quotes.dart';
-import 'package:festiveapp_studio/screen/home/motivational_screen.dart';
 import 'package:festiveapp_studio/screen/home/upcoming_screen.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
@@ -56,7 +54,7 @@ Widget textField() {
 Widget festivalListview({context,index}) {
 
   return (controller.dataShow.length !=0 &&  controller.dataShow[index]['posts'].length !=0 )? SizedBox(
-    height: 305,
+    height: 260,
     child: Column(
       children: [
         const SizedBox(
@@ -78,9 +76,9 @@ Widget festivalListview({context,index}) {
               onTap: () {
                 // Get.to(MorningQuotes());
                 lightStatusBar();
-                Get.to(()=>UpcomingScreen(name:   controller.filterData[index]['name'] ?? '',items: controller.filterData[index]['posts'],
-                    subData :controller.filterData[index]['subData'],
-                    isSub:  controller.filterData[index]['isSub']
+                Get.to(()=>UpcomingScreen(name:   controller.dataShow[index]['name'] ?? '',items: controller.dataShow[index]['posts'],
+                    subData :controller.dataShow[index]['subData'],
+                    isSub:  controller.dataShow[index]['isSub']
                 ),)?.whenComplete(()=> lightStatusBar());
               },
               child: Row(
@@ -122,8 +120,8 @@ Widget festivalListview({context,index}) {
 
                     children: [
                       Container(
-                        height: 250,
-                        width: 150,
+                        height: 200,
+                        width: 200,
                         decoration: BoxDecoration(
 
                           borderRadius: BorderRadius.circular(10),
@@ -158,7 +156,7 @@ Widget festivalListview({context,index}) {
 Widget festivalListviewFilter({context,index}) {
 
   return (controller.filterData.length !=0 &&  controller.filterData[index]['posts'].length !=0 )? SizedBox(
-    height: 305,
+    height: 260,
     child: Column(
       children: [
         const SizedBox(
@@ -219,8 +217,8 @@ Widget festivalListviewFilter({context,index}) {
 
                     children: [
                       Container(
-                        height: 250,
-                        width: 150,
+                        height: 200,
+                        width: 200,
                         decoration: BoxDecoration(
 
                           borderRadius: BorderRadius.circular(10),

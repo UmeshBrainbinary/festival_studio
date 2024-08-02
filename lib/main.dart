@@ -3,10 +3,10 @@ import 'package:festiveapp_studio/screen/no_internet_screen/no_internet_controll
 import 'package:festiveapp_studio/service/pref_services.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/pref_keys.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +23,9 @@ Future<void> main() async{
     ),
   );
 
-  print("token:------>>> ${PrefService.getString(PrefKeys.accessToken)}");
+  if (kDebugMode) {
+    print("token:------>>> ${PrefService.getString(PrefKeys.accessToken)}");
+  }
   runApp(
     const MyApp(),
   );

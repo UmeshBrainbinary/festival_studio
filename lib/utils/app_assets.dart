@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class AppAssets {
   static const String images = 'assets/images';

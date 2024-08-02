@@ -4,7 +4,6 @@ import 'package:festiveapp_studio/screen/add_details/api/add_details_model.dart'
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 
 class AddDetailsController extends GetxController {
   TextEditingController brandName = TextEditingController();

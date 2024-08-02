@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:festiveapp_studio/screen/termsCondition/api/terms_api.dart';
 import 'package:festiveapp_studio/screen/termsCondition/api/terms_model.dart';
 import 'package:get/get.dart';

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:festiveapp_studio/screen/generate_logo/generate_logo_controller.dart';
 import 'package:festiveapp_studio/screen/generate_logo/widget/generate_logo_widget.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
