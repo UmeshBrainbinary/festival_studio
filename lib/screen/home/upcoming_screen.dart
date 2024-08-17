@@ -126,6 +126,7 @@ class UpcomingScreen extends StatelessWidget {
                                     Get.to(() => CardDetailScreen(
                                       name: subData[index].subCategory ?? '',
                                       images: subData[index].posts[i].postImg?.url ?? '',
+                                      frame: subData[index].posts[i].frameImg?.url ?? '',
                                     ))?.whenComplete(()=> lightStatusBar());
                                   },
                                   child: Padding(
@@ -180,6 +181,7 @@ class UpcomingScreen extends StatelessWidget {
                                   images: items[index]
                                           .postImg?.url ??
                                       '',
+                              frame: items[index].frameImg?.url ?? '',
                                 ))?.whenComplete(()=> lightStatusBar());
                           },
                           child: Container(

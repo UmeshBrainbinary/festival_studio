@@ -5,4 +5,12 @@ class PrefKeys{
   static const String userId = "userId";
   static const String accessToken = "accessToken";
   static const String internet = "internet";
+
+  /// -------------- details ---------------
+  static const String brandName = "brandName";
+  static const String tagLine = "tagline";
+  static const String website = "website";
+  static const String primaryColor = "primaryColor";
+  static const String secondaryColor = "secondaryColor";
+
 }

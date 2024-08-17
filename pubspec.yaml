@@ -47,6 +47,8 @@ dependencies:
   speech_to_text:
   permission_handler: ^11.3.1
   connectivity_plus:  ^5.0.2
+  image_picker: ^1.1.2
+  flutter_color_picker_wheel: ^0.0.1
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +75,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/frames/
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

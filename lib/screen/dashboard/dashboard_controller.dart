@@ -1,4 +1,7 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:festiveapp_studio/common/status_bar.dart';
+import 'package:festiveapp_studio/screen/generate_logo/generate_logo_controller.dart';
 import 'package:festiveapp_studio/screen/generate_logo/generate_logo_screen.dart';
 import 'package:festiveapp_studio/screen/help&support/help&suport_screen.dart';
 import 'package:festiveapp_studio/screen/home/home_screen.dart';
@@ -49,6 +52,7 @@ class DashBoardController extends GetxController{
     if(currentIndex ==3)
     {
       darkStatusBar();
+      GenerateLogoController generateLogoController = Get.put(GenerateLogoController());
     }
   }
 }

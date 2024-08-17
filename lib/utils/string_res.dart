@@ -52,6 +52,7 @@ class StringRes {
   static const String phoneNo = 'Phone No.';
   static const String website = 'Website';
   static const String address = 'Address';
+  static const String brandLogo = 'Brand Logo';
   static const String information ='''Complete your account setup by providing
  Brand information.''';
   static const String brandError = 'Please enter brand name';
@@ -61,6 +62,7 @@ class StringRes {
   static const String websiteError = 'Please enter website';
   static const String validWebError = 'Please enter a valid website URL';
   static const String addressError = 'Please enter address';
+  static const String logoError = 'Please upload logo';
 
   /// -------------------- dashboard---------------------- ///
   static const exit ="Exit";
@@ -99,6 +101,8 @@ static const String brandDetails = '''Add your brand details and logo type for
 
 static const String selectLogo = 'Select Logo';
 static const String select = 'Select';
+static const String camera = 'Camera';
+static const String gallery = 'Gallery';
 static const String categoryError = 'Please enter category';
 static const String logoTypeError = 'Please enter logo type';
 static const String primaryColorError = 'Please enter primary color';

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   width="1440"
+   height="2560"
+   viewBox="0 0 1440 2560"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath26">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path24" />
+    </clipPath>
+
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath856">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path854" />
+    </clipPath>
+
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath950">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path948" />
+    </clipPath>
+
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1062">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path1060" />
+    </clipPath>
+
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1130">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path1128" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1308">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path1306" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1320">
+      <path
+         d="m 471.871,1795.949 c -0.474,-0.422 -1.003,-0.896 -1.53,-1.318 v 0 c -0.791,-0.686 -1.635,-1.372 -2.427,-2.11 v 0 c -3.217,-2.849 -6.33,-5.856 -9.284,-9.021 v 0 c -0.738,-0.844 -1.477,-1.635 -2.163,-2.479 v 0 l -1.002,-1.266 -1.002,-1.319 c -0.37,-0.422 -0.686,-0.844 -0.949,-1.319 v 0 l -0.423,-0.58 c -0.211,3.851 0.264,9.812 4.115,15.403 v 0 c 0.95,1.424 2.057,2.796 3.376,4.009 v 0 H 390 v -93.001 h 93.001 v 87.99 c -2.532,-6.224 -6.066,-10.92 -10.603,-13.979 v 0 c -7.121,-4.854 -14.876,-4.273 -18.146,-3.798 v 0 l 0.263,0.527 0.37,0.686 c 0.106,0.211 0.211,0.422 0.369,0.633 v 0 l 0.422,0.686 c 0.264,0.422 0.528,0.844 0.845,1.266 v 0 l 0.896,1.319 0.949,1.213 c 0.633,0.844 1.319,1.635 2.005,2.479 v 0 c 2.743,3.218 5.698,6.278 8.757,9.232 v 0 c 0.791,0.738 1.583,1.424 2.374,2.162 v 0 c 0.791,0.739 1.53,1.478 2.373,2.163 v 0 l 0.475,0.422 z m -53.174,-19.939 h 9.812 v -44.101 h 25.848 v -9.021 h -35.66 z"
+         id="path1318" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2352">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path2350" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2364">
+      <path
+         d="m 493.499,1795.949 v -93.001 h 56.761 c 0.634,1.899 1.53,3.851 2.848,5.75 v 0 c 5.118,7.49 14.508,12.291 28.065,14.295 v 0 l -2.216,-1.635 c -1.74,-1.265 -3.429,-2.585 -5.169,-3.85 v 0 c -0.844,-0.634 -1.689,-1.32 -2.533,-2.005 v 0 l -2.478,-2.005 c -0.845,-0.685 -1.636,-1.424 -2.48,-2.109 v 0 c -0.844,-0.686 -1.635,-1.372 -2.479,-2.111 v 0 c -2.269,-2.057 -4.537,-4.167 -6.7,-6.33 v 0 h 2.954 c 1.635,1.688 3.27,3.376 5.012,5.012 v 0 c 0.738,0.738 1.529,1.423 2.321,2.162 v 0 c 0.791,0.738 1.582,1.477 2.373,2.163 v 0 l 2.427,2.11 c 0.792,0.685 1.583,1.424 2.427,2.057 v 0 c 1.635,1.372 3.271,2.743 4.958,4.063 v 0 l 3.218,2.478 c -1.107,-8.123 -3.165,-14.823 -6.172,-20.045 v 0 h 9.865 v 93.001 z m 26.112,-19.939 h 27.062 c 1.793,0 3.376,-0.422 4.8,-1.214 v 0 c 1.425,-0.792 2.638,-1.846 3.641,-3.113 v 0 c 1.001,-1.265 1.74,-2.69 2.321,-4.325 v 0 c 0.527,-1.635 0.791,-3.271 0.791,-4.906 v 0 c 0,-2.585 -0.581,-5.011 -1.847,-7.28 v 0 c -1.213,-2.268 -3.059,-3.957 -5.433,-5.063 v 0 c 2.901,-0.898 5.222,-2.48 6.911,-4.801 v 0 c 1.687,-2.321 2.532,-5.223 2.532,-8.757 v 0 c 0,-2.216 -0.423,-4.22 -1.267,-5.909 v 0 c -0.896,-1.687 -2.057,-3.112 -3.534,-4.272 v 0 c -1.53,-1.108 -3.271,-2.005 -5.223,-2.585 v 0 c -1.951,-0.633 -4.061,-0.897 -6.329,-0.897 v 0 h -24.425 z m 9.812,-8.863 V 1753.8 h 13.136 c 1.635,0 3.059,0.581 4.22,1.794 v 0 c 1.16,1.161 1.74,2.796 1.74,4.906 v 0 c 0,2.057 -0.527,3.693 -1.582,4.854 v 0 c -1.056,1.213 -2.374,1.793 -3.956,1.793 v 0 z m 0,-21.523 v -13.979 h 14.613 c 0.896,0 1.74,0.158 2.531,0.527 v 0 c 0.792,0.317 1.478,0.845 2.058,1.425 v 0 c 0.58,0.633 1.002,1.372 1.319,2.215 v 0 c 0.369,0.844 0.527,1.741 0.527,2.691 v 0 c 0,0.95 -0.158,1.846 -0.475,2.743 v 0 c -0.316,0.897 -0.738,1.635 -1.213,2.268 v 0 c -0.527,0.686 -1.16,1.16 -1.899,1.53 v 0 c -0.686,0.369 -1.477,0.58 -2.321,0.58 v 0 z"
+         id="path2362" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3396">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path3394" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3408">
+      <path
+         d="m 627.331,1795.949 c -2.163,-6.699 -5.539,-11.605 -10.023,-14.611 v 0 c -6.067,-4.115 -12.713,-3.693 -15.456,-3.219 v 0 l 0.21,0.422 0.317,0.581 c 0.105,0.158 0.211,0.369 0.317,0.527 v 0 l 0.316,0.581 c 0.264,0.369 0.475,0.738 0.739,1.108 v 0 l 0.791,1.107 0.791,1.055 c 0.528,0.738 1.161,1.372 1.688,2.11 v 0 c 2.374,2.743 4.853,5.328 7.491,7.86 v 0 c 0.634,0.633 1.319,1.214 2.004,1.846 v 0 c 0.212,0.211 0.475,0.423 0.686,0.633 v 0 h -2.163 c -0.527,-0.474 -1.055,-0.896 -1.582,-1.371 v 0 c -2.743,-2.427 -5.381,-4.959 -7.86,-7.702 v 0 c -0.633,-0.686 -1.266,-1.371 -1.846,-2.11 v 0 l -0.897,-1.055 -0.844,-1.108 c -0.317,-0.369 -0.58,-0.738 -0.844,-1.16 v 0 l -0.317,-0.475 c -0.158,3.27 0.211,8.388 3.482,13.135 v 0 c 0.422,0.633 0.896,1.267 1.424,1.846 v 0 h -8.809 v -93.001 h 93.001 v 93.001 z m 8.071,-71.057 c -3.007,1.583 -5.592,3.693 -7.755,6.278 v 0 c -2.162,2.532 -3.851,5.486 -5.064,8.705 v 0 c -1.213,3.27 -1.794,6.646 -1.794,10.022 v 0 c 0,3.218 0.528,6.436 1.689,9.601 v 0 c 1.108,3.165 2.743,6.014 4.853,8.493 v 0 c 2.162,2.479 4.747,4.536 7.86,6.066 v 0 c 3.112,1.531 6.594,2.322 10.55,2.322 v 0 c 4.642,0 8.704,-1.055 12.081,-3.218 v 0 c 3.428,-2.164 5.96,-4.959 7.596,-8.388 v 0 l -7.544,-5.433 c -0.686,1.477 -1.477,2.743 -2.426,3.745 v 0 c -0.95,1.055 -2.005,1.847 -3.06,2.427 v 0 c -1.108,0.633 -2.268,1.055 -3.429,1.318 v 0 c -1.214,0.264 -2.374,0.423 -3.482,0.423 v 0 c -2.479,0 -4.642,-0.528 -6.488,-1.584 v 0 c -1.794,-1.054 -3.324,-2.426 -4.537,-4.061 v 0 c -1.213,-1.688 -2.162,-3.588 -2.743,-5.697 v 0 c -0.633,-2.111 -0.949,-4.22 -0.949,-6.331 v 0 c 0,-2.321 0.369,-4.589 1.054,-6.752 v 0 c 0.739,-2.162 1.742,-4.114 3.06,-5.75 v 0 c 1.319,-1.635 2.849,-2.953 4.695,-3.956 v 0 c 1.847,-1.003 3.851,-1.477 6.014,-1.477 v 0 c 1.161,0 2.321,0.158 3.587,0.422 v 0 c 1.213,0.317 2.426,0.791 3.534,1.424 v 0 c 1.108,0.686 2.163,1.478 3.112,2.532 v 0 c 0.95,1.002 1.689,2.269 2.269,3.693 v 0 l 8.072,-4.854 c -0.845,-2.004 -2.006,-3.744 -3.483,-5.274 v 0 c -1.476,-1.53 -3.165,-2.796 -5.064,-3.852 v 0 c -1.846,-1.054 -3.903,-1.845 -6.014,-2.426 v 0 c -2.162,-0.527 -4.22,-0.791 -6.277,-0.791 v 0 c -3.64,0 -6.91,0.791 -9.917,2.373"
+         id="path3406" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath4440">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path4438" />
+    </clipPath>
+  </defs>
+  <text
+      x="50%" y="80%" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="16"
+
+      style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:
+       'Sitka Small';-inkscape-font-specification:SitkaText;writing-mode:lr-tb;fill:#c28f45;
+       fill-opacity:1;fill-rule:nonzero;stroke:none"
+      id="text14"><tspan
+
+        fill="#383838"
+         id="tspan12">Dear friend, ever since you came into my life, you have ﬁlled</tspan></text>
+  <text
+      x="50%" y="83%" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="16"
+      style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:'Sitka Small';-inkscape-font-specification:SitkaText;writing-mode:lr-tb;fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"
+      id="text18"><tspan
+          fill="#383838"
+         id="tspan16">my life with utter joy and happiness! Happy Friendship Day to you!</tspan></text>
+
+
+  <text
+      x="50%" y="90%" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="14"
+      style="font-variant:normal;font-weight:500;font-stretch:normal;font-size:30px;font-family:Poppins;-inkscape-font-specification:Poppins-Medium;writing-mode:lr-tb;fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"
+      id="text1296">
+
+   <tspan
+       fill="#383838"
+       id="tspan1292">www.luxurybeautyclub.com</tspan>
+
+     </text>
+
+  <text
+      x="50%" y="20%" text-anchor="middle" fill="#ffffff" font-family="Arial" font-size="14"
+      style="font-variant:normal;font-weight:500;font-stretch:normal;font-size:30px;font-family:Poppins;-inkscape-font-specification:Poppins-Medium;writing-mode:lr-tb;fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"
+      id="text1296">
+
+    <tspan
+        fill="#383838"
+        id="tspan1292">06, August 2024</tspan>
+
+  </text>
+
+
+
+
+  <g
+     id="g8"
+     transform="matrix(1.3333333,0,0,-1.3333333,0,2560)">
+
+
+
+
+
+
+    <g
+       id="g4434">
+      <g
+         id="g4436"
+         clip-path="url(#clipPath4440)">
+
+        <path
+           d="M 1080,0 H 0 v 45 h 1080 z"
+           style="fill:#383838;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path4446" />
+        <path
+           d="M 1080,22.5 H 0 V 45 h 1080 z"
+           style="fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path4448" />
+        <path
+           d="M 1080,1875 H 0 v 45 h 1080 z"
+           style="fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path4450" />
+        <path
+           d="M 1080,1897.5 H 0 v 22.5 h 1080 z"
+           style="fill:#383838;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path4452" />
+      </g>
+    </g>
+  </g>
+</svg>

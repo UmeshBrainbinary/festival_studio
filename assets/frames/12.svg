@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   width="1080"
+   height="1920"
+   viewBox="0 0 1080 1920"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath18">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path16" />
+    </clipPath>
+    <radialGradient
+       fx="0"
+       fy="0"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(9.7354517,0,0,-9.7354517,426.51535,1270.4703)"
+       spreadMethod="pad"
+       id="radialGradient838">
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0"
+         id="stop832" />
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0.3724427"
+         id="stop834" />
+      <stop
+         style="stop-opacity:1;stop-color:#ff7700"
+         offset="1"
+         id="stop836" />
+    </radialGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath848">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path846" />
+    </clipPath>
+    <radialGradient
+       fx="0"
+       fy="0"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(7.4309716,0,0,-7.4309716,427.08514,1269.7852)"
+       spreadMethod="pad"
+       id="radialGradient932">
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0"
+         id="stop926" />
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0.3724427"
+         id="stop928" />
+      <stop
+         style="stop-opacity:1;stop-color:#ff7700"
+         offset="1"
+         id="stop930" />
+    </radialGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath942">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path940" />
+    </clipPath>
+    <radialGradient
+       fx="0"
+       fy="0"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(7.8948412,0,0,-7.8948412,427.68713,1267.1239)"
+       spreadMethod="pad"
+       id="radialGradient1022">
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0"
+         id="stop1016" />
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0.3724427"
+         id="stop1018" />
+      <stop
+         style="stop-opacity:1;stop-color:#ff7700"
+         offset="1"
+         id="stop1020" />
+    </radialGradient>
+    <radialGradient
+       fx="0"
+       fy="0"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(11.696045,0,0,-11.696045,424.29178,1270.1715)"
+       spreadMethod="pad"
+       id="radialGradient1044">
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0"
+         id="stop1038" />
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0.3724427"
+         id="stop1040" />
+      <stop
+         style="stop-opacity:1;stop-color:#ff7700"
+         offset="1"
+         id="stop1042" />
+    </radialGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1054">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path1052" />
+    </clipPath>
+    <radialGradient
+       fx="0"
+       fy="0"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(35.268066,0,0,-35.268066,481.60864,1251.9613)"
+       spreadMethod="pad"
+       id="radialGradient1090">
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0"
+         id="stop1084" />
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0.3724427"
+         id="stop1086" />
+      <stop
+         style="stop-opacity:1;stop-color:#ff7700"
+         offset="1"
+         id="stop1088" />
+    </radialGradient>
+    <radialGradient
+       fx="0"
+       fy="0"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(35.502373,0,0,-35.502373,481.59735,1251.975)"
+       spreadMethod="pad"
+       id="radialGradient1112">
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0"
+         id="stop1106" />
+      <stop
+         style="stop-opacity:1;stop-color:#ffc800"
+         offset="0.3724427"
+         id="stop1108" />
+      <stop
+         style="stop-opacity:1;stop-color:#ff7700"
+         offset="1"
+         id="stop1110" />
+    </radialGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1122">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path1120" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1308">
+      <path
+         d="M 0,1920 H 1080 V 0 H 0 Z"
+         id="path1306" />
+    </clipPath>
+  </defs>
+  <g
+     id="g8">
+
+
+    <text
+        x="50%" y="21%" text-anchor="middle" fill="#383838" font-family="Arial" font-size="16"
+
+        style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:
+       'Sitka Small';-inkscape-font-specification:SitkaText;writing-mode:lr-tb;fill:#c28f45;
+       fill-opacity:1;fill-rule:nonzero;stroke:none"
+        id="text14"><tspan
+
+        fill="#383838"
+        id="tspan12">Dear friend, ever since you came into my life, you have ﬁlled</tspan></text>
+    <text
+        x="50%" y="23%" text-anchor="middle" fill="#383838" font-family="Arial" font-size="16"
+        style="font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;font-family:'Sitka Small';-inkscape-font-specification:SitkaText;writing-mode:lr-tb;fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"
+        id="text18"><tspan
+        fill="#383838"
+        id="tspan16">my life with utter joy and happiness! Happy Friendship Day to you!</tspan></text>
+
+    <text
+        x="50%" y="10%" text-anchor="middle" fill="#383838" font-family="Arial" font-size="14"
+        style="font-variant:normal;font-weight:500;font-stretch:normal;font-size:30px;font-family:Poppins;-inkscape-font-specification:Poppins-Medium;writing-mode:lr-tb;fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"
+        id="text1296">
+
+      <tspan
+          fill="#383838"
+          id="tspan1292">www.luxurybeautyclub.com</tspan>
+
+    </text>
+
+    <text
+        x="50%" y="16%" text-anchor="middle" fill="#383838" font-family="Arial" font-size="14"
+        style="font-variant:normal;font-weight:500;font-stretch:normal;font-size:30px;font-family:Poppins;-inkscape-font-specification:Poppins-Medium;writing-mode:lr-tb;fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"
+        id="text1296">
+
+      <tspan
+          fill="#383838"
+          id="tspan1292">06, August 2024</tspan>
+
+    </text>
+
+    <g
+       id="g1302">
+      <g
+         id="g1304"
+         clip-path="url(#clipPath1308)">
+        <path
+           d="M 1080,0 H 0 v 45 h 1080 z"
+           style="fill:#383838;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path1310" />
+        <path
+           d="M 1080,22.5 H 0 V 45 h 1080 z"
+           style="fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path1312" />
+        <path
+           d="M 1080,1875 H 0 v 45 h 1080 z"
+           style="fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path1314" />
+        <path
+           d="M 1080,1897.5 H 0 v 22.5 h 1080 z"
+           style="fill:#383838;fill-opacity:1;fill-rule:nonzero;stroke:none"
+           id="path1316" />
+
+
+
+
+
+
+      </g>
+    </g>
+  </g>
+</svg>

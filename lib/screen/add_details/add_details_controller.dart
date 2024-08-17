@@ -1,9 +1,15 @@
 
+
+import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/add_details/api/add_details_api.dart';
 import 'package:festiveapp_studio/screen/add_details/api/add_details_model.dart';
+import 'package:festiveapp_studio/service/pref_services.dart';
+import 'package:festiveapp_studio/utils/app_colors.dart';
+import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddDetailsController extends GetxController {
   TextEditingController brandName = TextEditingController();
@@ -12,6 +18,7 @@ class AddDetailsController extends GetxController {
   TextEditingController email = TextEditingController();
   TextEditingController website = TextEditingController();
   TextEditingController address = TextEditingController();
+  TextEditingController logo = TextEditingController();
 RxBool loader = false.obs;
   RxString brandNameError =''.obs;
   RxString tagLineError =''.obs;
@@ -19,6 +26,10 @@ RxBool loader = false.obs;
   RxString emailError =''.obs;
   RxString websiteError =''.obs;
   RxString addressError =''.obs;
+  RxString logoError =''.obs;
+
+  Rx<String> logoImage =''.obs;
+
 BrandModel brandModel = BrandModel();
   brandNameValidation(){
     if (brandName.text.trim().isEmpty) {
@@ -111,6 +122,19 @@ BrandModel brandModel = BrandModel();
       return true;
     }
   }
+  logoValidation(){
+    if (logoImage.value.trim().isEmpty) {
+
+      logoError.value = StringRes.logoError;
+      return false;
+    }
+    else
+    {
+      logoError.value ='';
+
+      return true;
+    }
+  }
 
 
   bool validate() {
@@ -121,13 +145,18 @@ BrandModel brandModel = BrandModel();
     emailValidation();
     websiteValidation();
     addressValidation();
+    logoValidation();
      if (brandNameError.value =='' &&
      tagLineError.value =='' &&
      mobileError.value =='' &&
      emailError.value =='' &&
      websiteError.value =='' &&
-     addressError.value =='' ) {
+     addressError.value =='' &&
+     logoError.value =='') {
 
+       PrefService.setValue(PrefKeys.website, website.text);
+       PrefService.setValue(PrefKeys.brandName, brandName.text);
+       PrefService.setValue(PrefKeys.tagLine, tagLine.text);
       return true;
     } else {
       return false;
@@ -141,5 +170,75 @@ onTapSubmit()async{
 
     loader.value =false;
 }
+
+
+
+  cameraDialog(context) async {
+    await showModalBottomSheet(
+        elevation: 10,
+        barrierColor: AppColors.blackColor.withOpacity(0.4),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(30.0),
+            topLeft: Radius.circular(30.0),
+          ),
+        ),
+        backgroundColor: AppColors.white,
+        context: context,
+        builder: (context) {
+          return SafeArea(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                GestureDetector(
+                  onTap: () async {
+                    Get.back();
+                    pickImage(source: ImageSource.camera);
+                  },
+                  // child: customListTile(icon: Icons.camera, name: StringRes.camera.tr)
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.camera,
+                      color: AppColors.lightPink,
+                    ),
+                    title: Text(StringRes.camera.tr, style: mediumFontStyle(size: 18, color: AppColors.lightPink)),
+                  ),
+                ),
+                Container(
+                  height: 0.5,
+                  width: Get.width,
+                  color: AppColors.white,
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    Get.back();
+                    pickImage(source: ImageSource.gallery);
+                  },
+                  child: ListTile(
+                    leading: const Icon(
+                      Icons.photo_size_select_actual_outlined,
+                      color: AppColors.lightPink,
+                    ),
+                    title: Text(StringRes.gallery.tr,
+                        style:  mediumFontStyle(size: 18, color: AppColors.lightPink))
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+
+  Future<void> pickImage({required ImageSource source}) async {
+    ImagePicker imagePicker =ImagePicker();
+    final pickImage = await imagePicker.pickImage(source: source);
+    if (pickImage != null) {
+      logoImage.value = (pickImage.path);
+
+    }
+
+  }
+
 
 }

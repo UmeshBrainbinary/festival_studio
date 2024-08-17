@@ -111,7 +111,9 @@ Widget festivalListview({context,index}) {
                 onTap: (){
                   darkStatusBar();
                   Get.to(()=>CardDetailScreen(name: controller.dataShow[index]['name'] ?? '',
-                    images:controller.dataShow[index]['posts'][i].postImg?.url ?? '',))?.whenComplete(()=> lightStatusBar());
+                    images:controller.dataShow[index]['posts'][i].postImg?.url ?? '',
+                    frame: controller.dataShow[index]['posts'][i].frameImg?.url ?? '',
+                  ))?.whenComplete(()=> lightStatusBar());
 
                 },
                 child: Padding(
@@ -208,7 +210,9 @@ Widget festivalListviewFilter({context,index}) {
                 onTap: (){
                   darkStatusBar();
                   Get.to(()=>CardDetailScreen(name: controller.filterData[index]['name'] ?? '',
-                    images:controller.filterData[index]['posts'][i].postImg?.url ?? '',))?.whenComplete(()=> lightStatusBar());
+                    images:controller.filterData[index]['posts'][i].postImg?.url ?? '',
+                    frame: controller.filterData[index]['posts'][i].frameImg?.url ?? '',
+                  ))?.whenComplete(()=> lightStatusBar());
 
                 },
                 child: Padding(
@@ -226,7 +230,7 @@ Widget festivalListviewFilter({context,index}) {
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: CachedNetworkImage(
-                              imageUrl: controller.filterData[index]['posts'][i].postImg?.url ?? '',
+                              imageUrl: controller.filterData[index]['posts'][i].frameImg?.url ?? '',
                               height: 250,
                               width: 150,
                               fit: BoxFit.fill,

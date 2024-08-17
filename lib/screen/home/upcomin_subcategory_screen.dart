@@ -85,6 +85,7 @@ class UpcomingSubScreen extends StatelessWidget {
                         images: items[index]
                             .postImg?.url ??
                             '',
+                        frame: items[index].frameImg?.url ?? '',
                       ))?.whenComplete(()=> lightStatusBar());
                     },
                     child: Container(

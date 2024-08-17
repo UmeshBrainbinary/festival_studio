@@ -1,4 +1,6 @@
 
+import 'package:festiveapp_studio/service/pref_services.dart';
+import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -8,10 +10,11 @@ class GenerateLogoController extends GetxController{
   TextEditingController tagLine = TextEditingController();
   TextEditingController category = TextEditingController();
   TextEditingController logoType = TextEditingController();
-  TextEditingController primaryColor = TextEditingController();
-  TextEditingController secondaryColor = TextEditingController();
 
 
+
+  int? primaryColor;
+  int? secondaryColor;
 
   RxString brandNameError =''.obs;
   RxString tagLineError =''.obs;
@@ -73,7 +76,7 @@ class GenerateLogoController extends GetxController{
   }
 
   primaryColorValidation(){
-    if (primaryColor.text.trim().isEmpty) {
+    if (primaryColor == null) {
 
       primaryColorError.value = StringRes.primaryColorError;
       return false;
@@ -86,7 +89,7 @@ class GenerateLogoController extends GetxController{
     }
   }
   secondaryColorValidation(){
-    if (secondaryColor.text.trim().isEmpty) {
+    if (secondaryColor == null) {
 
       secondaryColorError.value = StringRes.secondaryColorError;
       return false;
@@ -112,7 +115,10 @@ class GenerateLogoController extends GetxController{
         logoTypeError.value =='' &&
         primaryColorError.value =='' &&
         secondaryColorError.value =='' ) {
-
+      PrefService.setValue(PrefKeys.primaryColor,primaryColor);
+      PrefService.setValue(PrefKeys.secondaryColor, secondaryColor);
+      PrefService.setValue(PrefKeys.brandName, brandName.text);
+      PrefService.setValue(PrefKeys.tagLine, tagLine.text);
       return true;
     } else {
       return false;

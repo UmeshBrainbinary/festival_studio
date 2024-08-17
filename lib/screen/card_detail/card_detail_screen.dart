@@ -3,19 +3,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/status_bar.dart';
+import 'package:festiveapp_studio/common/svgContent/customColor_change.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/card_detail/cart_detail_controller.dart';
 import 'package:festiveapp_studio/screen/card_download/card_dowload_screen.dart';
+import 'package:festiveapp_studio/service/pref_services.dart';
 import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
+import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-
+import 'package:http/http.dart' as http;
 class CardDetailScreen extends StatelessWidget {
   String name;
   String images;
-  CardDetailScreen({super.key,required this.name,required this.images});
+  String frame;
+  CardDetailScreen({super.key,required this.name,required this.images,required this.frame});
   CardDetailController controller = Get.put(CardDetailController());
   @override
   Widget build(BuildContext context) {
@@ -55,77 +59,122 @@ class CardDetailScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(height: height * 0.015),
-                      Container(
-                       // width: width * 0.73,
-                        height: 300,
-                        width:300,
-                        //padding: EdgeInsets.all(width * 0.025),
-                        decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.circular(8),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.4),
-                              spreadRadius: 3,
-                              blurRadius: 7,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
+                      GetBuilder<CardDetailController>(
+                        id: "frame",
+                        builder: (con) {
+                          return Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Container(
+                               // width: width * 0.73,
+                                height: 400,
+                                width:280,
+                                //padding: EdgeInsets.all(width * 0.025),
+                                decoration: BoxDecoration(
+                                  color: AppColors.white,
+                                  borderRadius: BorderRadius.circular(8),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.4),
+                                      spreadRadius: 3,
+                                      blurRadius: 7,
+                                      offset: const Offset(0, 2),
+                                    ),
+                                  ],
+                                ),
 
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child:CachedNetworkImage(
-                              imageUrl: images,
-                              height:300,
-                              width:300,
-                              fit: BoxFit.fill,
-                              placeholder: (context,i){
-                                return Container();
-                              },
-                              errorWidget:  (context,i,r){
-                                return Container();
-                              },
-                            )
-                          ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8),
+                                    child:CachedNetworkImage(
+                                      imageUrl: images,
+                                      height: 400,
+                                      width:350,
+                                      fit: BoxFit.fill,
+                                      placeholder: (context,i){
+                                        return Container();
+                                      },
+                                      errorWidget:  (context,i,r){
+                                        return Container();
+                                      },
+                                    )
+                                  ),
 
+                              ),
+                             (controller.selectedImage != null)
+                                 ? Container(
+                                 height: 400,
+                                 width:350,
+                                 alignment: Alignment.center,
+                                 child: ClipRRect(
+                                   borderRadius: BorderRadius.circular(8),
+                                   child: CustomColorMappedSvg(
+                                     assetName: controller.selectedImage!,
+                                     website: PrefService.getString(PrefKeys.website),
+                                     date: PrefService.getString(PrefKeys.brandName),
+                                     description: '',
+                                     colorMap: {
+                                       const Color(0xff383838):
+                                   PrefService.getInt(PrefKeys.primaryColor) == 0?Colors.black:   Color(PrefService.getInt(PrefKeys.primaryColor)), // Black to Red
+                                       const Color(0xff6d4d26):
+                                      PrefService.getInt(PrefKeys.secondaryColor)== 0?Colors.black:   Color(PrefService.getInt(PrefKeys.secondaryColor)), // White to Green
+                                     },
+                                   ),
+                                 ))
+                                 : const SizedBox(),
+                            ],
+                          );
+                        }
                       ),
                       SizedBox(height: height * 0.025),
                       Obx(
                         ()=>controller.selectedIndex.value  == 1 ?
                         SizedBox(
-                          height: height * 0.38,
-                          child: ListView.separated(
-                            padding: EdgeInsets.zero,
+                          height: 150,
+                          child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
-                            itemCount: 5,
-                            separatorBuilder: (context, index) {
-                              return SizedBox(width: width * 0.02);
-                            },
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  darkStatusBar();
-                                  Get.to(() => CardDetailScreen(name:name,images: images,))?.whenComplete(()=> darkStatusBar());
-                                },
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      height: 150,
-                                      width: 150,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          child: Image.asset(AppAssets.card1,fit: BoxFit.fill,)),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
+                            child: Row(
+                              children: List.generate(
+                                  controller.framesList.length,
+                                      (index) => InkWell(
+                                        onTap: () async {
+
+                                          controller.selectedImage = controller.framesList[index];
+                                          controller.update(['frame']);
+                                        },
+                                        child: Container(
+                                          height: 150,
+                                          width: 150,
+
+                                          alignment: Alignment.center,
+                                          child: Center(
+                                              child: SvgPicture.string(
+                                                controller.framesList[index],
+                                                height: 150,
+                                                width: 150,
+                                                fit: BoxFit.fill,
+                                              )),
+                                        ),
+                                      )),
+                            ),
                           ),
+                          // child: InkWell(
+                          //   onTap: () async {
+                          //     final response = await http.get(Uri.parse(frame));
+                          //
+                          //     if (response.statusCode == 200) {
+                          //       controller.selectedImage = response.body;
+                          //       controller.update(['frame']);
+                          //     } else {
+                          //
+                          //     }
+                          //   },
+                          //   child: SvgPicture.network(
+                          //   frame,
+                          //     height: 150,
+                          //     width: 150,
+                          //     fit: BoxFit.fill,
+                          //   ),
+                          // ),
                         ) : const SizedBox(),
                       )
                     ],

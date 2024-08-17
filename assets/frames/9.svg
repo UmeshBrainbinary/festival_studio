@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+    width="1080" height="1920" viewBox="0 0 1080 1920">
+<defs>
+<clipPath id="clip_0">
+<path transform="matrix(1,0,0,-1,0,1920)" d="M0 0H1080V1920H0Z"/>
+</clipPath>
+<clipPath id="clip_1">
+<path transform="matrix(1,0,0,-1,0,1920)" d="M-113-17.5449H1193V1937.54H-113Z"/>
+</clipPath>
+<clipPath id="clip_3">
+<path transform="matrix(1,0,0,-1,0,1920)" d="M0 1920H1080V0H0Z"/>
+</clipPath>
+</defs>
+<g>
+
+
+
+    <text
+        x="50%" y="86%" text-anchor="middle" fill="#383838" font-family="Arial" font-size="14"
+        style="font-variant:normal;font-weight:500;font-stretch:normal;font-size:30px;font-family:Poppins;-inkscape-font-specification:Poppins-Medium;writing-mode:lr-tb;fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"
+        id="text1296">
+
+        <tspan
+            fill="#383838"
+            id="tspan1292">www.luxurybeautyclub.com</tspan>
+
+    </text>
+
+<g clip-path="url(#clip_3)">
+<path transform="matrix(1,0,0,-1,1035,1835)"
+    d="M0 0C0-22.091-17.909-40-40-40H-950C-972.092-40-990-22.091-990 0V1750C-990 1772.092-972.092 1790-950
+    1790H-40C-17.909 1790 0 1772.092 0 1750ZM-39 1795H-951C-975.301 1795-995 1775.301-995
+    1751V-1C-995-25.301-975.301-45-951-45H-39C-14.7-45 5-25.301 5-1V1751C5 1775.301-14.7 1795-39 1795" fill="#6d4d26"/>
+</g>
+</g>
+</svg>

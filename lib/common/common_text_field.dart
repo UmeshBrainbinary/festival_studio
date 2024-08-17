@@ -1,4 +1,4 @@
-import 'package:auto_size_text/auto_size_text.dart';
+
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,9 @@ class CommonTextField extends StatelessWidget {
   final int? maxLines;
   final String? hint;
   final bool? showPwd;
+  final bool? readOnly;
   final VoidCallback? onHideButtonTap;
+  final VoidCallback? onTap;
   final Widget? leadingWidget;
   final TextInputType? textInputType;
   final TextInputAction? textInputAction;
@@ -24,6 +26,8 @@ class CommonTextField extends StatelessWidget {
       required this.controller,
       this.hint,
       this.leadingWidget,
+      this.onTap,
+      this.readOnly,
       this.height,
       this.maxLines,
       this.showPwd,
@@ -52,6 +56,8 @@ class CommonTextField extends StatelessWidget {
           ),
           Expanded(
             child: TextFormField(
+              onTap: onTap ?? (){},
+              readOnly: readOnly ?? false,
               maxLines: maxLines,
               controller: controller,
               keyboardType: textInputType,
@@ -68,7 +74,7 @@ obscureText:  showPwd != null ? showPwd!:false,
                 border: InputBorder.none,
                 hintStyle:
                     mediumFontStyle(color: AppColors.hintColor, size: 16),
-                  contentPadding: EdgeInsets.only(top: 12),
+                  contentPadding: const EdgeInsets.only(top: 12),
                   suffixIcon: showPwd != null /*&& controller.text != ''*/
                       ? InkWell(
                     onTap: onHideButtonTap,

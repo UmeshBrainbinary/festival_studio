@@ -8,7 +8,6 @@ import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 
 class LoginController extends GetxController{
   RxBool loader = false.obs;
