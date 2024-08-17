@@ -230,7 +230,7 @@ Widget festivalListviewFilter({context,index}) {
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: CachedNetworkImage(
-                              imageUrl: controller.filterData[index]['posts'][i].frameImg?.url ?? '',
+                              imageUrl: controller.filterData[index]['posts'][i].postImg?.url ?? '',
                               height: 250,
                               width: 150,
                               fit: BoxFit.fill,

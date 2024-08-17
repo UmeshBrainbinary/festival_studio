@@ -350,7 +350,7 @@ Widget addDetailsTextField(BuildContext context) {
                                           colorList: defaultAvailableColors,
                                           buttonSize: 40,
                                           pieceHeight: 25,
-                                          innerRadius: 80,
+                                          innerRadius: 60,
                                           onTap: (c) {
                                             controller.primaryColor = c.value;
                                           },
@@ -470,7 +470,7 @@ Widget addDetailsTextField(BuildContext context) {
                                   colorList: defaultAvailableColors,
                                   buttonSize: 40,
                                   pieceHeight: 25,
-                                  innerRadius: 80,
+                                  innerRadius: 60,
                                   onTap: (c) {
                                     controller.secondaryColor = c.value;
                                   },
