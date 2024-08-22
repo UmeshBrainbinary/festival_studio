@@ -203,7 +203,7 @@ con.primaryColorText.clear();
                                       LengthLimitingTextInputFormatter(
                                           6)
                                     ],
-                                    keyboardType: TextInputType.number,
+                                    keyboardType: TextInputType.text,
                                     textInputAction:
                                     TextInputAction.done,
                                   ),
@@ -324,7 +324,7 @@ con.primaryColorText.clear();
                                               LengthLimitingTextInputFormatter(
                                                   6)
                                             ],
-                                            keyboardType: TextInputType.number,
+                                            keyboardType: TextInputType.text,
                                             textInputAction:
                                                 TextInputAction.done,
                                           ),
@@ -442,7 +442,7 @@ con.primaryColorText.clear();
                                       LengthLimitingTextInputFormatter(
                                           6)
                                     ],
-                                    keyboardType: TextInputType.number,
+                                    keyboardType: TextInputType.text,
                                     textInputAction:
                                     TextInputAction.done,
                                   ),
@@ -571,7 +571,7 @@ con.primaryColorText.clear();
                                                 LengthLimitingTextInputFormatter(
                                                     6)
                                               ],
-                                              keyboardType: TextInputType.number,
+                                              keyboardType: TextInputType.text,
                                               textInputAction:
                                               TextInputAction.done,
                                             ),

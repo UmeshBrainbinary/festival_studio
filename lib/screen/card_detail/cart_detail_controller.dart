@@ -146,7 +146,7 @@ class CardDetailController extends GetxController {
                             hintText: "#ff0000"),
                         maxLines: 1,
                         inputFormatters: [LengthLimitingTextInputFormatter(6)],
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.done,
                       ),
                       const SizedBox(
@@ -233,7 +233,7 @@ class CardDetailController extends GetxController {
                             hintText: "#ff0000"),
                         maxLines: 1,
                         inputFormatters: [LengthLimitingTextInputFormatter(6)],
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.done,
                       ),
                       const SizedBox(
@@ -317,7 +317,7 @@ class CardDetailController extends GetxController {
                             hintText: "#ff0000"),
                         maxLines: 1,
                         inputFormatters: [LengthLimitingTextInputFormatter(6)],
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.done,
                       ),
                       const SizedBox(
@@ -401,7 +401,7 @@ class CardDetailController extends GetxController {
                             hintText: "#ff0000"),
                         maxLines: 1,
                         inputFormatters: [LengthLimitingTextInputFormatter(6)],
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.done,
                       ),
                       const SizedBox(
@@ -484,7 +484,7 @@ class CardDetailController extends GetxController {
                             hintText: "#ff0000"),
                         maxLines: 1,
                         inputFormatters: [LengthLimitingTextInputFormatter(6)],
-                        keyboardType: TextInputType.number,
+                        keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.done,
                       ),
                       const SizedBox(
