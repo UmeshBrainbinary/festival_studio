@@ -1,6 +1,7 @@
 import 'package:festiveapp_studio/common/common_primary_button.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/intro/onboarding/onboarding_controller.dart';
+import 'package:festiveapp_studio/utils/app_assets.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,7 +29,7 @@ Widget navigateContainer() {
   ));
 }
 
-Widget pageViewOnboard() {
+Widget pageViewOnboard(_opacityTween,_animationController) {
   return SizedBox(
     height: 450,
     child: PageView.builder(
@@ -38,49 +39,73 @@ Widget pageViewOnboard() {
         controller.select(value);
       },
       itemBuilder: (context, index) {
-        return  Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            index ==0 || index ==1 ? Padding(
-              padding: const EdgeInsets.only(right: 20.0),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: SizedBox(
-                  height: 250,
-                  width: 250,
-                  child: SvgPicture.asset(controller.data[index]['image'],),
+        return  StatefulBuilder(
+          builder: (context,s) {
+            s.call((){});
+            return Stack(
+              alignment: Alignment.topRight,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                   index ==0 || index ==1 ? Padding(
+                      padding: const EdgeInsets.only(right: 20.0),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Stack(
+                          alignment: Alignment.topRight,
+                          children: [
+                            SizedBox(
+                              height: 250,
+                              width: 250,
+                              child: SvgPicture.asset(controller.data[index]['image'],),
+                            ),
+                            AnimatedOpacity(
+                              opacity: _opacityTween.evaluate(_animationController),
+                              duration: const Duration(seconds: 1),
+                              child:   Image.asset(AppAssets.hello,scale: 7.5,)
+                            )
+
+                          ],
+                        ),
+                      ),
+                    ):
+
+                    SizedBox(
+                height: 250,
+                width: 250,
+                child: SvgPicture.asset(controller.data[index]['image'],),
                 ),
-              ),
-            ): SizedBox(
-        height: 250,
-        width: 250,
-        child: SvgPicture.asset(controller.data[index]['image'],),
-        ),
-            const SizedBox(height: 40,),
-            navigateContainer(),
-            const SizedBox(height: 30,),
-            Text(
-              controller.data[index]['text'],
-              style:semiBoldFontStyle(
-                color: AppColors.white,
-                size: 22,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
-              child: Text(
-                controller.data[index]['text1'],
-                textAlign: TextAlign.center,
-                style: mediumFontStyle(
-                  size: 12,
-                  color: AppColors.lightGreyTextColor,
+                    const SizedBox(height: 40,),
+                    navigateContainer(),
+                    const SizedBox(height: 30,),
+                    Text(
+                      controller.data[index]['text'],
+                      style:semiBoldFontStyle(
+                        color: AppColors.white,
+                        size: 22,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 40, right: 40),
+                      child: Text(
+                        controller.data[index]['text1'],
+                        textAlign: TextAlign.center,
+                        style: mediumFontStyle(
+                          size: 12,
+                          color: AppColors.lightGreyTextColor,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ),
-          ],
+
+              ],
+            );
+          }
         );
       },
     ),

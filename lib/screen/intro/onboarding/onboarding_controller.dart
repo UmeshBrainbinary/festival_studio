@@ -43,4 +43,7 @@ class OnBordingController extends GetxController {
     pageIndex.value = value;
     update();
   }
+
+
+
 }

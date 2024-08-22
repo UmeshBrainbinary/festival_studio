@@ -24,234 +24,291 @@ Widget textField() {
     ),
     child: TextField(
       controller: controller.search,
-      onChanged: (val){
+      onChanged: (val) {
         controller.onFilter(val);
       },
       decoration: InputDecoration(
-          prefixIcon: Padding(
-            padding: const EdgeInsets.only(left: 5.0,top: 13,bottom: 13),
-            child: Image.asset(AppAssets.search),
-          ),
-          hintText: StringRes.search,
-          suffixIcon: Padding(
-            padding: const EdgeInsets.only(top: 13.0,bottom: 13),
-            child: InkWell(
-                onTap: (){
-                  controller.startListening();
-                },
-                child: SvgPicture.asset(AppAssets.voice)),
-          ),
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(8),
-          ),
+        prefixIcon: Padding(
+          padding: const EdgeInsets.only(left: 5.0, top: 13, bottom: 13),
+          child: Image.asset(AppAssets.search),
+        ),
+        hintText: StringRes.search,
+        suffixIcon: Padding(
+          padding: const EdgeInsets.only(top: 13.0, bottom: 13),
+          child: InkWell(
+              onTap: () {
+                controller.startListening();
+              },
+              child: SvgPicture.asset(AppAssets.voice)),
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(8),
+        ),
         contentPadding: const EdgeInsets.symmetric(vertical: 10),
       ),
     ),
   );
 }
 
-Widget festivalListview({context,index}) {
-
-  return (controller.dataShow.length !=0 &&  controller.dataShow[index]['posts'].length !=0 )? SizedBox(
-    height: 260,
-    child: Column(
-      children: [
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          children: [
-            SizedBox(
-              width: Get.width *0.6,
-              child: Text(
-                controller.dataShow[index]['name'] ?? '',
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                style: boldFontStyle(color: AppColors.white, size: 16),
+Widget festivalListview({context, index}) {
+  return (controller.dataShow.length != 0 &&
+          controller.dataShow[index]['posts'].length != 0)
+      ? SizedBox(
+          height: 290,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            const Spacer(),
-            InkWell(
-              onTap: () {
-                // Get.to(MorningQuotes());
-                lightStatusBar();
-                Get.to(()=>UpcomingScreen(name:   controller.dataShow[index]['name'] ?? '',items: controller.dataShow[index]['posts'],
-                    subData :controller.dataShow[index]['subData'],
-                    isSub:  controller.dataShow[index]['isSub']
-                ),)?.whenComplete(()=> lightStatusBar());
-              },
-              child: Row(
+              Row(
                 children: [
-                  Text(
-                    StringRes.more,
-                    style: boldFontStyle(color: AppColors.white, size: 16),
+                  SizedBox(
+                    width: Get.width * 0.6,
+                    child: Text(
+                      controller.dataShow[index]['name'] ?? '',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: boldFontStyle(color: AppColors.white, size: 16),
+                    ),
                   ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Icon(Icons.arrow_forward_ios_sharp,
-                      color: AppColors.white, size: 20),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {
+                      // Get.to(MorningQuotes());
+                      lightStatusBar();
+                      Get.to(
+                        () => UpcomingScreen(
+                            name: controller.dataShow[index]['name'] ?? '',
+                            items: controller.dataShow[index]['posts'],
+                            subData: controller.dataShow[index]['subData'],
+                            isSub: controller.dataShow[index]['isSub']),
+                      )?.whenComplete(() => lightStatusBar());
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          StringRes.more,
+                          style:
+                              boldFontStyle(color: AppColors.white, size: 16),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Icon(Icons.arrow_forward_ios_sharp,
+                            color: AppColors.white, size: 20),
+                      ],
+                    ),
+                  )
                 ],
               ),
-            )
-
-          ],
-        ),
-        const SizedBox(height: 5,),
-
-        controller.dataShow[index]['posts'] !=0 ?
-        Expanded(
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount:  controller.dataShow[index]['posts'].length <=3?
-            ( controller.dataShow[index]['posts'].length ?? 0):3,
-            itemBuilder: (context, i) {
-              return GestureDetector(
-                onTap: (){
-                  darkStatusBar();
-                  Get.to(()=>CardDetailScreen(name: controller.dataShow[index]['name'] ?? '',
-                    images:controller.dataShow[index]['posts'][i].postImg?.url ?? '',
-                    frame: controller.dataShow[index]['posts'][i].frameImg?.url ?? '',
-                  ))?.whenComplete(()=> lightStatusBar());
-
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-
-                    children: [
-                      Container(
-                        height: 200,
-                        width: 200,
-                        decoration: BoxDecoration(
-
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: CachedNetworkImage(
-                              imageUrl: controller.dataShow[index]['posts'][i].postImg?.url ?? '',
-                              height: 250,
-                              width: 150,
-                              fit: BoxFit.fill,
-                              placeholder: (context,i){
-                                return Container();
-                              },
-                              errorWidget:  (context,i,r){
-                                return Container();
-                              },
-                            )),
+              const SizedBox(
+                height: 5,
+              ),
+              controller.dataShow[index]['posts'] != 0
+                  ? Expanded(
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.dataShow[index]['posts'].length <=
+                                3
+                            ? (controller.dataShow[index]['posts'].length ?? 0)
+                            : 3,
+                        itemBuilder: (context, i) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: List.generate(
+                                controller
+                                    .dataShow[index]['posts'][i].postImg.length,
+                                (y) => GestureDetector(
+                                      onTap: () {
+                                        darkStatusBar();
+                                        Get.to(() => CardDetailScreen(
+                                                  name:
+                                                      controller.dataShow[index]
+                                                              ['name'] ??
+                                                          '',
+                                                  images: controller
+                                                          .dataShow[index]
+                                                              ['posts'][i]
+                                                          .postImg[y]['url'] ??
+                                                      '',
+                                                  // frame: controller.dataShow[index]['posts'][i].frameImg['url']??
+                                                  frame: '',
+                                                ))
+                                            ?.whenComplete(
+                                                () => lightStatusBar());
+                                      },
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              height: 230,
+                                              width: 130,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  child: CachedNetworkImage(
+                                                    imageUrl: controller
+                                                                .dataShow[index]
+                                                                    ['posts'][i]
+                                                                .postImg[y]
+                                                            ['url'] ??
+                                                        '',
+                                                    height: 250,
+                                                    width: 150,
+                                                    fit: BoxFit.fill,
+                                                    placeholder: (context, i) {
+                                                      return Container();
+                                                    },
+                                                    errorWidget:
+                                                        (context, i, r) {
+                                                      return Container();
+                                                    },
+                                                  )),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    )),
+                          );
+                        },
                       ),
-                    ],
-                  ),
-                ),
-              );
-            },
+                    )
+                  : const SizedBox(),
+            ],
           ),
-        ):const SizedBox(),
-      ],
-    ),
-  ):const SizedBox();
+        )
+      : const SizedBox();
 }
 
-Widget festivalListviewFilter({context,index}) {
-
-  return (controller.filterData.length !=0 &&  controller.filterData[index]['posts'].length !=0 )? SizedBox(
-    height: 260,
-    child: Column(
-      children: [
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          children: [
-            Text(
-              controller.filterData[index]['name'] ?? '',
-              style: boldFontStyle(color: AppColors.white, size: 16),
-            ),
-            const Spacer(),
-            InkWell(
-              onTap: () {
-                // Get.to(MorningQuotes());
-                lightStatusBar();
-               Get.to(()=>UpcomingScreen(name:   controller.filterData[index]['name'] ?? '',items: controller.filterData[index]['posts'],
-                   subData :controller.filterData[index]['subData'],
-                   isSub:  controller.filterData[index]['isSub']
-               ),)?.whenComplete(()=> lightStatusBar());
-              },
-              child: Row(
+Widget festivalListviewFilter({context, index}) {
+  return (controller.filterData.length != 0 &&
+          controller.filterData[index]['posts'].length != 0)
+      ? SizedBox(
+          height: 290,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
                 children: [
                   Text(
-                    StringRes.more,
+                    controller.filterData[index]['name'] ?? '',
                     style: boldFontStyle(color: AppColors.white, size: 16),
                   ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Icon(Icons.arrow_forward_ios_sharp,
-                      color: AppColors.white, size: 20),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {
+                      // Get.to(MorningQuotes());
+                      lightStatusBar();
+                      Get.to(
+                        () => UpcomingScreen(
+                            name: controller.filterData[index]['name'] ?? '',
+                            items: controller.filterData[index]['posts'],
+                            subData: controller.filterData[index]['subData'],
+                            isSub: controller.filterData[index]['isSub']),
+                      )?.whenComplete(() => lightStatusBar());
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          StringRes.more,
+                          style:
+                              boldFontStyle(color: AppColors.white, size: 16),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Icon(Icons.arrow_forward_ios_sharp,
+                            color: AppColors.white, size: 20),
+                      ],
+                    ),
+                  )
                 ],
               ),
-            )
-
-          ],
-        ),
-        const SizedBox(height: 5,),
-
-        controller.filterData[index]['posts'] !=0 ?
-        Expanded(
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount:  controller.filterData[index]['posts'].length <=3?
-            ( controller.filterData[index]['posts'].length ?? 0):3,
-            itemBuilder: (context, i) {
-              return GestureDetector(
-                onTap: (){
-                  darkStatusBar();
-                  Get.to(()=>CardDetailScreen(name: controller.filterData[index]['name'] ?? '',
-                    images:controller.filterData[index]['posts'][i].postImg?.url ?? '',
-                    frame: controller.filterData[index]['posts'][i].frameImg?.url ?? '',
-                  ))?.whenComplete(()=> lightStatusBar());
-
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-
-                    children: [
-                      Container(
-                        height: 200,
-                        width: 200,
-                        decoration: BoxDecoration(
-
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: CachedNetworkImage(
-                              imageUrl: controller.filterData[index]['posts'][i].postImg?.url ?? '',
-                              height: 250,
-                              width: 150,
-                              fit: BoxFit.fill,
-                              placeholder: (context,i){
-                                return Container();
+              const SizedBox(
+                height: 5,
+              ),
+              controller.filterData[index]['posts'] != 0
+                  ? Expanded(
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount:
+                            controller.filterData[index]['posts'].length <= 3
+                                ? (controller
+                                        .filterData[index]['posts'].length ??
+                                    0)
+                                : 3,
+                        itemBuilder: (context, i) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: List.generate(controller
+                                .filterData[index]['posts'][i].postImg.length, (y)=>GestureDetector(
+                              onTap: () {
+                                darkStatusBar();
+                                Get.to(() => CardDetailScreen(
+                                  name: controller.filterData[index]
+                                  ['name'] ??
+                                      '',
+                                  images: controller
+                                      .filterData[index]['posts'][i]
+                                      .postImg[y]
+                                      ['url'] ??
+                                      '',
+                                  frame:
+                                      '',
+                                ))?.whenComplete(() => lightStatusBar());
                               },
-                              errorWidget:  (context,i,r){
-                                return Container();
-                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: 230,
+                                      width: 130,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(10),
+                                          child: CachedNetworkImage(
+                                            imageUrl: controller
+                                                .filterData[index]['posts'][i]
+                                                .postImg[y]
+                                                ['url'] ??
+                                                '',
+                                            height: 250,
+                                            width: 150,
+                                            fit: BoxFit.fill,
+                                            placeholder: (context, i) {
+                                              return Container();
+                                            },
+                                            errorWidget: (context, i, r) {
+                                              return Container();
+                                            },
+                                          )),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             )),
+                          );
+                        },
                       ),
-                    ],
-                  ),
-                ),
-              );
-            },
+                    )
+                  : const SizedBox(),
+            ],
           ),
-        ):const SizedBox(),
-      ],
-    ),
-  ):const SizedBox();
+        )
+      : const SizedBox();
 }
 
 /*Widget motivationalListview({context}) {

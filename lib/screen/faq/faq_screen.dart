@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:festiveapp_studio/common/common_back_button.dart';
 import 'package:festiveapp_studio/common/common_loader.dart';
 import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/faq/faq_controller.dart';
@@ -14,6 +15,7 @@ FaqController faqController = Get.put(FaqController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Stack(
@@ -24,14 +26,32 @@ FaqController faqController = Get.put(FaqController());
                 const SizedBox(
                   height: 10,
                 ),
-                Center(
-                  child: Text(
-                    StringRes.faq,
-                    style: boldFontStyle(
-                      color: AppColors.blackColor,
-                      size: 20,
+                Row(
+                  children: [
+                    CommonBackButton(
+                      onTap: () {
+                        Get.back();
+                      },
                     ),
-                  ),
+                    const Spacer(),
+                    Text(
+                      StringRes.faq,
+                      style: boldFontStyle(color: AppColors.blackColor, size: 18),
+                    ),
+                    const Spacer(),
+                    Visibility(
+                      visible: false,
+                      maintainSize: true,
+                      maintainAnimation: true,
+                      maintainState: true,
+                      child: CommonBackButton(
+                        onTap: () {
+
+                        },
+                      ),
+                    ),
+
+                  ],
                 ),
                 const SizedBox(
                   height: 30,
@@ -64,9 +84,9 @@ Center(child:  Text("No FAQ Found",style: mediumFontStyle(
               color: Colors.white,
               boxShadow: [
                 BoxShadow(color: Colors.grey.withOpacity(0.1),
-                    blurRadius: 1,
+                    blurRadius: 5,
                     offset: const Offset(0,1),
-                    spreadRadius: 1
+                    spreadRadius: 3
                 )
               ],
               borderRadius: BorderRadius.circular(15),

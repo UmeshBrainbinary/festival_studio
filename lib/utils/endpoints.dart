@@ -15,4 +15,5 @@ class Endpoints{
   static const policy ="$baseUrl/api/policy/getallpolicy";
   static const faq ="$baseUrl/api/faq/getallfaqs";
   static const getCategory ="$baseUrl/api/festivepost/getall";
+  static const getFrames ="$baseUrl/api/frame/getallframe";
 }

@@ -9,9 +9,10 @@ import 'package:festiveapp_studio/screen/select_logo/select_logo_screen.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_color_picker_wheel/flutter_color_picker_wheel.dart';
-import 'package:flutter_color_picker_wheel/models/models.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:get/get.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 GenerateLogoController controller = Get.find<GenerateLogoController>();
 
@@ -62,8 +63,15 @@ Widget addDetailsTextField(BuildContext context) {
         ),
         CommonTextField(
           maxLines: 1,
+          leadingWidget: SizedBox(
+            width: Get.width *0.25,
+            child: Text(
+              StringRes.brandName,
+              style: mediumFontStyle(color: AppColors.hintColor,size: 14),
+            ),
+          ),
           textInputAction: TextInputAction.done,
-          hint: StringRes.brandName,
+         // hint: StringRes.brandName,
           controller: controller.brandName,
         ),
         Obx(() {
@@ -160,88 +168,80 @@ Widget addDetailsTextField(BuildContext context) {
               return InkWell(
                 onTap: () {
                   FocusScope.of(context).unfocus();
-
+con.primaryColorText.clear();
                   showDialog(
                       context: context,
                       builder: (context) {
                         return StatefulBuilder(builder: (context, s) {
                           return AlertDialog(
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const Text(
-                                  "Tap and select color",
-                                  style: TextStyle(
-                                      fontSize: 16, color: Colors.black),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                WheelColorPicker(
-                                  onSelect: (Color newColor) {
-                                    controller.primaryColor = newColor.value;
-                                    controller.update(['generate']);
-                                  },
-                                  behaviour: ButtonBehaviour.clickToOpen,
-                                  defaultColor: Colors.black,
-                                  animationConfig: const FanAnimationConfig(
-                                      animationDurationInMillisecond: 1000,
-                                      rayAnimationConfig: RayAnimationConfig(
-                                        curve: Curves.easeInQuad,
-                                        enabled: false,
-                                      ),
-                                      scaleAnimationConfig:
-                                          ScaleAnimationConfig(
-                                        curve: Curves.easeInOutCubic,
-                                        enabled: true,
-                                        animationStartDelay: 0,
-                                        animationFinishDelay: 0.2,
-                                      ),
-                                      opacityAnimationConfig:
-                                          OpacityAnimationConfig(
-                                        curve: Curves.linear,
-                                        enabled: true,
-                                        animationStartDelay: 0.2,
-                                        animationFinishDelay: 0,
-                                      ),
-                                      rotationAnimationConfig:
-                                          RotationAnimationConfig(
-                                              curve: Curves.easeInQuad,
-                                              enabled: true,
-                                              animationFinishDelay: 0.4)),
-                                  colorList: defaultAvailableColors,
-                                  buttonSize: 40,
-                                  pieceHeight: 25,
-                                  innerRadius: 80,
-                                  onTap: (c) {
-                                    controller.primaryColor = c.value;
-                                  },
-                                  stickToButton: false,
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    Get.back();
-                                  },
-                                  child: Container(
-                                    height: 40,
-                                    width: 100,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color: Colors.deepPurpleAccent
-                                          .withOpacity(0.2),
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: const Text(
-                                      "Next",
-                                      style: TextStyle(
-                                          fontSize: 16, color: Colors.black),
-                                    ),
+                            content: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  ColorPicker(
+                                    pickerColor:
+                                    const Color(0xff443a49),
+                                    onColorChanged: (val) {
+                                      controller.primaryColor =
+                                          val.value;
+                                      con.update(['generate']);
+                                    },
                                   ),
-                                )
-                              ],
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  TextFormField(
+                                    controller: con.primaryColorText,
+                                    decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(
+                                                30)),
+                                        hintText: "#ff0000"),
+                                    maxLines: 1,
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(
+                                          6)
+                                    ],
+                                    keyboardType: TextInputType.number,
+                                    textInputAction:
+                                    TextInputAction.done,
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.back();
+                                      if (con.primaryColorText.text !=
+                                          '') {
+                                        controller
+                                            .primaryColor = HexColor(
+                                            '#${con.primaryColorText.text.toLowerCase()}')
+                                            .value;
+                                        con.update(['generate']);
+                                      }
+                                    },
+                                    child: Container(
+                                      height: 40,
+                                      width: 100,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: Colors.deepPurpleAccent
+                                            .withOpacity(0.2),
+                                        borderRadius:
+                                        BorderRadius.circular(20),
+                                      ),
+                                      child: const Text(
+                                        "Next",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           );
                         });
@@ -289,99 +289,80 @@ Widget addDetailsTextField(BuildContext context) {
                     : CommonTextField(
                         onTap: () {
                           FocusScope.of(context).unfocus();
-
+con.primaryColorText.clear();
                           showDialog(
                               context: context,
                               builder: (context) {
                                 return StatefulBuilder(builder: (context, s) {
                                   return AlertDialog(
-                                    content: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Text(
-                                          "Tap and select color",
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              color: Colors.black),
-                                        ),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        WheelColorPicker(
-                                          onSelect: (Color newColor) {
-                                            controller.primaryColor =
-                                                newColor.value;
-                                            controller.update(['generate']);
-                                          },
-                                          behaviour:
-                                              ButtonBehaviour.clickToOpen,
-                                          defaultColor: Colors.black,
-                                          animationConfig:
-                                              const FanAnimationConfig(
-                                                  animationDurationInMillisecond:
-                                                      1000,
-                                                  rayAnimationConfig:
-                                                      RayAnimationConfig(
-                                                    curve: Curves.easeInQuad,
-                                                    enabled: false,
-                                                  ),
-                                                  scaleAnimationConfig:
-                                                      ScaleAnimationConfig(
-                                                    curve:
-                                                        Curves.easeInOutCubic,
-                                                    enabled: true,
-                                                    animationStartDelay: 0,
-                                                    animationFinishDelay: 0.2,
-                                                  ),
-                                                  opacityAnimationConfig:
-                                                      OpacityAnimationConfig(
-                                                    curve: Curves.linear,
-                                                    enabled: true,
-                                                    animationStartDelay: 0.2,
-                                                    animationFinishDelay: 0,
-                                                  ),
-                                                  rotationAnimationConfig:
-                                                      RotationAnimationConfig(
-                                                          curve:
-                                                              Curves.easeInQuad,
-                                                          enabled: true,
-                                                          animationFinishDelay:
-                                                              0.4)),
-                                          colorList: defaultAvailableColors,
-                                          buttonSize: 40,
-                                          pieceHeight: 25,
-                                          innerRadius: 60,
-                                          onTap: (c) {
-                                            controller.primaryColor = c.value;
-                                          },
-                                          stickToButton: false,
-                                        ),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            Get.back();
-                                          },
-                                          child: Container(
-                                            height: 40,
-                                            width: 100,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                              color: Colors.deepPurpleAccent
-                                                  .withOpacity(0.2),
-                                              borderRadius:
-                                                  BorderRadius.circular(20),
-                                            ),
-                                            child: const Text(
-                                              "Next",
-                                              style: TextStyle(
-                                                  fontSize: 16,
-                                                  color: Colors.black),
-                                            ),
+                                    content: SingleChildScrollView(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          ColorPicker(
+                                            pickerColor:
+                                                const Color(0xff443a49),
+                                            onColorChanged: (val) {
+                                              controller.primaryColor =
+                                                  val.value;
+                                              con.update(['generate']);
+                                            },
                                           ),
-                                        )
-                                      ],
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          TextFormField(
+                                            controller: con.primaryColorText,
+                                            decoration: InputDecoration(
+                                                border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            30)),
+                                                hintText: "#ff0000"),
+                                            maxLines: 1,
+                                            inputFormatters: [
+                                              LengthLimitingTextInputFormatter(
+                                                  6)
+                                            ],
+                                            keyboardType: TextInputType.number,
+                                            textInputAction:
+                                                TextInputAction.done,
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              Get.back();
+                                              if (con.primaryColorText.text !=
+                                                  '') {
+                                                controller
+                                                    .primaryColor = HexColor(
+                                                        '#${con.primaryColorText.text.toLowerCase()}')
+                                                    .value;
+                                                con.update(['generate']);
+                                              }
+                                            },
+                                            child: Container(
+                                              height: 40,
+                                              width: 100,
+                                              alignment: Alignment.center,
+                                              decoration: BoxDecoration(
+                                                color: Colors.deepPurpleAccent
+                                                    .withOpacity(0.2),
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                              ),
+                                              child: const Text(
+                                                "Next",
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   );
                                 });
@@ -389,8 +370,15 @@ Widget addDetailsTextField(BuildContext context) {
                         },
                         maxLines: 1,
                         readOnly: true,
+                  leadingWidget: SizedBox(
+                    width: Get.width *0.25,
+                    child: Text(
+                      StringRes.primaryColor,
+                      style: mediumFontStyle(color: AppColors.hintColor,size: 14),
+                    ),
+                  ),
                         textInputAction: TextInputAction.done,
-                        hint: StringRes.primaryColor,
+                       // hint: StringRes.primaryColor,
                         controller: TextEditingController(),
                       ),
               );
@@ -419,87 +407,80 @@ Widget addDetailsTextField(BuildContext context) {
               return InkWell(
                 onTap: () {
                   FocusScope.of(context).unfocus();
+                  con.secColorText.clear();
                   showDialog(
                       context: context,
                       builder: (context) {
                         return StatefulBuilder(builder: (context, s) {
                           return AlertDialog(
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const Text(
-                                  "Tap and select color",
-                                  style: TextStyle(
-                                      fontSize: 16, color: Colors.black),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                WheelColorPicker(
-                                  onSelect: (Color newColor) {
-                                    controller.secondaryColor = newColor.value;
-                                    controller.update(['secondary']);
-                                  },
-                                  behaviour: ButtonBehaviour.clickToOpen,
-                                  defaultColor: Colors.black,
-                                  animationConfig: const FanAnimationConfig(
-                                      animationDurationInMillisecond: 1000,
-                                      rayAnimationConfig: RayAnimationConfig(
-                                        curve: Curves.easeInQuad,
-                                        enabled: false,
-                                      ),
-                                      scaleAnimationConfig:
-                                          ScaleAnimationConfig(
-                                        curve: Curves.easeInOutCubic,
-                                        enabled: true,
-                                        animationStartDelay: 0,
-                                        animationFinishDelay: 0.2,
-                                      ),
-                                      opacityAnimationConfig:
-                                          OpacityAnimationConfig(
-                                        curve: Curves.linear,
-                                        enabled: true,
-                                        animationStartDelay: 0.2,
-                                        animationFinishDelay: 0,
-                                      ),
-                                      rotationAnimationConfig:
-                                          RotationAnimationConfig(
-                                              curve: Curves.easeInQuad,
-                                              enabled: true,
-                                              animationFinishDelay: 0.4)),
-                                  colorList: defaultAvailableColors,
-                                  buttonSize: 40,
-                                  pieceHeight: 25,
-                                  innerRadius: 60,
-                                  onTap: (c) {
-                                    controller.secondaryColor = c.value;
-                                  },
-                                  stickToButton: false,
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    Get.back();
-                                  },
-                                  child: Container(
-                                    height: 40,
-                                    width: 100,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                      color: Colors.deepPurpleAccent
-                                          .withOpacity(0.2),
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: const Text(
-                                      "Next",
-                                      style: TextStyle(
-                                          fontSize: 16, color: Colors.black),
-                                    ),
+                            content: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  ColorPicker(
+                                    pickerColor:
+                                    const Color(0xff443a49),
+                                    onColorChanged: (val) {
+                                      controller.secondaryColor =
+                                          val.value;
+                                      con.update(['secondary']);
+                                    },
                                   ),
-                                )
-                              ],
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  TextFormField(
+                                    controller: con.secColorText,
+                                    decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                            borderRadius:
+                                            BorderRadius.circular(
+                                                30)),
+                                        hintText: "#ff0000"),
+                                    maxLines: 1,
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(
+                                          6)
+                                    ],
+                                    keyboardType: TextInputType.number,
+                                    textInputAction:
+                                    TextInputAction.done,
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.back();
+                                      if (con.secColorText.text !=
+                                          '') {
+                                        controller
+                                            .secondaryColor = HexColor(
+                                            '#${con.primaryColorText.text.toLowerCase()}')
+                                            .value;
+                                        con.update(['secondary']);
+                                      }
+                                    },
+                                    child: Container(
+                                      height: 40,
+                                      width: 100,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: Colors.deepPurpleAccent
+                                            .withOpacity(0.2),
+                                        borderRadius:
+                                        BorderRadius.circular(20),
+                                      ),
+                                      child: const Text(
+                                        "Next",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           );
                         });
@@ -546,109 +527,97 @@ Widget addDetailsTextField(BuildContext context) {
                       : CommonTextField(
                           maxLines: 1,
                           readOnly: true,
+                    leadingWidget: SizedBox(
+                      width: Get.width *0.34,
+                      child: Text(
+                        StringRes.secondaryColor,
+                        style: mediumFontStyle(color: AppColors.hintColor,size: 14),
+                      ),
+                    ),
                           onTap: () {
                             FocusScope.of(context).unfocus();
-
+                            con.secColorText.clear();
                             showDialog(
                                 context: context,
                                 builder: (context) {
                                   return StatefulBuilder(builder: (context, s) {
                                     return AlertDialog(
-                                      content: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          const Text(
-                                            "Tap and select color",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.black),
-                                          ),
-                                          const SizedBox(
-                                            height: 20,
-                                          ),
-                                          WheelColorPicker(
-                                            onSelect: (Color newColor) {
-                                              controller.secondaryColor =
-                                                  newColor.value;
-                                              controller.update(['secondary']);
-                                            },
-                                            behaviour:
-                                                ButtonBehaviour.clickToOpen,
-                                            defaultColor: Colors.black,
-                                            animationConfig:
-                                                const FanAnimationConfig(
-                                                    animationDurationInMillisecond:
-                                                        1000,
-                                                    rayAnimationConfig:
-                                                        RayAnimationConfig(
-                                                      curve: Curves.easeInQuad,
-                                                      enabled: false,
-                                                    ),
-                                                    scaleAnimationConfig:
-                                                        ScaleAnimationConfig(
-                                                      curve:
-                                                          Curves.easeInOutCubic,
-                                                      enabled: true,
-                                                      animationStartDelay: 0,
-                                                      animationFinishDelay: 0.2,
-                                                    ),
-                                                    opacityAnimationConfig:
-                                                        OpacityAnimationConfig(
-                                                      curve: Curves.linear,
-                                                      enabled: true,
-                                                      animationStartDelay: 0.2,
-                                                      animationFinishDelay: 0,
-                                                    ),
-                                                    rotationAnimationConfig:
-                                                        RotationAnimationConfig(
-                                                            curve: Curves
-                                                                .easeInQuad,
-                                                            enabled: true,
-                                                            animationFinishDelay:
-                                                                0.4)),
-                                            colorList: defaultAvailableColors,
-                                            buttonSize: 40,
-                                            pieceHeight: 25,
-                                            innerRadius: 80,
-                                            onTap: (c) {
-                                              controller.secondaryColor =
-                                                  c.value;
-                                            },
-                                            stickToButton: false,
-                                          ),
-                                          const SizedBox(
-                                            height: 20,
-                                          ),
-                                          InkWell(
-                                            onTap: () {
-                                              Get.back();
-                                            },
-                                            child: Container(
-                                              height: 40,
-                                              width: 100,
-                                              alignment: Alignment.center,
-                                              decoration: BoxDecoration(
-                                                color: Colors.deepPurpleAccent
-                                                    .withOpacity(0.2),
-                                                borderRadius:
-                                                    BorderRadius.circular(20),
-                                              ),
-                                              child: const Text(
-                                                "Next",
-                                                style: TextStyle(
-                                                    fontSize: 16,
-                                                    color: Colors.black),
-                                              ),
+                                      content: SingleChildScrollView(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            ColorPicker(
+                                              pickerColor:
+                                              const Color(0xff443a49),
+                                              onColorChanged: (val) {
+                                                controller.secondaryColor =
+                                                    val.value;
+                                                con.update(['secondary']);
+                                              },
                                             ),
-                                          )
-                                        ],
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            TextFormField(
+                                              controller: con.secColorText,
+                                              decoration: InputDecoration(
+                                                  border: OutlineInputBorder(
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          30)),
+                                                  hintText: "#ff0000"),
+                                              maxLines: 1,
+                                              inputFormatters: [
+                                                LengthLimitingTextInputFormatter(
+                                                    6)
+                                              ],
+                                              keyboardType: TextInputType.number,
+                                              textInputAction:
+                                              TextInputAction.done,
+                                            ),
+                                            const SizedBox(
+                                              height: 20,
+                                            ),
+                                            InkWell(
+                                              onTap: () {
+                                                Get.back();
+                                                if (con.secColorText.text !=
+                                                    '') {
+                                                  controller
+                                                      .secondaryColor = HexColor(
+                                                      '#${con.primaryColorText.text.toLowerCase()}')
+                                                      .value;
+                                                  con.update(['secondary']);
+                                                }
+                                              },
+                                              child: Container(
+                                                height: 40,
+                                                width: 100,
+                                                alignment: Alignment.center,
+                                                decoration: BoxDecoration(
+                                                  color: Colors.deepPurpleAccent
+                                                      .withOpacity(0.2),
+                                                  borderRadius:
+                                                  BorderRadius.circular(20),
+                                                ),
+                                                child: const Text(
+                                                  "Next",
+                                                  style: TextStyle(
+                                                      fontSize: 16,
+                                                      color: Colors.black),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     );
                                   });
                                 });
+
                           },
                           textInputAction: TextInputAction.done,
-                          hint: StringRes.secondaryColor,
+                          //hint: StringRes.secondaryColor,
                           controller: TextEditingController(),
                         ),
                 ),

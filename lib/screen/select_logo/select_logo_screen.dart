@@ -61,74 +61,74 @@ class LogoSelectionPage extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 20.0,
-                    mainAxisSpacing: 15.0,
-                  ),
-                  itemCount: logos.length,
-                  itemBuilder: (context, index) {
-                    return Obx(() {
-                      bool isSelected = controller.isSelected(index);
-                      return GestureDetector(
-                        onTap: () {
-                          controller.selectLogo(index);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: AppColors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.blackColor.withOpacity(0.2),
-                                blurRadius: 6,
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20.0,
+                  mainAxisSpacing: 15.0,
+                  childAspectRatio: 12/10
+                ),
+                itemCount: logos.length,
+                itemBuilder: (context, index) {
+                  return Obx(() {
+                    bool isSelected = controller.isSelected(index);
+                    return GestureDetector(
+                      onTap: () {
+                        controller.selectLogo(index);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColors.white,
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.blackColor.withOpacity(0.2),
+                              blurRadius: 6,
+                              offset: const Offset(0, 0),
+                              spreadRadius: 2
 
-                              )
-                            ]
-                          ),
-                          child: Stack(
-                            children: [
-                              Positioned.fill(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(50.0),
-                                  child: SvgPicture.asset(
-                                    logos[index],
-                                  ),
+                            )
+                          ]
+                        ),
+                        child: Stack(
+                          children: [
+                            Positioned.fill(
+                              child: Padding(
+                                padding: const EdgeInsets.all(50.0),
+                                child: SvgPicture.asset(
+                                  logos[index],
                                 ),
                               ),
-                              if (isSelected)
-                                Align(
-                                  alignment: Alignment.topRight,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      height: 28,
-                                      width: 28,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: AppColors.lightPink,
-                                      ),
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.done,
-                                          color: AppColors.white,
-                                          size: 18,
-                                        ),
+                            ),
+                            if (isSelected)
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    height: 28,
+                                    width: 28,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: AppColors.lightPink,
+                                    ),
+                                    child: const Center(
+                                      child: Icon(
+                                        Icons.done,
+                                        color: AppColors.white,
+                                        size: 18,
                                       ),
                                     ),
                                   ),
                                 ),
-                            ],
-                          ),
+                              ),
+                          ],
                         ),
+                      ),
 
-                      );
-                    });
-                  },
-                ),
+                    );
+                  });
+                },
               ),
             ),
             CommonPrimaryButton(onTap: () {}, text: StringRes.select)

@@ -45,13 +45,13 @@ class CommonTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(8), color: AppColors.white),
       child: Row(
         children: [
-          SizedBox(
-            width: Get.width * 0.360,
-            child: leadingWidget ??
+          leadingWidget ?? Container(
+            width: Get.width * 0.220,
+            child:
                Text(
                   hint ?? "",
                   maxLines: 1,
-                  style: mediumFontStyle(color: AppColors.hintColor, size: 16),
+                  style: mediumFontStyle(color: AppColors.hintColor, size: 14),
                 ),
           ),
           Expanded(

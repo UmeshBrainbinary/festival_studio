@@ -10,6 +10,8 @@ class GenerateLogoController extends GetxController{
   TextEditingController tagLine = TextEditingController();
   TextEditingController category = TextEditingController();
   TextEditingController logoType = TextEditingController();
+  TextEditingController primaryColorText = TextEditingController();
+  TextEditingController secColorText = TextEditingController();
 
 
 

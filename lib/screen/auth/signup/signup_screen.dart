@@ -44,7 +44,7 @@ class SignUpScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SizedBox(height: height * 0.10, width: width),
+                    SizedBox(height: height * 0.15, width: width),
                     SvgPicture.asset(AppAssets.logoFestival,
                         height: height * 0.15, width: height * 0.15),
                     SizedBox(height: height * 0.018),
@@ -218,21 +218,21 @@ class SignUpScreen extends StatelessWidget {
                       child: Container(
                         height: 48,
                         padding:
-                        EdgeInsets.symmetric(horizontal: Get.width * 0.060),
+                        EdgeInsets.symmetric(horizontal:  Get.width * 0.035),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: AppColors.white),
                         child: Row(
                           children: [
                             SizedBox(
-                              width: Get.width * 0.360,
+                              width: Get.width * 0.220,
                               child: Obx(
                                     () => AutoSizeText(
                                   maxLines: 1,
                                   minFontSize: 12,
                                   controller.countryName.value,
                                   style: mediumFontStyle(
-                                      color: AppColors.hintColor, size: 16),
+                                      color: AppColors.hintColor, size: 14),
                                 ),
                               ),
                             ),

@@ -32,8 +32,9 @@ Widget addDetailsTextField(BuildContext context) {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Center(
                   child: Text(
@@ -55,14 +56,14 @@ Widget addDetailsTextField(BuildContext context) {
                   height: 40,
                 ),
                 CommonTextField(
-                  // leadingWidget: SizedBox(
-                  //   width: 0.22,
-                  //   child: Text(
-                  //     StringRes.brandName,
-                  //     style: mediumFontStyle(color: AppColors.hintColor),
-                  //   ),
-                  // ),
-                  hint: StringRes.brandName,
+                  leadingWidget: SizedBox(
+                    width: Get.width *0.25,
+                    child: Text(
+                      StringRes.brandName,
+                      style: mediumFontStyle(color: AppColors.hintColor,size: 14),
+                    ),
+                  ),
+                 // hint: StringRes.brandName,
                   maxLines: 1,
 
                   controller: controller.brandName,
@@ -210,13 +211,13 @@ Widget addDetailsTextField(BuildContext context) {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
-                        width: Get.width * 0.360,
+                        width: Get.width * 0.220,
                         child: Padding(
                           padding: const EdgeInsets.only(top: 10.0),
                           child: Text(
                             StringRes.address,
                             style:
-                                mediumFontStyle(color: AppColors.hintColor, size: 16),
+                                mediumFontStyle(color: AppColors.hintColor, size: 14),
                           ),
                         ),
                       ),
@@ -270,11 +271,11 @@ Widget addDetailsTextField(BuildContext context) {
                    child: Row(
                      children: [
                        SizedBox(
-                         width: Get.width * 0.360,
+                         width: Get.width * 0.220,
                          child: Text(
                            StringRes.brandLogo,
                            maxLines: 1,
-                           style: mediumFontStyle(color: AppColors.hintColor, size: 16),
+                           style: mediumFontStyle(color: AppColors.hintColor, size: 14),
                          ),
                        ),
                        Expanded(

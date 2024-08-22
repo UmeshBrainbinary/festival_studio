@@ -11,7 +11,7 @@ import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class UpcomingScreen extends StatelessWidget {
+class UpcomingScreen extends StatefulWidget {
   String name;
   List items;
   List subData;
@@ -22,6 +22,32 @@ class UpcomingScreen extends StatelessWidget {
       required this.items,
       required this.subData,
       required this.isSub});
+
+  @override
+  State<UpcomingScreen> createState() => _UpcomingScreenState();
+}
+
+class _UpcomingScreenState extends State<UpcomingScreen> {
+
+  @override
+  void initState() {
+    init();
+    super.initState();
+  }
+
+List grid =[];
+  init(){
+    if(widget.isSub == false){
+
+      widget.items.forEach((e){
+        grid.addAll(e.postImg ?? []);
+      });
+      setState(() {
+
+      });
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +74,7 @@ class UpcomingScreen extends StatelessWidget {
                   width: Get.width *0.5,
                  alignment: Alignment.center,
                   child: Text(
-                    name,
+                    widget.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: boldFontStyle(color: AppColors.white, size: 18),
@@ -68,12 +94,12 @@ class UpcomingScreen extends StatelessWidget {
                 ),
               ],
             ),
-            (isSub)
+            (widget.isSub)
                 ? Expanded(
                     child: ListView.builder(
-                      itemCount: subData.length,
+                      itemCount: widget.subData.length,
                       itemBuilder: (context, index) {
-                        return subData[index].posts.length !=0? Column(
+                        return widget.subData[index].posts.length !=0? Column(
                           children: [
                             const SizedBox(
                               height: 10,
@@ -81,7 +107,7 @@ class UpcomingScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  subData[index].subCategory ?? '',
+                                  widget.subData[index].subCategory ?? '',
                                   style: boldFontStyle(
                                       color: AppColors.white, size: 16),
                                 ),
@@ -90,7 +116,7 @@ class UpcomingScreen extends StatelessWidget {
                                   onTap: () {
 
                                     lightStatusBar();
-                                   Get.to(()=>UpcomingSubScreen(name:   subData[index].subCategory ?? '',items: subData[index].posts,
+                                   Get.to(()=>UpcomingSubScreen(name:   widget.subData[index].subCategory ?? '',items: widget.subData[index].posts,
                                        subData :const [],
                                        isSub: false
                                    ))?.whenComplete(()=> lightStatusBar());
@@ -118,42 +144,44 @@ class UpcomingScreen extends StatelessWidget {
                             height:220,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              itemCount: subData[index].posts.length<=3?subData[index].posts.length:3,
+                              itemCount: widget.subData[index].posts.length<=3?widget.subData[index].posts.length:3,
                               itemBuilder: (context,i){
-                                return   GestureDetector(
-                                  onTap: () {
-                                    darkStatusBar();
-                                    Get.to(() => CardDetailScreen(
-                                      name: subData[index].subCategory ?? '',
-                                      images: subData[index].posts[i].postImg?.url ?? '',
-                                      frame: subData[index].posts[i].frameImg?.url ?? '',
-                                    ))?.whenComplete(()=> lightStatusBar());
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      height: 200,
-                                      width: 200,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(10),
-                                          child: CachedNetworkImage(
-                                            imageUrl:
-                                            subData[index].posts[i].postImg?.url ?? '',
-                                            height: 200,
-                                            width: 200,
-                                            fit: BoxFit.fill,
-                                            placeholder: (context, i) {
-                                              return Container();
-                                            },
-                                            errorWidget: (context, i, r) {
-                                              return Container();
-                                            },
-                                          )),
-                                    ),
-                                  ),
+                                return  Row(
+                                  children: List.generate(widget.subData[index].posts[i].postImg.length, (y)=> GestureDetector(
+                                    onTap: () {
+                                  darkStatusBar();
+                                  Get.to(() => CardDetailScreen(
+                                    name: widget.subData[index].subCategory ?? '',
+                                    images: widget.subData[index].posts[i].postImg[y]['url'] ?? '',
+                                    frame:  '',
+                                  ))?.whenComplete(()=> lightStatusBar());
+                                },
+                                child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 230,
+                                  width: 130,
+                                decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: CachedNetworkImage(
+                                imageUrl:
+                                widget.subData[index].posts[i].postImg[y]['url'] ?? '',
+                                height: 200,
+                                width: 200,
+                                fit: BoxFit.fill,
+                                placeholder: (context, i) {
+                                return Container();
+                                },
+                                errorWidget: (context, i, r) {
+                                return Container();
+                                },
+                                )),
+                                ),
+                                ),
+                                )),
                                 );
                               },
                             ),
@@ -165,11 +193,11 @@ class UpcomingScreen extends StatelessWidget {
                   )
                 : Expanded(
                     child: GridView.builder(
-                      itemCount: items.length,
+                      itemCount:grid.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,
-                              childAspectRatio: 0.7,
+                              childAspectRatio: 0.55,
                               mainAxisSpacing: 10,
                               crossAxisSpacing: 10),
                       itemBuilder: (context, index) {
@@ -177,11 +205,11 @@ class UpcomingScreen extends StatelessWidget {
                           onTap: () {
                             darkStatusBar();
                             Get.to(() => CardDetailScreen(
-                                  name: name,
-                                  images: items[index]
-                                          .postImg?.url ??
+                                  name: widget.name,
+                                  images: grid[index]
+                                          ['url'] ??
                                       '',
-                              frame: items[index].frameImg?.url ?? '',
+                              frame:  '',
                                 ))?.whenComplete(()=> lightStatusBar());
                           },
                           child: Container(
@@ -193,10 +221,8 @@ class UpcomingScreen extends StatelessWidget {
                             child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
                                 child: CachedNetworkImage(
-                                  imageUrl: items
-                                          [index]
-                                          .postImg
-                                          ?.url ??
+                                  imageUrl: grid[index]
+                                  ['url'] ??
                                       '',
                                   height: 200,
                                   width: 200,

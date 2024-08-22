@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 class OtpController extends GetxController{
   RxBool loader = false.obs;
   TextEditingController otpController = TextEditingController();
-  String mobile = Get.arguments;
+  String mobile = Get.arguments ?? '';
   OtpModel otpModel = OtpModel();
   onCompleteOtp()async{
     loader.value =true;

@@ -122,12 +122,16 @@ class HelpScreen extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              image,
-              height: 20,
-              width: 20,
-              color: AppColors.hintColor,
+            Padding(
+              padding: const EdgeInsets.only(top: 2.0),
+              child: Image.asset(
+                image,
+                height: 20,
+                width: 20,
+                color: AppColors.hintColor,
+              ),
             ),
             const SizedBox(
               width: 10,

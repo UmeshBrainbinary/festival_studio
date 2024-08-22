@@ -10,7 +10,7 @@ import 'package:festiveapp_studio/screen/card_detail/card_detail_screen.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:get/get.dart';
 
-class UpcomingSubScreen extends StatelessWidget {
+class UpcomingSubScreen extends StatefulWidget {
   String name;
   List items;
   List subData;
@@ -22,6 +22,30 @@ class UpcomingSubScreen extends StatelessWidget {
         required this.subData,
         required this.isSub});
 
+  @override
+  State<UpcomingSubScreen> createState() => _UpcomingSubScreenState();
+}
+
+class _UpcomingSubScreenState extends State<UpcomingSubScreen> {
+
+  @override
+  void initState() {
+    init();
+    super.initState();
+  }
+
+  List grid =[];
+  init(){
+    if(widget.isSub == false){
+
+      widget.items.forEach((e){
+        grid.addAll(e.postImg ?? []);
+      });
+      setState(() {
+
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -47,7 +71,7 @@ class UpcomingSubScreen extends StatelessWidget {
                   width: Get.width *0.5,
                   alignment: Alignment.center,
                   child: Text(
-                    name,
+                    widget.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: boldFontStyle(color: AppColors.white, size: 18),
@@ -69,11 +93,11 @@ class UpcomingSubScreen extends StatelessWidget {
             ),
          Expanded(
               child: GridView.builder(
-                itemCount: items.length,
+                itemCount: grid.length,
                 gridDelegate:
                 const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    childAspectRatio: 0.7,
+                    childAspectRatio: 0.55,
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10),
                 itemBuilder: (context, index) {
@@ -81,11 +105,11 @@ class UpcomingSubScreen extends StatelessWidget {
                     onTap: () {
                       darkStatusBar();
                       Get.to(() => CardDetailScreen(
-                        name: name,
-                        images: items[index]
-                            .postImg?.url ??
+                        name: widget.name,
+                        images: grid[index]
+                            ['url'] ??
                             '',
-                        frame: items[index].frameImg?.url ?? '',
+                        frame:  '',
                       ))?.whenComplete(()=> lightStatusBar());
                     },
                     child: Container(
@@ -97,10 +121,8 @@ class UpcomingSubScreen extends StatelessWidget {
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: CachedNetworkImage(
-                            imageUrl: items
-                            [index]
-                                .postImg
-                                ?.url ??
+                            imageUrl: grid[index]
+                            ['url'] ??
                                 '',
                             height: 200,
                             width: 200,
