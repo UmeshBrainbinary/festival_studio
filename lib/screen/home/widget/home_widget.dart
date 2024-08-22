@@ -133,8 +133,12 @@ Widget festivalListview({context, index}) {
                                                               ['posts'][i]
                                                           .postImg[y]['url'] ??
                                                       '',
-                                                  // frame: controller.dataShow[index]['posts'][i].frameImg['url']??
-                                                  frame: '',
+                                          date:controller.dateFormat.format(controller
+                                              .dataShow[index]['posts'][i].date ??
+                                              DateTime.now(),),
+                                          description:controller
+                                              .dataShow[index]['posts'][i].description ??
+                                              '',
                                                 ))
                                             ?.whenComplete(
                                                 () => lightStatusBar());
@@ -210,6 +214,7 @@ Widget festivalListviewFilter({context, index}) {
                       lightStatusBar();
                       Get.to(
                         () => UpcomingScreen(
+
                             name: controller.filterData[index]['name'] ?? '',
                             items: controller.filterData[index]['posts'],
                             subData: controller.filterData[index]['subData'],
@@ -263,7 +268,12 @@ Widget festivalListviewFilter({context, index}) {
                                       .postImg[y]
                                       ['url'] ??
                                       '',
-                                  frame:
+                                  date:
+                                  controller.dateFormat.format(controller
+                                      .filterData[index]['posts'][i].date ??
+                                      DateTime.now(),),
+                                  description:controller
+                                      .filterData[index]['posts'][i].description ??
                                       '',
                                 ))?.whenComplete(() => lightStatusBar());
                               },

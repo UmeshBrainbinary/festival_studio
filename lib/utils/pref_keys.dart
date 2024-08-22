@@ -13,4 +13,9 @@ class PrefKeys{
   static const String primaryColor = "primaryColor";
   static const String secondaryColor = "secondaryColor";
 
+
+  /// ----------------  color ----------------
+  static const webColor ="websiteColor";
+  static const desColor ="desColor";
+  static const dateColor ="dateColor";
 }

@@ -9,9 +9,11 @@ import 'package:festiveapp_studio/common/testStyle.dart';
 import 'package:festiveapp_studio/screen/card_detail/card_detail_screen.dart';
 import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class UpcomingSubScreen extends StatefulWidget {
   String name;
+
   List items;
   List subData;
   bool isSub;
@@ -27,7 +29,7 @@ class UpcomingSubScreen extends StatefulWidget {
 }
 
 class _UpcomingSubScreenState extends State<UpcomingSubScreen> {
-
+  DateFormat dateFormat = DateFormat("dd, MMMM yyyy");
   @override
   void initState() {
     init();
@@ -39,7 +41,13 @@ class _UpcomingSubScreenState extends State<UpcomingSubScreen> {
     if(widget.isSub == false){
 
       widget.items.forEach((e){
-        grid.addAll(e.postImg ?? []);
+        e.postImg.forEach((ey){
+          grid.add({
+            "date":e.date,
+            "description":e.description,
+            "image":ey['url'] ?? '',
+          });
+        });
       });
       setState(() {
 
@@ -107,9 +115,16 @@ class _UpcomingSubScreenState extends State<UpcomingSubScreen> {
                       Get.to(() => CardDetailScreen(
                         name: widget.name,
                         images: grid[index]
-                            ['url'] ??
+                            ['image'] ??
                             '',
-                        frame:  '',
+                        description: grid[index]
+                        ['description'] ??
+                            '',
+                        date:
+                        dateFormat.format(grid[index]
+                        ['date'] ??
+                            DateTime.now(),),
+
                       ))?.whenComplete(()=> lightStatusBar());
                     },
                     child: Container(
@@ -122,7 +137,7 @@ class _UpcomingSubScreenState extends State<UpcomingSubScreen> {
                           borderRadius: BorderRadius.circular(10),
                           child: CachedNetworkImage(
                             imageUrl: grid[index]
-                            ['url'] ??
+                            ['image'] ??
                                 '',
                             height: 200,
                             width: 200,

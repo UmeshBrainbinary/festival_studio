@@ -10,9 +10,11 @@ import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class UpcomingScreen extends StatefulWidget {
   String name;
+
   List items;
   List subData;
   bool isSub;
@@ -28,7 +30,7 @@ class UpcomingScreen extends StatefulWidget {
 }
 
 class _UpcomingScreenState extends State<UpcomingScreen> {
-
+  DateFormat dateFormat = DateFormat("dd, MMMM yyyy");
   @override
   void initState() {
     init();
@@ -39,11 +41,18 @@ List grid =[];
   init(){
     if(widget.isSub == false){
 
-      widget.items.forEach((e){
-        grid.addAll(e.postImg ?? []);
-      });
+
       setState(() {
 
+      });
+      widget.items.forEach((e){
+        e.postImg.forEach((ey){
+          grid.add({
+            "date":e.date,
+            "description":e.description,
+            "image":ey['url'] ?? '',
+          });
+        });
       });
     }
   }
@@ -153,7 +162,10 @@ List grid =[];
                                   Get.to(() => CardDetailScreen(
                                     name: widget.subData[index].subCategory ?? '',
                                     images: widget.subData[index].posts[i].postImg[y]['url'] ?? '',
-                                    frame:  '',
+                              date:
+                              dateFormat.format( widget.subData[index].posts[i].date ??
+                                  DateTime.now(),),
+                                    description: widget.subData[index].posts[i].description ?? '',
                                   ))?.whenComplete(()=> lightStatusBar());
                                 },
                                 child: Padding(
@@ -207,9 +219,16 @@ List grid =[];
                             Get.to(() => CardDetailScreen(
                                   name: widget.name,
                                   images: grid[index]
-                                          ['url'] ??
+                                          ['image'] ??
                                       '',
-                              frame:  '',
+                              date:
+                              dateFormat.format(grid[index]
+                              ['date'] ??
+                                  DateTime.now(),),
+                              description: grid[index]
+                              ['description'] ??
+                                  '',
+
                                 ))?.whenComplete(()=> lightStatusBar());
                           },
                           child: Container(
@@ -222,7 +241,7 @@ List grid =[];
                                 borderRadius: BorderRadius.circular(10),
                                 child: CachedNetworkImage(
                                   imageUrl: grid[index]
-                                  ['url'] ??
+                                  ['image'] ??
                                       '',
                                   height: 200,
                                   width: 200,
