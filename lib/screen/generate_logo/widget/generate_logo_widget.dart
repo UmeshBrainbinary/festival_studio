@@ -22,7 +22,7 @@ Widget addDetailsTextField(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(
-          height: 20,
+          height: 40,
         ),
         Row(
           children: [

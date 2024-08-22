@@ -25,7 +25,7 @@ class TermsConditionScreen extends StatelessWidget {
             Column(
               children: [
                 const SizedBox(
-                  height: 10,
+                  height: 40,
                 ),
                 Row(
                   children: [

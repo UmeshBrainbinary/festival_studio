@@ -18,12 +18,12 @@ class HomeScreen extends StatelessWidget {
         children: [
           GetBuilder<HomeController>(
             id: "home",
-            builder: (context) {
+            builder: (con) {
               return Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
-                    const SizedBox(height: 20,),
+                    const SizedBox(height: 40,),
                     textField(),
                     Expanded(child: (controller.search.text =='')?ListView.builder(
                           itemCount: controller.dataShow.length,

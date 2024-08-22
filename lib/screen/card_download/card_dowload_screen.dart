@@ -32,7 +32,7 @@ class CardDownload extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               Row(
                 children: [

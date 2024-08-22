@@ -44,10 +44,10 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
           children: [
             GetBuilder<CardDetailController>(
               id: "frame",
-              builder: (context) {
+              builder: (con) {
                 return Column(
                   children: [
-                    SizedBox(height: height * 0.01),
+                    SizedBox(height: height * 0.015),
                     Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(width: width * 0.04),

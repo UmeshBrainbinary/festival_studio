@@ -26,7 +26,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>  with SingleTickerP
     super.initState();
 
     animationController = AnimationController(
-      duration: const Duration(seconds: 10),
+      duration: const Duration(seconds: 8),
       vsync: this,
     );
 
@@ -51,7 +51,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>  with SingleTickerP
            padding: const EdgeInsets.all(10.0),
            child: Column(
              children: [
-               const Spacer(flex: 3,),
+               const Spacer(flex: 2,),
                SizedBox(
                  height: 450,
                  child: PageView.builder(
@@ -78,16 +78,16 @@ class _OnboardingScreenState extends State<OnboardingScreen>  with SingleTickerP
                                  ),
 
 
-                     TweenAnimationBuilder<double>(
+                                 index ==0?   TweenAnimationBuilder<double>(
                      tween: Tween<double>(begin: 0.0, end: 1.0),
                      curve: Curves.ease,
-                     duration: const Duration(seconds: 10),
+                     duration: const Duration(seconds: 8),
                      builder: (BuildContext context, double opacity, Widget? child) {
                      return Opacity(
                      opacity: opacity,
                      child: Image.asset(AppAssets.hello,scale: 7.5,)
                      );
-                     }),
+                     }):const SizedBox(),
 
                                ],
                              ),

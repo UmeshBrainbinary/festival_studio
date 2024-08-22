@@ -34,7 +34,7 @@ Widget addDetailsTextField(BuildContext context) {
               children: [
 
                 const SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 Center(
                   child: Text(

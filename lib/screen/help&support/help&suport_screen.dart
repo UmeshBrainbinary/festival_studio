@@ -19,11 +19,11 @@ class HelpScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backgroundCard,
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
             const SizedBox(
-              height: 20,
+              height: 40,
             ),
             Row(
               children: [
