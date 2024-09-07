@@ -9,6 +9,7 @@ class PrefKeys{
   /// -------------- details ---------------
   static const String brandName = "brandName";
   static const String tagLine = "tagline";
+  static const String logo = "logo";
   static const String website = "website";
   static const String primaryColor = "primaryColor";
   static const String secondaryColor = "secondaryColor";
@@ -18,4 +19,10 @@ class PrefKeys{
   static const webColor ="websiteColor";
   static const desColor ="desColor";
   static const dateColor ="dateColor";
+
+  /// -------- position  =================
+  static const x ="x";
+  static const y ="y";
+  static const width ="width";
+
 }

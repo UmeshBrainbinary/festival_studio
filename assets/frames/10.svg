@@ -11,8 +11,9 @@
     </clipPath>
   </defs>
   <g>
-
-
+    <image
+        x="42%" y="70%"
+        href="https://img.freepik.com/premium-photo/autumn-leave-with-intricate-details_1198274-39678.jpg" height="200" width="200" />
     <text
         x="50%" y="86%" text-anchor="middle" fill="#383838" font-family="Arial" font-size="14"
         style="font-variant:normal;font-weight:500;font-stretch:normal;font-size:30px;font-family:Poppins;-inkscape-font-specification:Poppins-Medium;writing-mode:lr-tb;fill:#6d4d26;fill-opacity:1;fill-rule:nonzero;stroke:none"

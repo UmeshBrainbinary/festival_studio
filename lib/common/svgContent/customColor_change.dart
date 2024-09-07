@@ -2,10 +2,13 @@
 
 // ignore_for_file: file_names
 
+import 'package:festiveapp_studio/service/pref_services.dart';
+import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:xml/xml.dart' as xml;
 class CustomColorMappedSvg extends StatefulWidget {
   final String assetName;
   final String website;
@@ -58,23 +61,90 @@ init(){
   @override
   Widget build(BuildContext context) {
   init();
-    return FutureBuilder<String>(
-      future: _loadAndMapColors(widget.assetName, colorsMap,context),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-          return SvgPicture.string(snapshot.data!, height: 500,width: 500,fit: BoxFit.fill,);
-        } else if (snapshot.hasError) {
-          return const Text('Error loading SVG');
-        } else {
-          return const CircularProgressIndicator();
-        }
-      },
+    return Container(
+      height: 500,
+      width: 500,
+      child: Stack(
+        children: [
+          FutureBuilder<String>(
+            future: _loadAndMapColors(widget.assetName, colorsMap,context),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+                //return SvgPicture.string(snapshot.data!, height: 500,width: 500,fit: BoxFit.fill,);
+                return Container(
+                    height: 500,width: 500,
+                    child: HtmlWidget(snapshot.data!,
+                    ));
+              } else if (snapshot.hasError) {
+                return const Text('Error loading SVG');
+              } else {
+                return const CircularProgressIndicator();
+              }
+            },
+          ),
+          FutureBuilder<String>(
+              future: _lodImage(widget.assetName, colorsMap,context),
+              builder: (context,s) {
+      if (s.connectionState == ConnectionState.done && s.hasData) {
+                return HtmlWidget(s.data!, customWidgetBuilder: (element) {
+
+                }
+
+                );
+              }else if (s.hasError) {
+      return const SizedBox();
+      } else {
+      return const CircularProgressIndicator();
+      }
+
+              }
+          ),
+        ],
+      ),
     );
   }
-
+double height =0;
+double width =0;
   Future<String> _loadAndMapColors(String svgString, Map<Color, Color> colorMap,context) async {
     // String svgString = await DefaultAssetBundle.of(context).loadString(
-    //     assetName);
+    //     "assets/frames/1.svg");
+
+    RegExp regex = RegExp(r'viewBox="\d+ \d+ (\d+) (\d+)"');
+
+    // Match the regex pattern
+    RegExpMatch? match = regex.firstMatch(svgString);
+
+    if (match != null) {
+      // Extract width and height values
+       width = double.parse(match.group(1)!.toString());
+       height = double.parse(match.group(2)!.toString());
+    } else {
+      print("No match found");
+    }
+
+    svgString.replaceAllMapped(
+
+        RegExp(r'(x|y)="(\d+)%"'),
+            (match) {
+          String attribute = match.group(1)!;
+          String percentage = match.group(2)!;
+          double absoluteValue;
+
+          if (attribute == 'x') {
+
+            double screenWidth = width;
+            absoluteValue = ((double.parse(percentage) / 100) * screenWidth);
+          } else {
+
+            double screenHeight = height;
+            absoluteValue = (double.parse(percentage) / 100) * screenHeight;
+          }
+
+          return '$attribute="$absoluteValue"';
+        }
+    );
+
+
 
     colorMap.forEach((originalColor, newColor) {
       final originalColorHex = '#${originalColor.value.toRadixString(16)
@@ -222,10 +292,77 @@ return result.replaceAll('fill="$old"', 'fill="$n"');
 });
 }
 
-    return svgString;
+    return '''
+    <html>
+      <body>
+        $svgString
+      </body>
+    </html>
+    ''';
+  }
+  Future<String> _lodImage(String svgString, Map<Color, Color> colorMap,context) async {
+
+
+    final startIndex = svgString.indexOf('<image');
+    final endIndex = svgString.indexOf('>', startIndex);
+
+    if (startIndex != -1 && endIndex != -1) {
+      final imageTag = svgString.substring(startIndex, endIndex + 1);
+
+      final width = (double.parse(_extractAttributeValue(imageTag, 'width'))).toString() ;
+      final height = _extractAttributeValue(imageTag, 'height');
+      final x = _extractAttributeValue(imageTag, 'x');
+      final y = _extractAttributeValue(imageTag, 'y');
+      final href = _extractAttributeValue(imageTag, 'href');
+
+
+      return '''
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+ <table width="500px" height="500px">
+    <tr>
+        <td  style="padding-left: ${
+          double.parse(x.split("%")[0]) <50?
+          ((((
+          (500 * double.parse(x.split("%")[0])) /100)) - double.parse(width)/2) -2)
+
+      :  (((((500 * double.parse(x.split("%")[0])) /100)) - double.parse(width)/2) -100)
+      }px;padding-top: ${
+          (double.parse(y.split("%")[0]) > 50)?
+      ((500 * double.parse(y.split("%")[0]) /100) -50):
+          ( (500 * double.parse(y.split("%")[0]) /100)-10)
+              }px;">
+      <img src="${PrefService.getString(PrefKeys.logo)}" alt="Image" width="${20}">
+      </td> 
+    </tr>
+  </table>
+</body>
+</html>
+    ''';
+
+
+    }
+    else
+      {
+        return "";
+      }
   }
 
 
+String _extractAttributeValue(String tag, String attributeName) {
+  final attributePattern = '$attributeName="';
+  final startIndex = tag.indexOf(attributePattern);
+  if (startIndex == -1) return 'N/A';
 
+  final valueStartIndex = startIndex + attributePattern.length;
+  final endIndex = tag.indexOf('"', valueStartIndex);
+  if (endIndex == -1) return 'N/A';
+
+  return tag.substring(valueStartIndex, endIndex);
+}
 
 }

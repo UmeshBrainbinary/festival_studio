@@ -166,7 +166,7 @@ BrandModel brandModel = BrandModel();
 onTapSubmit()async{
     loader.value =true;
     brandModel = await AddDetailsApi.addDetailApi(brandName: brandName.text,
-        tag: tagLine.text, email: email.text, website: website.text, address: address.text, phone: phoneNumber.text);
+        tag: tagLine.text, email: email.text, website: website.text, address: address.text, phone: phoneNumber.text,image: logoImage.value);
 
     loader.value =false;
 }

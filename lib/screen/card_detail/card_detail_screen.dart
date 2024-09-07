@@ -14,6 +14,7 @@ import 'package:festiveapp_studio/utils/app_colors.dart';
 import 'package:festiveapp_studio/utils/pref_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:screenshot/screenshot.dart';
@@ -199,20 +200,42 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                                               child: Stack(
                                                 alignment: Alignment.centerRight,
                                                 children: [
-                                                  Container(
-                                                    height: 150,
-                                                    width: 150,
+                                                  Stack(
+                                                    children: [
+                                                      Container(
+                                                        height: 150,
+                                                        width: 150,
+                                                        decoration: BoxDecoration(
 
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.circular(20),
-                                                    ),
-                                                    alignment: Alignment.center,
-                                                    child:   Center(
-                                                        child: SvgPicture.string(
-                                                          controller.framesList[index],
-                                                          height: 150,
-                                                          width: 150,
-                                                        )),
+                                                          borderRadius: BorderRadius.circular(20),
+                                                        ),
+                                                        alignment: Alignment.center,
+                                                        child:   Center(
+                                                            child: SvgPicture.string(
+                                                              controller.framesList[index],
+                                                              height: 150,
+                                                              width: 150,
+                                                              fit: BoxFit.fill,
+                                                            )),
+                                                      ),
+                                                      FutureBuilder<String>(
+                                                          future: _lodImage( controller.framesList[index], ),
+                                                          builder: (context,s) {
+                                                            if (s.connectionState == ConnectionState.done && s.hasData) {
+                                                              return HtmlWidget(s.data!, customWidgetBuilder: (element) {
+
+                                                              }
+
+                                                              );
+                                                            }else if (s.hasError) {
+                                                              return const SizedBox();
+                                                            } else {
+                                                              return const CircularProgressIndicator();
+                                                            }
+
+                                                          }
+                                                      ),
+                                                    ],
                                                   ),
                                                   controller.selectedImage == controller.framesList[index]? Align(
                                                     alignment: Alignment.topRight,
@@ -342,7 +365,63 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
       ),
     );
   }
+  Future<String> _lodImage(String svgString, ) async {
 
+
+    final startIndex = svgString.indexOf('<image');
+    final endIndex = svgString.indexOf('>', startIndex);
+
+    if (startIndex != -1 && endIndex != -1) {
+      final imageTag = svgString.substring(startIndex, endIndex + 1);
+
+      final width = (double.parse(_extractAttributeValue(imageTag, 'width'))).toString();
+      final height = _extractAttributeValue(imageTag, 'height');
+      final x = _extractAttributeValue(imageTag, 'x');
+      final y = _extractAttributeValue(imageTag, 'y');
+      final href = _extractAttributeValue(imageTag, 'href');
+
+
+      return '''
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <table width="150px" height="150px">
+    <tr>
+        <td  style="padding-left: ${
+
+          double.parse(x.split("%")[0])<40?
+          (150 * double.parse(x.split("%")[0]) /100) +20 :
+          double.parse(x.split("%")[0])>50?
+          (150 * double.parse(x.split("%")[0]) /100) -20: (150 * double.parse(x.split("%")[0]) /100) +2}px;padding-top: ${(150 * double.parse(y.split("%")[0]) /100) -6}px;">
+      <img src="${PrefService.getString(PrefKeys.logo)}" alt="Image" width="${10}">
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+    ''';
+
+
+    }
+    else
+    {
+      return "";
+    }
+  }
+  String _extractAttributeValue(String tag, String attributeName) {
+    final attributePattern = '$attributeName="';
+    final startIndex = tag.indexOf(attributePattern);
+    if (startIndex == -1) return 'N/A';
+
+    final valueStartIndex = startIndex + attributePattern.length;
+    final endIndex = tag.indexOf('"', valueStartIndex);
+    if (endIndex == -1) return 'N/A';
+
+    return tag.substring(valueStartIndex, endIndex);
+  }
 
 
 

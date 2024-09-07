@@ -18,6 +18,7 @@ class AddDetailsApi {
     required String website,
     required String address,
     required String phone,
+    required String image,
   }) async {
     try {
       String url = Endpoints.updateBrand;
@@ -27,8 +28,10 @@ class AddDetailsApi {
         'Authorization': "Bearer ${PrefService.getString(PrefKeys.accessToken)}",
         'Cookie': Endpoints.refreshToken
       };
-      var request = http.Request('PUT', Uri.parse(url));
-      request.body = json.encode({
+
+
+      var request = http.MultipartRequest('PUT', Uri.parse(url));
+      request.fields.addAll({
         "brandName": brandName,
         "tagLine": tag,
         "phoneNo": phone,
@@ -36,6 +39,7 @@ class AddDetailsApi {
         "website": website,
         "address": address
       });
+      request.files.add(await http.MultipartFile.fromPath('brandImg',image));
       request.headers.addAll(headers);
 
       http.StreamedResponse response = await request.send();
@@ -46,6 +50,7 @@ class AddDetailsApi {
         lightStatusBar();
         Get.offAll(()=>DashBoardScreen())?.whenComplete(()=> lightStatusBar());
         PrefService.setValue(PrefKeys.isBrand, true);
+        PrefService.setValue(PrefKeys.logo,jsonDecode(d)['user']['brandDetails']['brandImg']['url'] ?? '' );
         return brandModelFromJson(d);
 
       }

@@ -52,6 +52,7 @@ dependencies:
   flutter_colorpicker: ^1.1.0
   hexcolor: ^3.0.1
   intl:
+  flutter_html:
 
 dev_dependencies:
   flutter_test:
