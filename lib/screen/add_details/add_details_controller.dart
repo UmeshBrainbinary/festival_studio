@@ -155,6 +155,9 @@ BrandModel brandModel = BrandModel();
      logoError.value =='') {
 
        PrefService.setValue(PrefKeys.website, website.text);
+       PrefService.setValue(PrefKeys.address, address.text);
+       PrefService.setValue(PrefKeys.email, email.text);
+       PrefService.setValue(PrefKeys.phoneNumner, phoneNumber.text);
        PrefService.setValue(PrefKeys.brandName, brandName.text);
        PrefService.setValue(PrefKeys.tagLine, tagLine.text);
       return true;

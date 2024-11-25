@@ -392,11 +392,16 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
     <tr>
         <td  style="padding-left: ${
 
-          double.parse(x.split("%")[0])<40?
+          double.parse(x.split("%")[0])<=10?
           (150 * double.parse(x.split("%")[0]) /100) +20 :
+          double.parse(x.split("%")[0])<40?
+          (150 * double.parse(x.split("%")[0]) /100) +8 :
           double.parse(x.split("%")[0])>50?
-          (150 * double.parse(x.split("%")[0]) /100) -20: (150 * double.parse(x.split("%")[0]) /100) +2}px;padding-top: ${(150 * double.parse(y.split("%")[0]) /100) -6}px;">
-      <img src="${PrefService.getString(PrefKeys.logo)}" alt="Image" width="${10}">
+          (150 * double.parse(x.split("%")[0]) /100) -20:
+          (150 * double.parse(x.split("%")[0]) /100) +4}
+          
+          px;padding-top: ${(150 * double.parse(y.split("%")[0]) /100) -6}px;">
+      <img src="${PrefService.getString(PrefKeys.logo)}" alt="Image" width="${8}">
       </td>
     </tr>
   </table>

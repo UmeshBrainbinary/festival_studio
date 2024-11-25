@@ -13,6 +13,9 @@ class PrefKeys{
   static const String website = "website";
   static const String primaryColor = "primaryColor";
   static const String secondaryColor = "secondaryColor";
+  static const String email = "email";
+  static const String address = "address";
+  static const String phoneNumner = "phoneNumner";
 
 
   /// ----------------  color ----------------

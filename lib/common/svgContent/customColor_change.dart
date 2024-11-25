@@ -327,16 +327,20 @@ return result.replaceAll('fill="$old"', 'fill="$n"');
     <tr>
         <td  style="padding-left: ${
           double.parse(x.split("%")[0]) <50?
+          double.parse(x.split("%")[0]) <=20 &&  double.parse(x.split("%")[0]) <=30?
+          ((((
+              (500 * double.parse(x.split("%")[0])) /100)) - double.parse(width)/2) +10)
+          :
           ((((
           (500 * double.parse(x.split("%")[0])) /100)) - double.parse(width)/2) -2)
 
-      :  (((((500 * double.parse(x.split("%")[0])) /100)) - double.parse(width)/2) -100)
+      :  (((((500 * double.parse(x.split("%")[0])) /100)) - double.parse(width)/2) -80)
       }px;padding-top: ${
           (double.parse(y.split("%")[0]) > 50)?
-      ((500 * double.parse(y.split("%")[0]) /100) -50):
+      ((500 * double.parse(y.split("%")[0]) /100) -60):
           ( (500 * double.parse(y.split("%")[0]) /100)-10)
               }px;">
-      <img src="${PrefService.getString(PrefKeys.logo)}" alt="Image" width="${20}">
+      <img src="${PrefService.getString(PrefKeys.logo)}" alt="Image" width="${16}">
       </td> 
     </tr>
   </table>
