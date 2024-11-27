@@ -14,6 +14,7 @@ import 'package:festiveapp_studio/utils/string_res.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 
 class CardDownload extends StatelessWidget {
   String name;
@@ -109,10 +110,13 @@ class CardDownload extends StatelessWidget {
               ),
               Row(
                 children: [
-                  commonButtonCard(
-                      width: 150,
-                      text: StringRes.download,
-                      image: AppAssets.download),
+                  InkWell(
+                    onTap: () async {
+                      final result = await ImageGallerySaver.saveImage(images!);
+                      print(result);
+                      },
+                    child: commonButtonCard(width: 150, text: StringRes.download, image: AppAssets.download),
+                  ),
                   const Spacer(),
                   InkWell(
                     onTap: () async {

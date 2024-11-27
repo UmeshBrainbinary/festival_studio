@@ -51,6 +51,8 @@ dependencies:
   screenshot: ^3.0.0
   flutter_colorpicker: ^1.1.0
   hexcolor: ^3.0.1
+  image_gallery_saver: ^2.0.3
+  path_provider:
   intl:
   flutter_html:
 

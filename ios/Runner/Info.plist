@@ -30,6 +30,8 @@
 	<string>This app is used for logo upload</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>microphone usage</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>This app requires access to your photo library to save images to your gallery.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app is used for logo upload</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
